@@ -15,7 +15,7 @@ export default function Index() {
           onPress={()=>  router  .push('SignIn')}  
           style={{marginTop:20}}
       >
-      <Text style={{fontSize:20, color:'blue'}}>Vai a Signin</Text>
+      <Text style={{fontSize:20, color:'blue', fontFamily:"Poppins-Bold"}}>Vai a Signin</Text>
     </Pressable>
 
     <Pressable 
