@@ -6,6 +6,8 @@ export default function RootAuth() {
       <Stack.Screen name="SignIn" options={{ title: 'SignIn' }} />
       <Stack.Screen name="SignUp"  options={{ title: 'SignUp' }}/>
       <Stack.Screen name="SignOut" options={{ title: 'SignOut' }}/>
+     
+     
     </Stack>
   );
 }
