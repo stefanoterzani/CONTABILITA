@@ -1,135 +1,108 @@
-
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { auth, db } from '../firebaseConfig'; // Assicurati che il percorso sia corretto
-import { doc, getDoc } from 'firebase/firestore';
+import { auth, db } from '../firebaseConfig'; 
+import { doc, getDoc, setDoc, deleteDoc } from 'firebase/firestore';
+import { onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from 'firebase/auth';
 
-const AuthContext = createContext();
+export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [companyName, setCompanyName] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
+  const[dataUser,setDataUser]=useState(null)
   const [loading, setLoading] = useState(true);
+  const [azienda, setAzienda] = useState({});
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(async (currentUser) => {
-      setUser(currentUser);
-
-      if (currentUser) {
-        const userDoc = await getDoc(doc(db, 'aziende', currentUser.uid));
-        if (userDoc.exists()) {
-          setCompanyName(userDoc.data().nomeAzienda);
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        const membershipDocRef = doc(db, 'membership', user.uid);
+        const membershipDoc = await getDoc(membershipDocRef);
+        if (membershipDoc.exists()) {
+          const userData = membershipDoc.data();
+          
+          setCurrentUser(user);
+          setDataUser(userData)
+       //   console.log(userData)
+       //   console.log('USER',user)
+          const aziendaDocRef = doc(db, 'aziende', userData.IdAzienda);
+        //  console.log(aziendaDocRef)
+          const aziendaDoc = await getDoc(aziendaDocRef);
+       //   console.log(aziendaDoc)
+          if (aziendaDoc.exists()) {
+       //     console.log('AZIENDA',aziendaDoc.data())
+            setAzienda(aziendaDoc.data());
+          }
         } else {
-          console.error("No such document!");
+          setCurrentUser(user);
         }
+      } else {
+        setCurrentUser(null);
       }
-
       setLoading(false);
     });
 
     return () => unsubscribe();
   }, []);
 
-  const logout = async () => {
-    await auth.signOut();
-    setUser(null);
-    setCompanyName(null);
+  const loginUser = async (email, password, telefono = null) => {
+    setLoading(true);
+    try {
+      const membershipDocRef = doc(db, 'membershipProvvisorio', email);
+      const membershipDoc = await getDoc(membershipDocRef);
+
+      if (membershipDoc.exists()) {
+        if (membershipDoc.data().telefono === telefono) {
+          const { idAzienda, nomeAzienda, qualifica } = membershipDoc.data();
+          const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+          const newUser = userCredential.user;
+
+          await setDoc(doc(db, 'membership', newUser.uid), {
+            idAzienda,
+            nomeAzienda,
+            idUtente: newUser.uid,
+            email,
+            telefono,
+            qualifica
+          });
+
+          await deleteDoc(membershipDocRef);
+        } else {
+          throw new Error('Numero di telefono non corretto');
+        }
+      } else {
+        await signInWithEmailAndPassword(auth, email, password);
+      }
+      setCurrentUser(auth.currentUser);
+    } catch (error) {
+      console.error('Errore durante il login:', error);
+    } finally {
+      setLoading(false);
+    }
   };
 
+  const logoutUser = async () => {
+    setLoading(true);
+    try {
+      await signOut(auth);
+      setCurrentUser(null);
+    } catch (error) {
+      console.error('Errore durante il logout:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+ console.log('CURRENT USER=',currentUser)
+ console.log('DATA USER=',dataUser)
+ console.log('AZIENDA=',azienda)
+
   return (
-    <AuthContext.Provider value={{ user, companyName, logout, loading }}>
+   
+    <AuthContext.Provider value={{ currentUser, dataUser,loading, logoutUser, loginUser, azienda }}>
       {children}
     </AuthContext.Provider>
-  );r
+  );
 };
 
 // Custom Hook per utilizzare il contesto
 export const useAuth = () => {
   return useContext(AuthContext);
 };
-
-/*
-
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import { auth, db } from '../firebaseConfig'; // Assicurati di importare i tuoi moduli Firebase
-import { onAuthStateChanged, signOut } from 'firebase/auth';
-import { doc, getDoc } from 'firebase/firestore';
-
-const AuthContext = createContext();
-
-export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(null);
-    const [azienda, setAzienda] = useState(null);
-
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
-            setUser(currentUser);
-            if (currentUser) {
-                // Ottieni l'ID dell'azienda dall'utente loggato
-                const userRef = doc(db, 'aziende', currentUser.uid); // Assumendo che l'ID dell'azienda sia lo stesso dell'ID utente
-                const userDoc = await getDoc(userRef);
-                if (userDoc.exists()) {
-                    setAzienda({ id: userDoc.id, ...userDoc.data() });
-                } else {
-                    console.error('No such document!');
-                }
-            } else {
-                // Resetta i dati dell'azienda quando l'utente esce
-                setAzienda(null);
-            }
-        });
-
-        return () => unsubscribe();
-    }, []);
-
-    const logout = async () => {
-        try {
-            await signOut(auth); // Esegui il logout
-            setUser(null); // Resetta lo stato dell'utente
-            setAzienda(null); // Resetta lo stato dell'azienda
-        } catch (error) {
-            console.error('Error during logout: ', error);
-        }
-    };
-
-    return (
-        <AuthContext.Provider value={{ user, azienda, logout }}>
-            {children}
-        </AuthContext.Provider>
-    );
-};
-
-export const useAuth = () => {
-    return useContext(AuthContext);
-};
-
-
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import { auth } from '../firebaseConfig'; // Assicurati di importare la tua configurazione Firebase
-import { onAuthStateChanged } from 'firebase/auth';
-
-const AuthContext = createContext();
-
-export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user);
-      setLoading(false); // Caricamento completato
-    });
-
-    return () => unsubscribe(); // Pulizia dell'abbonamento
-  }, []);
-
-  return (
-    <AuthContext.Provider value={{ user, loading }}>
-      {children}
-    </AuthContext.Provider>
-  );
-};
-
-export const useAuth = () => {
-  return useContext(AuthContext);
-};
-*/

@@ -1,39 +1,38 @@
-
-import { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useRouter } from 'expo-router';
-import { useAuth } from '../Context/AuthContext';
-
-
-import { View, Text, ActivityIndicator } from 'react-native';
-
-
+import { AuthContext } from '../Context/AuthContext';
+import { View, Text, Button, StyleSheet } from 'react-native';
 
 export default function Index() {
-  const { user, loading } = useAuth();
+  const { currentUser, loading } = useContext(AuthContext);
   const router = useRouter();
 
   useEffect(() => {
-    // Naviga solo se il caricamento è completo
-    if (!loading) {
-      if (user) {
-        // Se l'utente è autenticato, vai alla Home
-        router.replace('/home');
-      } else {
-        // Se non è autenticato, vai a SignIn
-        router.replace('/(Auth)/SignIn');
-      }
+    if (!loading && currentUser) {
+      router.replace('/home'); // Se l'utente è autenticato, vai alla Home
     }
-  }, [user, loading]); // Aggiungi 'user' e 'loading' come dipendenze
+  }, [currentUser, loading, router]);
 
-  // Mostra un caricamento o un messaggio fino a quando non è pronto
   if (loading) {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <ActivityIndicator size="large" color="#0000ff" /> 
-        <Text>Loading...</Text> 
+      <View style={styles.container}>
+        <Text>Caricamento...</Text>
       </View>
     );
   }
 
-  return null; // Non mostra nulla se non c'è bisogno di un caricamento
+  return (
+    <View style={styles.container}>
+      <Text>Benvenuto nella tua app!</Text>
+      <Button title="Vai al Login" onPress={() => router.replace('/(Auth)/SignIn')} />
+    </View>
+  );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});

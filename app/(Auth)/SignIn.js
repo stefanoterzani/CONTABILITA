@@ -1,47 +1,86 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, Button } from 'react-native';
+import React, { useState, useContext } from 'react';
+import { View, Text, TextInput, Button, StyleSheet,Pressable } from 'react-native';
+import { AuthContext } from '../../Context/AuthContext';
 import { useRouter } from 'expo-router';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../firebaseConfig';
-import { useAuth } from '../../Context/AuthContext'; // Per gestire lo stato dell'autenticazione
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 
-export default function SignIn() {
+export default function Login() {
   const [email, setEmail] = useState('');
+  const [telefono, setTelefono] = useState(''); // Usato solo per il primo accesso
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const { loginUser, loading } = useContext(AuthContext);
   const router = useRouter();
-  const { user } = useAuth();
+  
 
-  const handleSignIn = async () => {
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      router.replace('/home');  // Reindirizza alla home page
-    } catch (err) {
-      setError('Login fallito. Riprova.');
+  const handleLogin = async () => {
+    if (!email || !password) {
+      alert('Per favore, compila tutti i campi');
+      return;
     }
+    await loginUser(email, password, telefono);
+    router.replace('/home'); // Reindirizza alla schermata Home dopo l'accesso
   };
 
+  
+
+  if (loading) {
+    return (
+      <View style={styles.container}>
+        <Text>Caricamento...</Text>
+      </View>
+    );
+  }
+
   return (
-    <View style={{ padding: 16 }}>
-      <Text style={{ fontSize: 24, marginBottom: 16 }}>Login</Text>
-      {error ? <Text style={{ color: 'red' }}>{error}</Text> : null}
+    <View style={styles.container}>
+   
+    <Pressable style={{alignItems:'flex-start', marginTop:20, marginLeft:20}}
+    onPress={()=> router.replace('/')}>
+        <FontAwesome name="home" size={30} color="black" />
+    </Pressable>
+        <View style={styles.loginContainer}>
+      <Text>Login</Text>
       <TextInput
         placeholder="Email"
         value={email}
         onChangeText={setEmail}
-        style={{ marginBottom: 16, borderBottomWidth: 1, padding: 8 }}
+        style={styles.input}
+      />
+      <TextInput
+        placeholder="Telefono (solo per primo accesso)"
+        value={telefono}
+        onChangeText={setTelefono}
+        style={styles.input}
       />
       <TextInput
         placeholder="Password"
         value={password}
         onChangeText={setPassword}
         secureTextEntry
-        style={{ marginBottom: 16, borderBottomWidth: 1, padding: 8 }}
+        style={styles.input}
       />
-      <Button title="Sign In" onPress={handleSignIn} />
-      <Button title="Sign Up" onPress={() => router.push('/(Auth)/SignUp')} />
+      <Button title="Login" onPress={handleLogin} />
+    </View>
     </View>
   );
 }
 
-
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+   
+  },
+  loginContainer:{
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+  },
+  input: {
+    width: '100%',
+    padding: 10,
+    marginVertical: 5,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
+  },
+});
