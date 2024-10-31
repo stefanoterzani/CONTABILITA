@@ -8,18 +8,25 @@ import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebaseConfig';
 
 export default function Home() {
-  const { currentUser, logoutUser, loading,azienda,dataUser} = useContext(AuthContext);
+  const { currentUser, logoutUser, loading,datiAzienda,dataUser} = useContext(AuthContext);
   
     const [logoURL, setLogoURL] = useState(null);
-    const companyId = azienda.IdAzienda;
+   
      
    const router = useRouter();
+ //  console.log('-----HOME loading=',loading,'--- AziendaId =',azienda.IdAzienda, '----- DataUserNome=', dataUser.nome)
 
-   
+/*
+useEffect(()=> {
+ // console.log('-----HOME loading=',loading,'--- Azienda =',azienda, '----- DataUserNome=', dataUser)
+},[loading,azienda,dataUser])
+*/
+
 
    useEffect(() => {
      const fetchLogo = async () => {
-       const docRef = doc(db, 'aziende', companyId);
+     
+       const docRef = doc(db, 'aziende', datiAzienda.id);
        const docSnap = await getDoc(docRef);
        if (docSnap.exists()) {
          setLogoURL(docSnap.data().logoURL);
@@ -27,17 +34,17 @@ export default function Home() {
          console.log('No such document!');
        }
      };
- 
+   
+    
      fetchLogo();
-   }, [companyId]);
+   }, [datiAzienda.id]);
  
    
-
+//  router.replace('/(Auth)/SignIn'); // Assicurati di usare la rotta corretta
    
   const handleLogout = async () => {
     await logoutUser();
-
-    router.replace('/(Auth)/SignIn'); // Assicurati di usare la rotta corretta
+    router.replace('/');
   };
 
   if (loading) {
@@ -50,15 +57,29 @@ export default function Home() {
 
 
 
-const renderAziendaData = (azienda) => (
+const renderAziendaData = (datiAzienda) => (
   <View style={styles.dataContainer}>
-    <Text style={styles.dataTitle}>Dati Azienda</Text>
-    <Text style={styles.dataText}>Nome: {azienda.IdAzienda}</Text>
-    <Text style={styles.dataText}>Id: {azienda.datiPubblici.nome}</Text>
-    <Text style={styles.dataText}>Indirizzo: {azienda.datiPrivati.indirizzo}</Text>
-    <Text style={styles.dataText}>Partita IVA: {azienda.datiPrivati.partitaIVA}</Text>
+    
+    <Text style={styles.dataText}>Nome: {datiAzienda.nome}</Text>
+    <Text style={styles.dataText}>Id: {datiAzienda.id}</Text> 
+    <Text style={styles.dataText}>Partita IVA: {datiAzienda.partitaIva}</Text>
+     <Text style={styles.dataText}>Indirizzo: {datiAzienda.indirizzo}</Text>
+     <Text style={styles.dataText}>Città: {datiAzienda.citta}</Text>
+     <Text style={styles.dataText}>Cap: {datiAzienda.cap}</Text>
+     <Text style={styles.dataText}>Provincia: {datiAzienda.provincia}</Text>
   </View>
-);
+)
+// <Text style={styles.dataText}>Indirizzo: {azienda.Anagrafica.SedeLegale.Indirizzo}</Text>
+
+const renderDataUser = (ciccio) => (
+  <View style={styles.dataContainer}>
+    <Text style={styles.dataTitle}>Dati Utente</Text>
+    <Text style={styles.dataText}>Email: {ciccio.email}</Text> 
+    <Text style={styles.dataText}>Nome: {ciccio.nome}</Text>
+    <Text style={styles.dataText}>Qualifica: {ciccio.qualifica}</Text>
+</View>
+)
+
 
 
 
@@ -68,44 +89,45 @@ const renderAziendaData = (azienda) => (
     <View style={styles.container}>
         <View style={{flexDirection:'row', justifyContent:'space-between', paddingHorizontal:20}}>
             <View >
+                <Pressable onPress={()=> { router.push('/(SettingAzienda)/MenuSetting')   }} >                     
+                  <MaterialIcons name="settings" size={30} color="black" />
+                </Pressable>
+            </View>
+            
+            <View >
                 <Pressable  onPress={handleLogout} >
                    <MaterialCommunityIcons name="logout" size={30} color="black" />
                 </Pressable>
             </View>
-            <View >
-                <Pressable onPress={()=> { router.push('/(SettingAzienda)/InserisciLogo')   }} >                     
-                  <MaterialIcons name="settings" size={30} color="black" />
-                </Pressable>
-            </View>
+            
         </View>
-        <View>
+
+        <View style={{flexDirection:'row'}}>
       
           {logoURL ? <Image source={{ uri: logoURL }} style={styles.logo} /> : <Text>Logo non disponibile</Text>}
-      </View>
+          <View style={{}}>
+              {renderAziendaData(datiAzienda)}
+          </View>
+
+        </View>
   
 
-     
+
+ 
+  
       {currentUser ? 
         <View style={styles.dati}>
-           
-            <View>  
-            <View style={styles.dataContainer}>
-              <Text style={styles.dataTitle}>Dati Utente</Text>
-              <Text style={styles.dataText}>Email: {currentUser.email}</Text> 
-              <Text style={styles.dataText}>Qualifica: {dataUser.ruolo}</Text>
-              <Text style={styles.dataText}>Nome: {dataUser.userNome}</Text>
+            <View>
+              {renderDataUser(dataUser)}  
             </View>
-          
-            {renderAziendaData(azienda)}
-
-             </View>
-          </View>
+        </View>
+         
        : (
         <View style={{alignItems:'center',justifyContent:'center'}}>
            <Text style={{fontSize:20, fontFamily:'Poppins-Bold'}}>Per favore, effettua il login</Text>
         </View>
       )}
-
+  
 
 
     </View>
@@ -127,9 +149,9 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
     },
     dataContainer: {
-      marginVertical: 10,
+      marginVertical: 20,
       padding: 10,
-      borderWidth: 1,
+      borderWidth: 0,
       borderColor: '#ccc',
       borderRadius: 5,
       width: '100%',
@@ -147,8 +169,8 @@ const styles = StyleSheet.create({
   logo: {
     width: 100,
     height: 100,
-    marginVertical: 10,
-    marginLeft:20,
+    marginVertical: 30,
+    marginLeft:10,
   },
 
   });

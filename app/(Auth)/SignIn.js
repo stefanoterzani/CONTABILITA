@@ -5,19 +5,21 @@ import { useRouter } from 'expo-router';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 export default function Login() {
-  const [email, setEmail] = useState('');
-  const [telefono, setTelefono] = useState(''); // Usato solo per il primo accesso
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('pippo@gmail.com');
+  const [telefono, setTelefono] = useState('1234567890'); // Usato solo per il primo accesso
+  const [password, setPassword] = useState('12345678');
+  const [nome,setNome]=useState('pippo')
   const { loginUser, loading } = useContext(AuthContext);
   const router = useRouter();
   
 
   const handleLogin = async () => {
     if (!email || !password) {
-      alert('Per favore, compila tutti i campi');
+      alert('Per favore, compila tutti i campi necessari');
       return;
     }
-    await loginUser(email, password, telefono);
+    await loginUser(email, password, nome, telefono);
+  //  console.log("SIGNIN ----Loading:", loading,"-----AZIENDA=",azienda, "-------DATA USER=",dataUser );
     router.replace('/home'); // Reindirizza alla schermata Home dopo l'accesso
   };
 
@@ -46,17 +48,25 @@ export default function Login() {
         onChangeText={setEmail}
         style={styles.input}
       />
-      <TextInput
-        placeholder="Telefono (solo per primo accesso)"
-        value={telefono}
-        onChangeText={setTelefono}
-        style={styles.input}
-      />
+    
       <TextInput
         placeholder="Password"
         value={password}
         onChangeText={setPassword}
         secureTextEntry
+        style={styles.input}
+      />
+        <TextInput
+          placeholder="Nome (solo per primo accesso)"
+          value={nome}
+          onChangeText={setNome}
+          style={styles.input}
+      />
+
+        <TextInput
+        placeholder="Telefono (solo per primo accesso)"
+        value={telefono}
+        onChangeText={setTelefono}
         style={styles.input}
       />
       <Button title="Login" onPress={handleLogin} />

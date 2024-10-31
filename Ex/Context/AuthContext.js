@@ -58,7 +58,7 @@ export function AuthProvider({ children }) {
 
 useEffect(()=>{
   if (datiPrivati){
-    console.log('DATI PRIVATI',datiPrivati)
+  //  console.log('DATI PRIVATI',datiPrivati)
   }
   
 

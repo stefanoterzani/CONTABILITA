@@ -29,7 +29,7 @@ const pickImage = async () => {
      
     }
 
-    console.log(result.assets[0].uri)
+  //  console.log(result.assets[0].uri)
   };
  
   const uploadImage = async () => {

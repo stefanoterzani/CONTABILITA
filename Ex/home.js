@@ -8,12 +8,12 @@ export default function home() {
   const { currentUser, azienda, ruolo,loading ,loadingOut} = useAuth();
  const router = useRouter();
 
-console.log('HOME LOADING OUT=',loadingOut)
+//console.log('HOME LOADING OUT=',loadingOut)
 
  useEffect(() => {
   if (loadingOut) { // Controlla se il caricamento è completo
     if (!currentUser) {
-      console.log('sono HOME')
+    //  console.log('sono HOME')
       router.replace('/(Auth)/SignIn'); // Reindirizza a SignIn se non autenticato
       return null; // Prevenire il rendering
     }
