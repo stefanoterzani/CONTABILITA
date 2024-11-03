@@ -9,8 +9,9 @@ export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState('');
   const [dataUser,setDataUser]=useState('')
   const [loading, setLoading] = useState(true);
-  const [azienda, setAzienda] = useState({});
+ // const [azienda, setAzienda] = useState({});
   const [isLoggingOut, setIsLoggingOut] = useState(false);
+
 const [datiAzienda, setDatiAzienda]=useState({
   id:'',
   nome:'',
@@ -24,56 +25,67 @@ const [datiAzienda, setDatiAzienda]=useState({
 
   useEffect(() => {
       setLoading(true)
-//  logoutUser();
+//logoutUser();
      
       const unsubscribe = onAuthStateChanged(auth, async (user) => {     
       setCurrentUser(user);
-      
+   
       if (user) {   
+          console.log('USER UID=',user.uid)
           //l app parte con user non null
           // trova con user.uid i dati del DataUser su membership       
           const membershipDocRef = doc(db, 'membership', user.uid);
           const membershipDoc = await getDoc(membershipDocRef);
+         
           // se DataUser esiste
           if (membershipDoc.exists()) {
               const newDataUser=membershipDoc.data()
-              setDataUser(newDataUser)   
+              setDataUser(newDataUser)  
+              console.log('USER UID=',user.uid, 'DATA USER=',newDataUser)
               // trova i dati azienda con dataUser idAzienda           
               const aziendaDocRef = doc(db, 'aziende', newDataUser.idAzienda) 
               const aziendaDoc = await getDoc(aziendaDocRef);
               if (aziendaDoc.exists()) {
-                  setAzienda(aziendaDoc.data());
-                  setDatiAzienda({...datiAzienda, 
-                    id: aziendaDoc.data().idAzienda, 
-                    nome: aziendaDoc.data().nome,
-                    partitaIva: aziendaDoc.data().partitaIva,
-                    indirizzo:aziendaDoc.data().Anagrafica.SedeLegale.Indirizzo,
-                    cap:aziendaDoc.data().Anagrafica.SedeLegale.Cap,
-                    citta: aziendaDoc.data().Anagrafica.SedeLegale.Citta,
-                    provincia:aziendaDoc.data().Anagrafica.SedeLegale.Provincia,
-                  })
-                  /*
-                  console.log(aziendaDoc.data())
-                  console.log(aziendaDoc.data().idAzienda)
-                  console.log(aziendaDoc.data().nome)
-                  console.log(aziendaDoc.data().partitaIva)
-                  console.log(aziendaDoc.data().Anagrafica.SedeLegale)
-                  */
+                 // setAzienda(aziendaDoc.data());
+                  console.log('LUNGHEZZA=',Object.keys(aziendaDoc.data()).length)
+                  if (Object.keys(aziendaDoc.data()).length > 0) {
+                    AzDati=aziendaDoc.data()
+                    console.log('SET AZIENDA =',AzDati)
+                    setDatiAzienda({
+                      id: AzDati?.idAzienda, 
+                      nome: AzDati?.nome || '',
+                      partitaIva: AzDati?.partitaIva || '',
+                      indirizzo:AzDati?.anagrafica.sedeLegale.indirizzo || '',
+                      citta: AzDati?.anagrafica.sedeLegale.citta || '',
+                      cap:AzDati?.anagrafica.sedeLegale.cap || '',
+                      provincia:AzDati?.anagrafica.sedeLegale.provincia || '',
+                    })
+                  } else {
+                    setDatiAzienda({
+                      id: '',  nome: '',partitaIva:'',indirizzo:'',citta:'',cap:'',provincia:''
+                    })
+                    
+                }
+                 
               } else {
                 //se azienda non esiste currentUser=null
+                console.log('ESCO 1')
                 setCurrentUser(null)
               }
           } else {
             // DataUser in membership non esiste currentUser=null
+            console.log('ESCO 2')
               setCurrentUser(null);
           }
       } else {
         // se app parte con user nullo imposta nullo currentUser
-        setCurrentUser(null);
+        console.log('ESCO 3')
+       // setCurrentUser(null);
       }
-
+    //  console.log('DATA USER=',dataUser, 'USER=',currentUser) 
       setLoading(false);
-     
+      console.log('ESCO 4')
+    //  console.log('AZIENDA=', datiAzienda)
     });
    
     return () => unsubscribe();
@@ -134,17 +146,18 @@ const [datiAzienda, setDatiAzienda]=useState({
   const logoutUser = async () => {
     console.log('---------------------LOG OUT-------------------')
     setIsLoggingOut(true);
+   
     try {
       await signOut(auth);
       setCurrentUser('');
-      setDataUser('')
-      setAzienda({})
-      setIsLoggingOut(false);
+    //  setDataUser('')
+     // setAzienda({})
+    
     } catch (error) {
       console.error('Errore durante il logout:', error);
     } finally {
     //  console.log('LOGOUT LOADING=',loading,"---USER=", currentUser,'--DataUSER= ',dataUser, '--- AZIENDA=',azienda)
-      setLoading(false);
+    setIsLoggingOut(false);
     }
   };
 

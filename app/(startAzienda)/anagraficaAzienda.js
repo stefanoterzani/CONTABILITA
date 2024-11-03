@@ -1,41 +1,46 @@
 import React, { useState, useEffect,useContext } from 'react';
 import { View, Text, TextInput, Button, ScrollView, StyleSheet, Alert } from 'react-native';
-import { doc, setDoc, getDoc } from 'firebase/firestore';
+import { doc, setDoc, getDoc, collection } from 'firebase/firestore';
 import { db } from '../../firebaseConfig';
 import { AuthContext } from '../../Context/AuthContext';
+import { useRouter } from 'expo-router';
 
 const AziendaForm = () => {
-    const { azienda} = useContext(AuthContext);
-//console.log('AZIENDA.id=',azienda.IdAzienda)
+    const { datiAzienda,dataUser} = useContext(AuthContext);
+    console.log('AZIENDA.id=',dataUser.idAzienda)
 
-    const aziendaId=azienda.IdAzienda
+    const aziendaId=dataUser.idAzienda
     const [partitaIva, setPartitaIva] = useState('');
     const [nome, setNome] = useState('');
     const [codiceFiscale, setCodiceFiscale] = useState('');
+    const [tribunale,setTribunale]=useState('')
     const [emails, setEmails] = useState(['']);
     const [pecs, setPecs] = useState(['']);
     const [riferimenti, setRiferimenti] = useState([{ ufficio: '', nome: '', email: '', telefono: '', fax: '' }]);
-    const [sediAmministrative, setSediAmministrative] = useState([{ indirizzo: '', citta: '', provincia: '', cap: '', telefono: '', email: '' }]);
-    const [sedeLegale, setSedeLegale] = useState({ indirizzo: '', citta: '', provincia: '', cap: '', telefono: '', email: '' });
+    const [sediAmministrative, setSediAmministrative] = useState([{ indirizzo: '', citta: '', provincia: '', cap: '',nazione:'', telefono: '', email: '' }]);
+    const [sedeLegale, setSedeLegale] = useState({ indirizzo: '', citta: '', provincia: '', cap: '',nazione:'', telefono: '', email: '' });
 
     useEffect(() => {
         if (aziendaId) {
-            console.log('AZIENDA.id=',azienda.idAzienda)
+            console.log('AZIENDA.id=',aziendaId)
             const fetchData = async () => {
-                const docRef = doc(db, 'Aziende', aziendaId);
+                const docRef = doc(db, 'aziende', aziendaId);
                 const aziendaDoc = await getDoc(docRef);
                 if (aziendaDoc.exists()) {
                     const data = aziendaDoc.data();
+                    console.log(data)
+                    setTribunale(data.tribunale || '');
                     setPartitaIva(data.partitaIva || '');
                     setNome(data.nome || '');
                     setCodiceFiscale(data.anagrafica?.codiceFiscale || '');
                     setEmails(data.anagrafica?.email || ['']);
                     setPecs(data.anagrafica?.pec || ['']);
                     setRiferimenti(data.anagrafica?.riferimenti || [{ ufficio: '', nome: '', email: '', telefono: '', fax: '' }]);
-                    setSediAmministrative(data.anagrafica?.sediAmministrative || [{ indirizzo: '', citta: '', provincia: '', cap: '', telefono: '', email: '' }]);
-                    setSedeLegale(data.anagrafica?.sedeLegale || { indirizzo: '', citta: '', provincia: '', cap: '', telefono: '', email: '' });
+                    setSediAmministrative(data.anagrafica?.sediAmministrative || [{ indirizzo: '', citta: '', provincia: '', cap: '',nazione:'', telefono: '', email: '' }]);
+                    setSedeLegale(data.anagrafica?.sedeLegale || { indirizzo: '', citta: '', provincia: '', cap: '',nazione:'', telefono: '', email: '' });
                 }
             };
+
             fetchData();
         }
     }, [aziendaId]);
@@ -49,6 +54,8 @@ const AziendaForm = () => {
         const aziendaData = {
             partitaIva,
             nome,
+            tribunale,
+            idAzienda:aziendaId,
             anagrafica: {
                 codiceFiscale,
                 email: emails,
@@ -60,10 +67,10 @@ const AziendaForm = () => {
         };
 
         try {
-            const docRef = aziendaId ? doc(db, 'Aziende', aziendaId) : doc(db, 'Aziende', 'AUTO_GENERATE_ID');
+            const docRef = doc(db, 'aziende', aziendaId) 
             await setDoc(docRef, aziendaData, { merge: true });
             Alert.alert("Successo", "Anagrafica azienda salvata con successo");
-            navigation.goBack();
+           // navigation.goBack();
         } catch (error) {
             console.error("Errore nel salvataggio:", error);
             Alert.alert("Errore", "Impossibile salvare i dati.");
@@ -82,12 +89,16 @@ const AziendaForm = () => {
         <ScrollView contentContainerStyle={styles.container}>
             <Text style={styles.label}>Partita IVA</Text>
             <TextInput style={styles.input} value={partitaIva} onChangeText={setPartitaIva} placeholder="Inserisci Partita IVA" />
-
-            <Text style={styles.label}>Nome Azienda</Text>
-            <TextInput style={styles.input} value={nome} onChangeText={setNome} placeholder="Inserisci Nome Azienda" />
-
+           
             <Text style={styles.label}>Codice Fiscale</Text>
             <TextInput style={styles.input} value={codiceFiscale} onChangeText={setCodiceFiscale} placeholder="Inserisci Codice Fiscale" />
+            
+            
+            <Text style={styles.label}>Nome Azienda</Text>
+            <TextInput style={styles.input} value={nome} onChangeText={setNome} placeholder="Inserisci Nome Azienda" />
+            
+            <Text style={styles.label}>Tribunale</Text>
+            <TextInput style={styles.input} value={tribunale} onChangeText={setTribunale} placeholder="Inserisci Nome Azienda" />
 
             <Text style={styles.label}>Email</Text>
             {emails.map((email, index) => (
@@ -132,17 +143,19 @@ const AziendaForm = () => {
                     <TextInput style={styles.input} placeholder="Città" value={sede.citta} onChangeText={(text) => updateArrayValue(sediAmministrative, index, 'citta', text, setSediAmministrative)} />
                     <TextInput style={styles.input} placeholder="Provincia" value={sede.provincia} onChangeText={(text) => updateArrayValue(sediAmministrative, index, 'provincia', text, setSediAmministrative)} />
                     <TextInput style={styles.input} placeholder="CAP" value={sede.cap} onChangeText={(text) => updateArrayValue(sediAmministrative, index, 'cap', text, setSediAmministrative)} />
+                    <TextInput style={styles.input} placeholder="Nazione" value={sede.nazione} onChangeText={(text) => updateArrayValue(sediAmministrative, index, 'nazione', text, setSediAmministrative)} />
                     <TextInput style={styles.input} placeholder="Telefono" value={sede.telefono} onChangeText={(text) => updateArrayValue(sediAmministrative, index, 'telefono', text, setSediAmministrative)} />
                     <TextInput style={styles.input} placeholder="Email" value={sede.email} onChangeText={(text) => updateArrayValue(sediAmministrative, index, 'email', text, setSediAmministrative)} />
                 </View>
             ))}
-            <Button title="Aggiungi Sede Amministrativa" onPress={() => addField(setSediAmministrative, { indirizzo: '', citta: '', provincia: '', cap: '', telefono: '', email: '' })} />
+            <Button title="Aggiungi Sede Amministrativa" onPress={() => addField(setSediAmministrative, { indirizzo: '', citta: '', provincia: '', cap: '',nazione:'', telefono: '', email: '' })} />
 
             <Text style={styles.label}>Sede Legale</Text>
             <TextInput style={styles.input} placeholder="Indirizzo" value={sedeLegale.indirizzo} onChangeText={(text) => setSedeLegale({ ...sedeLegale, indirizzo: text })} />
             <TextInput style={styles.input} placeholder="Città" value={sedeLegale.citta} onChangeText={(text) => setSedeLegale({ ...sedeLegale, citta: text })} />
             <TextInput style={styles.input} placeholder="Provincia" value={sedeLegale.provincia} onChangeText={(text) => setSedeLegale({ ...sedeLegale, provincia: text })} />
             <TextInput style={styles.input} placeholder="CAP" value={sedeLegale.cap} onChangeText={(text) => setSedeLegale({ ...sedeLegale, cap: text })} />
+            <TextInput style={styles.input} placeholder="Nazione" value={sedeLegale.nazione} onChangeText={(text) => setSedeLegale({ ...sedeLegale, nazione: text })} />
             <TextInput style={styles.input} placeholder="Telefono" value={sedeLegale.telefono} onChangeText={(text) => setSedeLegale({ ...sedeLegale, telefono: text })} />
             <TextInput style={styles.input} placeholder="Email" value={sedeLegale.email} onChangeText={(text) => setSedeLegale({ ...sedeLegale, email: text })} />
 
@@ -169,6 +182,9 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         paddingHorizontal: 10,
         marginBottom: 10,
+        color:'red',
+        fontWeight:'bold',
+        fontSize:16
     },
     subContainer: {
         marginBottom: 20,

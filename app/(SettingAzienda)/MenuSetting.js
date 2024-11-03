@@ -7,19 +7,19 @@ const MenuSetting = () => {
     <View style={styles.container}>
         <TouchableOpacity 
                 style={{marginTop:30}}
-                onPress={()=> router.push('/InserisciLogo')}>
+                onPress={()=> router.push('(SettingAzienda)/InserisciLogo')}>
             <Text style={styles.testo}>Carica Logo Azienda</Text>
         </TouchableOpacity>
 
         <TouchableOpacity 
                 style={{marginTop:30}}
-                onPress={()=> router.push('/CreaNuovoUtente')}>
+                onPress={()=> router.push('(SettingAzienda)/CreaNuovoUtente')}>
             <Text style={styles.testo}>Crea Utente in membershipProvvisorio</Text>
         </TouchableOpacity>
         <TouchableOpacity 
                 style={{marginTop:30}}
-                onPress={()=> router.push('/AnagraficaAzienda')}>
-            <Text style={styles.testo}>Crea/Modifica Anagrafica Azienda</Text>
+                onPress={()=> router.push('(startAzienda)/anagraficaAzienda')}>
+            <Text style={styles.testo}>Aggiorna Anagrafica Azienda</Text>
         </TouchableOpacity>
     </View>
   )

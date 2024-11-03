@@ -12,10 +12,10 @@ export default function Index() {
  
   
   useEffect(() => {
-  
+  console.log('INDEX loading=',loading, "USER",currentUser)
     if (!loading && currentUser) {        
-           //   setIsRedirecting(true);
-              router.replace('/home');             
+         
+         router.replace('/home')          
       }
    }, [currentUser, loading]);
 

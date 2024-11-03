@@ -10,9 +10,9 @@ import { AuthContext } from '../../Context/AuthContext';
 export default function InserisciLogo() {
   const [image, setImage] = useState(null);
   const [uploading, setUploading] = useState(false);
-  const { currentUser, logoutUser, loading,azienda,dataUser} = useContext(AuthContext);
+  const { currentUser, logoutUser, loading,datiAzienda,dataUser} = useContext(AuthContext);
     
-  const companyId=azienda.IdAzienda
+  const companyId=datiAzienda.id
  //console.log("COMPANY=",companyId)
 
 

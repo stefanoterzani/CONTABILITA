@@ -42,8 +42,15 @@ export default function RootLayout() {
       <Stack.Screen name="index" options={{ title: 'Index' }}/>
       <Stack.Screen name="(Auth)" options={{headerShown:false}}/>
       <Stack.Screen name="(SettingAzienda)" options={{headerShown:false}}/>
+      <Stack.Screen name="(startAzienda)" options={{headerShown:false}}/>
       <Stack.Screen name="home" options={{ title: 'Home' }}/>
+      <Stack.Screen name="(Clienti)" options={{headerShown:false}}/>
+      <Stack.Screen name="(Fornitori)" options={{headerShown:false}}/>
+      <Stack.Screen name="modelloFattura" options={{ title: 'Modello Fattura' }} />
     </Stack>
     </AuthProvider>
   );
 }
+
+     
+      

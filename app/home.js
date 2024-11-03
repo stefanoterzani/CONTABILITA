@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { View, Text, Button, StyleSheet, Pressable, Image } from 'react-native';
+import { View, Text, Button, StyleSheet, Pressable, Image ,TouchableOpacity} from 'react-native';
 import { AuthContext } from '../Context/AuthContext';
 import { useRouter } from 'expo-router';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
@@ -14,13 +14,6 @@ export default function Home() {
    
      
    const router = useRouter();
- //  console.log('-----HOME loading=',loading,'--- AziendaId =',azienda.IdAzienda, '----- DataUserNome=', dataUser.nome)
-
-/*
-useEffect(()=> {
- // console.log('-----HOME loading=',loading,'--- Azienda =',azienda, '----- DataUserNome=', dataUser)
-},[loading,azienda,dataUser])
-*/
 
 
    useEffect(() => {
@@ -35,8 +28,27 @@ useEffect(()=> {
        }
      };
    
-    
-     fetchLogo();
+   console.log(datiAzienda)
+   if (datiAzienda.id != '') {
+    fetchLogo();
+   } else {
+   /*
+    return (
+      <View>
+        <View>
+          <Text> Benvenuto {dataUser.nome}</Text>
+          <TouchableOpacity>
+            <Text>Ora devi creare la tua Azienda!!</Text>
+          </TouchableOpacity>
+         
+        </View>
+      </View>
+
+    )
+      */
+    router.replace('/menuStartAzienda')
+   }
+   
    }, [datiAzienda.id]);
  
    
@@ -69,7 +81,7 @@ const renderAziendaData = (datiAzienda) => (
      <Text style={styles.dataText}>Provincia: {datiAzienda.provincia}</Text>
   </View>
 )
-// <Text style={styles.dataText}>Indirizzo: {azienda.Anagrafica.SedeLegale.Indirizzo}</Text>
+
 
 const renderDataUser = (ciccio) => (
   <View style={styles.dataContainer}>
@@ -120,7 +132,24 @@ const renderDataUser = (ciccio) => (
             <View>
               {renderDataUser(dataUser)}  
             </View>
-        </View>
+            <View style={{height:300, width:'90%',borderColor:'red',borderWidth:2, marginTop:20,alignItems:'center'}}>
+              <TouchableOpacity style={{padding:20}} 
+                  onPress={()=> router.push('menuClienti')}>
+                <Text style={{color:'blue', fontSize:20}}> Menu Clienti </Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={{}}
+               onPress={()=> router.push('menuFornitori')}>
+                <Text style={{color:'blue', fontSize:20}}> Menu Fornitori </Text>
+              </TouchableOpacity>
+
+
+              <TouchableOpacity style={{marginTop:20}}
+               onPress={()=> router.push('modelloFattura')}>
+                <Text style={{color:'blue', fontSize:20}}> Modello Fattura </Text>
+              </TouchableOpacity>
+            </View>
+
+          </View>
          
        : (
         <View style={{alignItems:'center',justifyContent:'center'}}>
@@ -149,7 +178,7 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
     },
     dataContainer: {
-      marginVertical: 20,
+      marginVertical: 0,
       padding: 10,
       borderWidth: 0,
       borderColor: '#ccc',
