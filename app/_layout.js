@@ -3,6 +3,7 @@ import { useFonts } from 'expo-font'
 import { useEffect } from "react";
 import * as NavigationBar from 'expo-navigation-bar';
 import { AuthProvider } from '../Context/AuthContext'// Importa il contesto
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 export default function RootLayout() {
   const [fontsLoaded, error] = useFonts({
@@ -36,7 +37,7 @@ export default function RootLayout() {
 
 
   return (
-   
+    <GestureHandlerRootView style={{ flex: 1 }}>
     <AuthProvider> 
     <Stack>
       <Stack.Screen name="index" options={{ title: 'Index' }}/>
@@ -46,11 +47,13 @@ export default function RootLayout() {
       <Stack.Screen name="home" options={{ title: 'Home' }}/>
       <Stack.Screen name="(Clienti)" options={{headerShown:false}}/>
       <Stack.Screen name="(Fornitori)" options={{headerShown:false}}/>
-      <Stack.Screen name="modelloFattura" options={{ title: 'Modello Fattura' }} />
+      <Stack.Screen name="(ProvaFattura)" options={{headerShown:false}} />
     </Stack>
     </AuthProvider>
+    </GestureHandlerRootView>
   );
 }
 
      
-      
+      // <GestureHandlerRootView style={{ flex: 1 }}>
+      //</GestureHandlerRootView>
