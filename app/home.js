@@ -60,7 +60,7 @@ export default function Home() {
     fetchData();
 
     if (dataUser) {
-      registraAccessoUtente(dataUser.idAzienda, dataUser.idUser, 'home');
+    //  registraAccessoUtente(dataUser.idAzienda, dataUser.idUser, 'home');
     }
   }, [dataUser]);
 
@@ -142,6 +142,12 @@ const renderDataUser = (ciccio) => (
                  <Text style={{color:'blue', fontSize:20}}> Menu Accessi</Text>
               </TouchableOpacity>
             </View>
+            <View>
+              <TouchableOpacity style={{marginTop:30}}
+                    onPress={()=> router.push('/(Clienti)/menuClienti')} >  
+                 <Text style={{color:'blue', fontSize:20}}> Menu Clienti</Text>
+              </TouchableOpacity>
+            </View>   
           </View>
          
  

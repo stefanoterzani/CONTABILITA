@@ -49,6 +49,7 @@ export default function RootLayout() {
       <Stack.Screen name="(Auth)" options={{headerShown:false}}/>
       <Stack.Screen name="(Azienda)" options={{headerShown:false}}/>
       <Stack.Screen name="(Accessi)" options={{headerShown:false}}/>
+      <Stack.Screen name="(Clienti)" options={{headerShown:false}}/>
       <Stack.Screen name="home" options={{ title: 'Home' }}/>
      
     </Stack>

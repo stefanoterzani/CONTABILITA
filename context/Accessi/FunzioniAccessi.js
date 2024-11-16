@@ -1,11 +1,16 @@
 import { db } from '../../firebaseConfig';
-import { collection, getDocs, query, orderBy, doc, getDoc } from 'firebase/firestore';
+import { collection, getDocs, query, orderBy, limit, startAfter, doc, getDoc } from 'firebase/firestore';
 
 // Funzione per recuperare gli accessi e sostituire gli ID utente con i nomi
-export const getAccessiConNomi = async (aziendaId) => {
+const getAccessiConNomi = async (aziendaId, limitCount = 10, lastDoc = null) => {
   try {
     const accessiUtentiRef = collection(db, 'aziende', aziendaId, 'accessiUtenti');
-    const q = query(accessiUtentiRef, orderBy('timestamp', 'desc'));
+    let q;
+    if (lastDoc) {
+      q = query(accessiUtentiRef, orderBy('timestamp', 'desc'), startAfter(lastDoc), limit(limitCount));
+    } else {
+      q = query(accessiUtentiRef, orderBy('timestamp', 'desc'), limit(limitCount));
+    }
     const querySnapshot = await getDocs(q);
 
     const accessi = [];
@@ -23,12 +28,14 @@ export const getAccessiConNomi = async (aziendaId) => {
         accesso.nome = 'Utente sconosciuto';
       }
 
-      accessi.push(accesso);
+      accessi.push({ ...accesso, id: docSnap.id });
     }
 
-    return accessi;
+    return { accessi, lastDoc: querySnapshot.docs[querySnapshot.docs.length - 1] };
   } catch (e) {
     console.error('Errore recuperando gli accessi con nomi: ', e);
-    return [];
+    return { accessi: [], lastDoc: null };
   }
 };
+
+export { getAccessiConNomi };
