@@ -3,7 +3,7 @@ import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native
 import { AuthContext } from '../../context/AuthContext';
 import { getAccessiConNomi } from '../../context/Accessi/FunzioniAccessi';
 import LoadingSpinner from '../../components/LoadingSpinner'; // Importa il componente LoadingSpinner personalizzato
-import { Octicons } from '@expo/vector-icons'; // Importa l'icona
+import { Octicons, MaterialIcons } from '@expo/vector-icons'; // Importa l'icona
 
 const listaAccessi = () => {
   const { dataUser } = useContext(AuthContext);
@@ -11,7 +11,8 @@ const listaAccessi = () => {
   const [loading, setLoading] = useState(true); // Stato di caricamento
   const [lastDoc, setLastDoc] = useState(null); // Ultimo documento caricato
   const flatListRef = useRef(null); // Riferimento alla FlatList
-
+  const [hasMore, setHasMore] = useState(true); // Stato per tenere traccia se ci sono più accessi da caricare
+  
   useEffect(() => {
     const fetchAccessi = async () => {
       if (dataUser.idAzienda) {
@@ -28,14 +29,18 @@ const listaAccessi = () => {
   const loadMoreAccessi = async () => {
     if (dataUser.idAzienda && lastDoc) {
       const { accessi: newAccessi, lastDoc: newLastDoc } = await getAccessiConNomi(dataUser.idAzienda, 10, lastDoc);
-      setAccessi((prevAccessi) => {
-        const updatedAccessi = [...prevAccessi, ...newAccessi];
-        setTimeout(() => {
-          flatListRef.current.scrollToEnd({ animated: true });
-        }, 100); 
-        return updatedAccessi;
-      });
-      setLastDoc(newLastDoc);
+      if (newAccessi.length === 0) {
+        setHasMore(false); // Non ci sono più accessi da caricare
+      } else {
+        setAccessi((prevAccessi) => {
+          const updatedAccessi = [...prevAccessi, ...newAccessi];
+          setTimeout(() => {
+            flatListRef.current.scrollToEnd({ animated: true });
+          }, 100); // Aggiungi un piccolo ritardo per assicurarti che la FlatList sia aggiornata
+          return updatedAccessi;
+        });
+        setLastDoc(newLastDoc);
+      }
     }
   };
 
@@ -61,9 +66,18 @@ const listaAccessi = () => {
         keyExtractor={(item, index) => index.toString()}
         ref={flatListRef} // Assegna il riferimento alla FlatList
       />
-      <TouchableOpacity style={styles.loadMoreButton} onPress={loadMoreAccessi}>
-        <Octicons name="desktop-download" size={35} color="blue" />
-        <Text style={styles.altri}>Carica altri</Text>
+      <TouchableOpacity style={styles.loadMoreButton} onPress={loadMoreAccessi} disabled={!hasMore}>
+        {hasMore ? (
+          <>
+            <Octicons name="desktop-download" size={35} color="blue" />
+            <Text style={styles.altri}>Carica altri</Text>
+          </>
+        ) : (
+          <>
+            <MaterialIcons name="done" size={35} color="green" />
+            <Text style={styles.altri}>Tutti i dati caricati</Text>
+          </>
+        )}
       </TouchableOpacity>
     </View>
   );
