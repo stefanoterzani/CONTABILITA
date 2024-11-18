@@ -5,7 +5,7 @@ import * as NavigationBar from 'expo-navigation-bar';
 import { AuthProvider } from '../context/AuthContext'// Importa il contesto
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { AziendaProvider } from '../context/Azienda/AziendaContext'; // Assicurati che il percorso sia corretto
-
+import { ClientiProvider } from '../context/Clienti/ClientiContext';
 
 
 
@@ -44,6 +44,7 @@ export default function RootLayout() {
     <GestureHandlerRootView style={{ flex:1}}>
    <AuthProvider> 
    <AziendaProvider>
+   <ClientiProvider>
     <Stack>
       <Stack.Screen name="index" options={{headerShown:false}}/>
       <Stack.Screen name="(Auth)" options={{headerShown:false}}/>
@@ -53,6 +54,7 @@ export default function RootLayout() {
       <Stack.Screen name="home" options={{ title: 'Home' }}/>
      
     </Stack>
+    </ClientiProvider>
     </AziendaProvider>
     </AuthProvider>
     </GestureHandlerRootView>

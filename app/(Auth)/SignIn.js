@@ -6,10 +6,10 @@ import { AuthContext } from '../../context/AuthContext';
 import { Audio } from 'expo-av'; // Importa correttamente Audio da expo-av
 
 export default function Login() {
-  const [email, setEmail] = useState('pippo@gmail.com');
+  const [email, setEmail] = useState('stefanoterzani51@gmail.com');
   const [telefono, setTelefono] = useState('1234567890'); // Usato solo per il primo accesso
   const [password, setPassword] = useState('12345678');
-  const [nome,setNome]=useState('pippo')
+  const [nome,setNome]=useState('stefano')
   const { loginUser, loading , aziendaId,dataUser} = useContext(AuthContext);
   const [isModalVisible, setModalVisible] = useState(false)
   const router = useRouter();

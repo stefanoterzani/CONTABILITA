@@ -41,8 +41,8 @@ export default function Home() {
       router.replace('/') 
     } else {
         const Az = await getAzienda(dataUser.idAzienda)
-       console.log( 'HOME DATI Azienda',Az)
-       console.log( 'HOME DATI USER',dataUser)
+     //  console.log( 'HOME DATI Azienda',Az)
+     //  console.log( 'HOME DATI USER',dataUser)
     if (Az) {
       setDatiAzienda(Az);
       setLogoURL(Az.logo);   
