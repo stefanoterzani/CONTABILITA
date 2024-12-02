@@ -1,7 +1,7 @@
-import InputField from '../../components/inputField'; // Assicurati che il percorso sia corretto
+//import InputField from '../../components/inputField'; // Assicurati che il percorso sia corretto
 
 import React, { useState, useRef, useEffect ,useContext} from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm,FormProvider } from 'react-hook-form';
 import { View, Button, StyleSheet, ScrollView, Text, Platform } from 'react-native';
 import {schemaAzienda } from '../../context/Azienda/schemiAzienda';
 import { aggiornaAzienda,getAzienda } from '../../context/Azienda/FunzioniAzienda';

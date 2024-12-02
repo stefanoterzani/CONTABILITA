@@ -1,4 +1,4 @@
-import { db } from '../../firebaseConfig';
+import { db } from '../firebaseConfig';
 import { collection, getDocs, query, orderBy, limit, startAfter, doc, getDoc } from 'firebase/firestore';
 
 // Funzione per recuperare gli accessi e sostituire gli ID utente con i nomi

@@ -2,13 +2,21 @@ import { StyleSheet, Text, View ,TouchableOpacity} from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useRouter } from 'expo-router';
+import { useAzienda } from '../../context/AziendaContext'; // Importa il contesto direttamente
+
+
+
+
 const menuAzienda = () => {
     const router = useRouter();
+    const {azienda} = useAzienda();
   return (
     <SafeAreaView style={styles.container}>
     <View style={styles.box}>
+    {azienda && <Text style={{fontSize:30}}>{azienda.nome}</Text>}
+    
         <TouchableOpacity 
-                onPress={()=> router.push('/(Azienda)/inserimentoAzienda')} 
+                onPress={()=> router.push('/(Azienda)/creaModificaAzienda')} 
                 style={{marginTop:40}}>
             <Text style={styles.text}>Anagrafica Azienda</Text>
         </TouchableOpacity>

@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState, useRef } from 'react';
 import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
-import { AuthContext } from '../../context/AuthContext';
-import { getAccessiConNomi } from '../../context/Accessi/FunzioniAccessi';
-import LoadingSpinner from '../../components/LoadingSpinner'; // Importa il componente LoadingSpinner personalizzato
 import { Octicons, MaterialIcons } from '@expo/vector-icons'; // Importa l'icona
+
+import { AuthContext } from '../../context/AuthContext';
+import { getAccessiConNomi } from '../../servizi/FunzioniAccessi'; // Importa la funzione getAccessiConNomi
+//import LoadingSpinner from '../../components/LoadingSpinner'; // Importa il componente LoadingSpinner personalizzato
+
 
 const listaAccessi = () => {
   const { dataUser } = useContext(AuthContext);
@@ -55,7 +57,7 @@ const listaAccessi = () => {
   );
 
   if (loading) {
-    return <LoadingSpinner />;
+   // return <LoadingSpinner />;
   }
 
   return (

@@ -1,12 +1,14 @@
 import { SplashScreen, Stack } from "expo-router";
 import { useFonts } from 'expo-font'
 import { useEffect } from "react";
-import * as NavigationBar from 'expo-navigation-bar';
-import { AuthProvider } from '../context/AuthContext'// Importa il contesto
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { AziendaProvider } from '../context/Azienda/AziendaContext'; // Assicurati che il percorso sia corretto
-import { ClientiProvider } from '../context/Clienti/ClientiContext';
+import * as NavigationBar from 'expo-navigation-bar';
 
+
+import { AuthProvider } from '../context/AuthContext'// Importa il contesto
+import { AziendaProvider } from '../context/AziendaContext'; // Assicurati che il percorso sia corretto
+import { ClientiProvider } from '../context/ClientiContext';
+import { FornitoriProvider } from '../context/FornitoriContext';
 
 
 export default function RootLayout() {
@@ -45,15 +47,19 @@ export default function RootLayout() {
    <AuthProvider> 
    <AziendaProvider>
    <ClientiProvider>
+   <FornitoriProvider>
     <Stack>
       <Stack.Screen name="index" options={{headerShown:false}}/>
       <Stack.Screen name="(Auth)" options={{headerShown:false}}/>
       <Stack.Screen name="(Azienda)" options={{headerShown:false}}/>
       <Stack.Screen name="(Accessi)" options={{headerShown:false}}/>
       <Stack.Screen name="(Clienti)" options={{headerShown:false}}/>
-      <Stack.Screen name="home" options={{ title: 'Home' }}/>
+      <Stack.Screen name="(Fornitori)" options={{headerShown:false}}/>
+      <Stack.Screen name="(OrdiniClienti)" options={{headerShown:false}}/>
+      <Stack.Screen name="home" options={{ headerShown:false}}/>
      
     </Stack>
+    </FornitoriProvider>
     </ClientiProvider>
     </AziendaProvider>
     </AuthProvider>

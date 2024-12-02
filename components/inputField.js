@@ -2,9 +2,13 @@ import React, { useEffect } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 import { View, Text, TextInput, StyleSheet, Platform } from 'react-native';
 
-const InputField = ({ control, name, field, errors}) => {
+const InputField = ({ control, name, field, errors,stileInput}) => {
 //  console.log('InputField:', JSON.stringify(field, null, 2));
 const { setValue } = useFormContext();
+
+//console.log('InputField STYLE INPUT',stileInput);
+//const stileInput={height:40}
+
 
 useEffect(() => {
   if (!field.layout.visibile) {
@@ -18,22 +22,22 @@ if (!field.layout.visibile) {
 }
 
 
-const placeholder = field.obbligatorio ? `${field.label} (obbligatorio)` : field.label;
-
+const placeholder = field.obbligatorio ? `${field.label} (*)` : field.label;
+// placeholder={placeholder}
   return (
     <View style={[styles.fieldContainer,{width:field.layout.width, marginRight:field.layout.margineDx}]}>
-     
+     <Text style={{fontFamily:'Poppins-Regular',fontSize:14}}>{field.label}</Text>
       <Controller
         control={control}
         name={name}
         rules={{ required: field.obbligatorio }}
         render={({ field: { onChange, onBlur, value } }) => (
           <TextInput
-            style={[styles.input, Platform.OS === 'android' && { textAlignVertical: 'center' }]}
+            style={[styles.input,stileInput, Platform.OS !== 'web' && { textAlignVertical: 'center',paddingBottom:3 }]}
             onBlur={onBlur}
             onChangeText={onChange}
             value={value}
-            placeholder={placeholder}
+           
             keyboardType={field.type === 'email' ? 'email-address' : 'default'}
           
 

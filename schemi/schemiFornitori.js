@@ -1,12 +1,12 @@
-const schemaCliente = {
+const schemaFornitore = {
     
-    nome: { label: 'Nome Cliente', type: 'text', obbligatorio:true,visibile:true ,
+    nome: { label: 'Nome ', type: 'text', obbligatorio:true,visibile:true ,
       layout: { 
         web: { row: 1, margineDx:0, width: '100%', visibile:true }, 
         mobile: { row: 1, margineDx: 0 , width:'100%', visibile:true} }
       },
     
-    partitaIva: { label: 'Partita IVA', type: 'text', obbligatorio:true, visibile:true ,
+    partitaIva: { label: 'IVA Fornitore', type: 'text', obbligatorio:true, visibile:true ,
       layout: { 
         web: { row: 2, margineDx: '5%', width: '45%', visibile:true }, 
         mobile: { row: 2, margineDx: 0 , width:'100%', visibile:true} } 
@@ -87,6 +87,11 @@ const schemaCliente = {
             web: { row: 99, margineDx: 0 , visibile: false, width:'30%'}, 
             mobile: { row: 99, margineDx: 0 ,visibile: false, width:'45%'} } 
           },
+        idCliente: { label: 'idCliente', type: 'text', obbligatorio:false, visibile:false ,
+          layout: { 
+            web: { row: 99, margineDx: 0 , visibile: false, width:'30%'}, 
+            mobile: { row: 99, margineDx: 0 ,visibile: false, width:'45%'} } 
+          },
         dataCreazione: { label: 'DataCreazione', type: 'data', obbligatorio:false, visibile:false ,
           layout: { 
             web: { row: 99, margineDx: 0 , visibile: false, width:'30%'}, 
@@ -138,4 +143,4 @@ const schemaCliente = {
     },
     
   };
-  export  {schemaCliente}
+  export  {schemaFornitore}

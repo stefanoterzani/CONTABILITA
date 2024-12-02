@@ -10,31 +10,31 @@ import Footer from '../../components/Footer'
 import { getFooterIcons } from '../../config/footerIconsConfig';
 import menuConfig from '../../config/menuConfig.json';
 import Menu from '../../components/Menu'
-import {useClienti} from '../../context/ClientiContext';
+import {useFornitori} from '../../context/FornitoriContext';
 import ModalAnagrafica from '../../components/ModalAnagrafica';
 
-const menuClienti = () => {
-  const { clienti, fetchClienti } = useClienti(); 
+const menuFornitori = () => {
+  const { Fornitori, fetchFornitori } = useFornitori(); 
 
   const { dataUser } = useContext(AuthContext);
   const [modalVisibile,setModalVisibile]=useState(false);
-  const [clienteSelezionato,setClienteSelezionato]=useState(null);
+  const [FornitoreSelezionato,setFornitoreSelezionato]=useState(null);
     const router = useRouter();
     const modalRef = useRef(null); 
     const unreadMessages = 5; // Numero di messaggi non letti
   const footerIcons = getFooterIcons('Home', router, unreadMessages);
-  const menuItems = menuConfig.menuClienti; // Configurazione del menu per la home
+  const menuItems = menuConfig.menuFornitori; // Configurazione del menu per la home
   const [activeItem, setActiveItem] = useState(null);
  
     useEffect(() => {
-      console.log('fetchClienti',clienti);
-      fetchClienti (dataUser.idAzienda); 
+      console.log('fetchFornitori',Fornitori);
+      fetchFornitori (dataUser.idAzienda); 
     }, [dataUser.idAzienda]);
     
     const handleIconPress = () => {
       // Naviga alla schermata principale
       router.push('/home'); // Assicurati che la route '/home' esista
-      console.log('Ho premuto l\'icona Home sul header di Menu Clienti');
+      console.log('Ho premuto l\'icona Home sul header di Menu Fornitori');
     };
  
     const renderFlat = ({ item }) => {
@@ -49,14 +49,14 @@ const menuClienti = () => {
             <TouchableOpacity 
                 style={[
                   styles.item,
-                  clienteSelezionato === item.id && styles.activeItem
+                  FornitoreSelezionato === item.id && styles.activeItem
                   ]} 
                   onPress={()=>{
-                    // Gestisci il toggle della selezione del cliente
-                      if (clienteSelezionato === item.id) {
-                        setClienteSelezionato(null); // Deseleziona se già selezionato
+                    // Gestisci il toggle della selezione del Fornitore
+                      if (FornitoreSelezionato === item.id) {
+                        setFornitoreSelezionato(null); // Deseleziona se già selezionato
                       } else {
-                        setClienteSelezionato(item.id); // Seleziona il cliente
+                        setFornitoreSelezionato(item.id); // Seleziona il Fornitore
                       }
                   }}>
                 <View style={{flexDirection:'row'}}> 
@@ -71,7 +71,7 @@ const menuClienti = () => {
                     <TouchableOpacity  style={styles.occhio}
                           onPress={()=>{
                             console.log('Premuto occhio')
-                            setClienteSelezionato(item);
+                            setFornitoreSelezionato(item);
                             setModalVisibile(true)
                             }} >
                         <FontAwesome name="eye" size={24} color="lightgrey" />
@@ -98,14 +98,14 @@ const menuClienti = () => {
   
       <View  style={Platform.OS === 'web' ? styles.webContainer : styles.mobileContainer}> 
           <Header 
-            screenName="Menu Clienti" 
+            screenName="Menu Fornitori" 
             icon="home" // Nome dell'icona da visualizzare (es. 'add', 'menu', ecc.)
             onIconPress={handleIconPress} // Funzione da eseguire quando l'icona viene premuta
           />
        
           <View  style={styles.flatListContainer}>       
                <FlatList
-                 data={clienti}
+                 data={Fornitori}
                  renderItem={renderFlat}
                  keyExtractor={(item) => item.id}  
                  extraData={activeItem}
@@ -119,8 +119,7 @@ const menuClienti = () => {
       <ModalAnagrafica
         visible={modalVisibile}
         onClose={() => setModalVisibile(false)}
-        record={clienteSelezionato}
-        archivio='clienti'
+        record={FornitoreSelezionato}
       />
      
   </SafeAreaView>
@@ -129,7 +128,7 @@ const menuClienti = () => {
   )
 }
 
-export default menuClienti
+export default menuFornitori
 
 const styles = StyleSheet.create({
  
@@ -147,16 +146,16 @@ const styles = StyleSheet.create({
     backgroundColor:'white' , 
     borderColor:'blue', 
    // borderWidth:5,
-   // alignItems:'center'
+    alignItems:'center'
   },
   mobileContainer:{
     width:'100%',
     height:'99%',
-    marginTop:0,
+    marginTop:'1%',
     backgroundColor:'white' , 
     borderColor:'blue', 
   //  borderWidth:5,
-   // alignItems:'center'
+    alignItems:'center'
   },
 
   flatListContainer:{

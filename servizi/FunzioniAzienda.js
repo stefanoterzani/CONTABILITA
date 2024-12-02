@@ -1,8 +1,8 @@
 
 
-import { db } from '../../firebaseConfig';
+import { db } from '../firebaseConfig';
 import { collection, addDoc, updateDoc, doc, getDoc ,setDoc,getDocs, deleteField,serverTimestamp} from 'firebase/firestore';
-import { schemaAzienda } from '../Azienda/schemiAzienda';
+import { schemaAzienda } from '../schemi/schemiAzienda';
 
 
 const registraAccessoUtente = async (aziendaId, userId, appName) => {

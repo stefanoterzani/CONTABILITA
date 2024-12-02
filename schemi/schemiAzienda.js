@@ -82,7 +82,16 @@ const schemaAzienda = {
           web: { row: 5, margineDx: 0 , visibile: false, width:'30%'}, 
           mobile: { row: 6, margineDx: 0 ,visibile: false, width:'45%'} } 
         },
-    
+        dataCreazione: { label: 'DataCreazione', type: 'data', obbligatorio:false, visibile:false ,
+          layout: { 
+            web: { row: 99, margineDx: 0 , visibile: false, width:'30%'}, 
+            mobile: { row: 99, margineDx: 0 ,visibile: false, width:'45%'} } 
+          },
+        dataAggiornamento: { label: 'DataAggiornamento', type: 'data', obbligatorio:false, visibile:false ,
+          layout: { 
+            web: { row: 99, margineDx: 0 , visibile: false, width:'30%'}, 
+            mobile: { row: 99, margineDx: 0 ,visibile: false, width:'45%'} } 
+              },
     sedeLegale: {
       citta: { label: 'Città', type: 'text'  , obbligatorio:false, visibile:true,
         layout: { 

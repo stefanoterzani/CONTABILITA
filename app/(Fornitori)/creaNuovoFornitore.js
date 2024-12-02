@@ -1,5 +1,3 @@
-//import InputField from '../../components/inputField'; // Assicurati che il percorso sia corretto
-
 import React, { useState, useRef, useEffect ,useContext} from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { View, Button, StyleSheet, ScrollView, Text, Platform ,Alert} from 'react-native';
@@ -7,34 +5,23 @@ import { useRouter} from 'expo-router';
 
 // import Applicazione context
 import { AuthContext } from '../../context/AuthContext';
-import { addCliente, getClienti,updateCliente } from '../../servizi/FunzioniClienti';
-import Header from '../../components/Header';
-import {schemaCliente } from '../../schemi/schemiClienti';
-import { filtraDatiSchema,  renderCampi, impostaValoriCampiNonVisibili  } from '../../schemi/FunzioniSchemi'; // Importa le funzio
-import { useClienti } from '../../context/ClientiContext'; // Importa il contesto
+import { addFornitore, getFornitori,updateFornitore } from '../../servizi/FunzioniFornitori';
 
-const CreaNuovoCliente = () => {
+import {schemaFornitore } from '../../schemi/schemiFornitori';
+import { filtraDatiSchema,  renderCampi, impostaValoriCampiNonVisibili  } from '../../schemi/FunzioniSchemi'; // Importa le funzio
+import { useFornitori } from '../../context/FornitoriContext'; // Importa il contesto
+
+const CreaNuovoFornitore = () => {
   const { control, handleSubmit, setValue, formState: { errors } } = useForm();
   const {dataUser} = useContext(AuthContext);
   const scrollViewRef = useRef(null);
-  const { fetchClienti } = useClienti(); // Usa il contesto
+  const { fetchFornitori } = useFornitori(); // Usa il contesto
   const router = useRouter();
   const methods = useForm();
-
-  /*****************************non serve da sistemare ******************* */
- const [inputStile,setInputeStile]=useState({height: 30});
-/*********************************************************************** */
-
-const handleIconPress = () => {
-  // Naviga alla schermata principale
-  router.push('/menuClienti'); // Assicurati che la route '/home' esista
-  console.log('Ho premuto l\'icona Home sul header di Menu Clienti');
-};
-
-
+  
   useEffect(() => {
       // Imposta i valori dei campi non visibili
-    impostaValoriCampiNonVisibili(schemaCliente, setValue);
+    impostaValoriCampiNonVisibili(schemaFornitore, setValue);
     }, [setValue]);
 
 
@@ -46,68 +33,51 @@ const handleIconPress = () => {
       data.dataAggiornamento = dataOdierna;
       data.idCreatore = dataUser.idUser;
 
-    const datiFiltrati= filtraDatiSchema(schemaCliente, data);
-    const clienti = await getClienti(dataUser.idAzienda);
-    if (clienti.length === 0) {
-      // La collezione non esiste, aggiungi il primo cliente
+    const datiFiltrati= filtraDatiSchema(schemaFornitore, data);
+    const Fornitori = await getFornitori(dataUser.idAzienda);
+    if (Fornitori.length === 0) {
+      // La collezione non esiste, aggiungi il primo Fornitore
       console.log('DATAUSER', dataUser.idAzienda);
-      docRef = await addCliente(dataUser.idAzienda, datiFiltrati);
+      docRef = await addFornitore(dataUser.idAzienda, datiFiltrati);
     } else {
-      // La collezione esiste, aggiungi il cliente
-      docRef = await addCliente(dataUser.idAzienda, datiFiltrati);
+      // La collezione esiste, aggiungi il Fornitore
+      docRef = await addFornitore(dataUser.idAzienda, datiFiltrati);
     }
 
     if (docRef && docRef.id) {
-      // Aggiungi l'idCliente al documento appena creato
-      await updateCliente(dataUser.idAzienda, docRef.id, { idCliente: docRef.id });
+      // Aggiungi l'idFornitore al documento appena creato
+      await updateFornitore(dataUser.idAzienda, docRef.id, { idFornitore: docRef.id });
     } else {
-      throw new Error('Errore durante la creazione del cliente: docRef è undefined');
+      throw new Error('Errore durante la creazione del Fornitore: docRef è undefined');
     }
 
-   fetchClienti(dataUser.idAzienda);
+   fetchFornitori(dataUser.idAzienda);
 
    
-  //  await aggiornaCliente(cliente.idCliente, datiFiltrati);
- //   const updatedCliente = await getCliente(cliente.idCliente);
- //   setDatiCliente(updatedCliente); // Aggiorna il contesto
+  //  await aggiornaFornitore(Fornitore.idFornitore, datiFiltrati);
+ //   const updatedFornitore = await getFornitore(Fornitore.idFornitore);
+ //   setDatiFornitore(updatedFornitore); // Aggiorna il contesto
    
     router.back();
   } catch (error) {
-    console.error('Errore durante l\'aggiunta del cliente:', error);
-    Alert.alert('Errore', 'Si è verificato un errore durante l\'aggiunta del cliente. Riprova.');
+    console.error('Errore durante l\'aggiunta del Fornitore:', error);
+    Alert.alert('Errore', 'Si è verificato un errore durante l\'aggiunta del Fornitore. Riprova.');
   }
   };
 
 
 
 const renderCampiNormali = () => {
-  const filteredFields = Object.entries(schemaCliente).filter(([name]) => name !== 'sedeLegale');
- 
-  return renderCampi(
-    'Anagrafica', 
-    filteredFields, 
-    schemaCliente, 
-    control, 
-    errors, 
-    styles,
- 
-    );
+  const filteredFields = Object.entries(schemaFornitore).filter(([name]) => name !== 'sedeLegale');
+  return renderCampi('Anagrafica', filteredFields, schemaFornitore, control, errors, styles);
 };
 
   return (
-    
     <FormProvider {...methods}>
     <View style={Platform.OS === 'web' ? styles.webContainer : styles.mobileContainer}>
-    <Header 
-            screenName="Nuovo Cliente" // Nome della schermata
-            icon="home" // Nome dell'icona da visualizzare (es. 'add', 'menu', ecc.)
-            onIconPress={handleIconPress} // Funzione da eseguire quando l'icona viene premuta
-          />
       <ScrollView contentContainerStyle={ styles.scrollContainer} ref={scrollViewRef}>
-     
         {renderCampiNormali()}
-       
-        {renderCampi('Sede Legale', Object.entries(schemaCliente.sedeLegale), schemaCliente, control, errors,styles, 'sedeLegale',inputStile)}       
+        {renderCampi('Sede Legale', Object.entries(schemaFornitore.sedeLegale), schemaFornitore, control, errors, styles, 'sedeLegale')}       
       </ScrollView>
 
       <View style={Platform.OS === 'web' ? styles.webButtonContainer : styles.mobileButtonContainer} >
@@ -124,7 +94,7 @@ const renderCampiNormali = () => {
 const styles = StyleSheet.create({
   mobileContainer: {
     flex: 1,
-    marginTop:0,
+    marginTop: 70,
   },
   webContainer: {
     flex: 1,
@@ -143,7 +113,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   title: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 20,
   },
@@ -153,7 +123,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   subFieldContainer: {
-    marginBottom: 50,
+    marginBottom: 20,
     paddingLeft: 10,
     borderLeftWidth: 1,
     borderLeftColor: '#ccc',
@@ -163,7 +133,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     marginBottom: 0,
-  
   //  justifyContent: 'space-between', // Aggiungi questa linea per distribuire uniformemente i campi
   },
   webButtonContainer: {
@@ -188,4 +157,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CreaNuovoCliente;
+export default CreaNuovoFornitore;

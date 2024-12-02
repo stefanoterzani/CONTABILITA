@@ -2,20 +2,22 @@ import { Platform,StyleSheet, Text, View ,TouchableOpacity,FlatList,Modal,Button
 import React, { useEffect, useContext,useState,useRef } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useRouter } from 'expo-router';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-
+import { useClienti } from '../../context/Clienti/ClientiContext'; // I
 import { AuthContext } from '../../context/AuthContext';
+import { ScrollView } from 'react-native-gesture-handler';
+import { format } from 'date-fns'; 
+import { schemaCliente } from '../../context/Schemi/schemiClienti';
+import BottoneModerno from '../../components/BottoneModerno';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer'
 import { getFooterIcons } from '../../config/footerIconsConfig';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 import menuConfig from '../../config/menuConfig.json';
 import Menu from '../../components/Menu'
-import {useClienti} from '../../context/ClientiContext';
-import ModalAnagrafica from '../../components/ModalAnagrafica';
+
 
 const menuClienti = () => {
   const { clienti, fetchClienti } = useClienti(); 
-
   const { dataUser } = useContext(AuthContext);
   const [modalVisibile,setModalVisibile]=useState(false);
   const [clienteSelezionato,setClienteSelezionato]=useState(null);
@@ -25,7 +27,7 @@ const menuClienti = () => {
   const footerIcons = getFooterIcons('Home', router, unreadMessages);
   const menuItems = menuConfig.menuClienti; // Configurazione del menu per la home
   const [activeItem, setActiveItem] = useState(null);
- 
+
     useEffect(() => {
       console.log('fetchClienti',clienti);
       fetchClienti (dataUser.idAzienda); 
@@ -46,18 +48,9 @@ const menuClienti = () => {
       
        <View style={{alignItems:'center'}}>
      
-            <TouchableOpacity 
-                style={[
-                  styles.item,
-                  clienteSelezionato === item.id && styles.activeItem
-                  ]} 
+            <TouchableOpacity style={styles.item} 
                   onPress={()=>{
-                    // Gestisci il toggle della selezione del cliente
-                      if (clienteSelezionato === item.id) {
-                        setClienteSelezionato(null); // Deseleziona se già selezionato
-                      } else {
-                        setClienteSelezionato(item.id); // Seleziona il cliente
-                      }
+                    
                   }}>
                 <View style={{flexDirection:'row'}}> 
                     <View style={{width:'90%',borderColor:'red',borderWidth:0}}>                   
@@ -68,14 +61,14 @@ const menuClienti = () => {
                             </View>
                         </View> 
                     </View>  
+
                     <TouchableOpacity  style={styles.occhio}
                           onPress={()=>{
-                            console.log('Premuto occhio')
                             setClienteSelezionato(item);
-                            setModalVisibile(true)
-                            }} >
+                            setModalVisibile(true)}} >
                         <FontAwesome name="eye" size={24} color="lightgrey" />
                     </TouchableOpacity>
+              
                 </View>  
                   
             </TouchableOpacity>
@@ -89,6 +82,59 @@ const menuClienti = () => {
 
 
    
+    const renderModalContent = () => {
+    
+      if (!clienteSelezionato)  return null;
+           
+      return Object.keys(schemaCliente).map((key,index) => {
+        const field = schemaCliente[key];
+        if (!field) return null;
+        if (typeof clienteSelezionato[key] === 'object' && !Array.isArray(clienteSelezionato[key])) {
+          return (
+            <View key={key}>
+              <View style={styles.modalSection}>
+                <Text style={styles.modalSectionTitle}>{key}</Text>
+                {Object.keys(schemaCliente[key]).map((subKey, subIndex) => (
+                  <View key={`${key}.${subKey}`}>
+                  <View style={subIndex % 2 === 0 ? styles.modalRowEven : styles.modalRowOdd}>
+                      <Text style={styles.modalLabel}>{field[subKey]?.label || subKey}:</Text>
+                      <Text style={styles.modalValore}>
+                        {schemaCliente[key][subKey]?.type === 'data' && typeof clienteSelezionato[key][subKey] === 'string' && clienteSelezionato[key][subKey].includes('T')
+                          ? format(new Date(clienteSelezionato[key][subKey]), 'dd/MM/yyyy HH:mm')
+                          : clienteSelezionato[key][subKey]}
+                      </Text>
+                    </View>
+                  </View>
+                )
+                )}
+              </View>
+  {/*             
+              {index < Object.keys(schemaCliente).length - 1 && <View style={styles.separator} />}
+
+              */}            
+            </View>
+          );
+         
+        }
+       
+  
+        return (
+          <View key={key}>
+          <View style={index % 2 === 0 ? styles.modalRowEven : styles.modalRowOdd}>
+            <Text style={styles.modalLabel}>{field.label}:</Text>
+            <Text style={styles.modalValore}>
+              {field.type === 'data' && typeof clienteSelezionato[key] === 'string' && clienteSelezionato[key].includes('T')
+                ? format(new Date(clienteSelezionato[key]), 'dd/MM/yyyy HH:mm')
+                : clienteSelezionato[key]}
+            </Text>
+          </View>
+ 
+        </View>
+        );
+      });
+
+     
+    };
    
    
     
@@ -111,17 +157,72 @@ const menuClienti = () => {
                  extraData={activeItem}
                  />
           </View>
- 
+  {/* 
+          <View style={{width:'95%', height:'10%',backgroundColor:'lightblue',
+               alignItems:'center',justifyContent:'center'}}>     
+                  <TouchableOpacity 
+                   onPress={()=> router.push('/(Clienti)/creaNuovoCliente')} 
+                   style={{height:'50%',width:'20%',alignItems:'center',justifyContent:'center'}}>
+                   <View style={{width:'100%', backgroundColor:'orange', borderRadius:10}}>
+                     <Text style={{textAlign:'center', fontFamily:'Poppins-SemiBold', fontSize:20, color:'white'}}>Nuovo Cliente</Text>
+                   </View>
+                 </TouchableOpacity>
+       </View>
+       */}
           <Menu menuItems={menuItems} />
           <Footer icons={footerIcons} />
       </View>
      
-      <ModalAnagrafica
+
+      <Modal
+        animationType="slide"
+        transparent={true}
         visible={modalVisibile}
-        onClose={() => setModalVisibile(false)}
-        record={clienteSelezionato}
-        archivio='clienti'
-      />
+        onRequestClose={() => {
+          setModalVisibile(!modalVisibile);
+        }}>
+         <View style={styles.modalContainer} ref={modalRef}> 
+            
+            <View 
+              style={Platform.OS === 'web' ? styles.webModalView : styles.mobileModalView}> 
+                <View style={{borderTopLeftRadius:20, borderTopRightRadius:20,backgroundColor:'#FFb266' ,height:'8%',width:'100%',
+                    alignItems:'center',justifyContent:'center', flexDirection:'row'}}>
+                    <Text style={styles.modalTitolo}>DETTAGLIO CLIENTE:</Text>
+                    
+                </View>
+                <View style={{width:'100%',height:'80%',paddingLeft:'2%', borderColor:'red',
+                    borderWidth:0,zIndex:99}}> 
+                          <ScrollView style={{}}>
+                            {renderModalContent()}
+                          </ScrollView>
+                </View> 
+             
+                <View style={{ width:'100%', height:'8%', marginTop:'1%',borderColor:'gray',borderTopWidth:1,
+                         justifyContent:'center',alignItems:'center',gap:'5%',flexDirection:'row'}}>
+                    
+                         <BottoneModerno 
+                            title="Modifica"
+                            coloreTesto='black'
+                            onPress={() => console.log('Modifica')}
+                            colors={['#000099', '#ffffff','#000099']}
+                            width='15%'
+                            height='70%'
+
+                            />
+                            <BottoneModerno 
+                            title="Chiudi"
+                             coloreTesto='white'
+                            onPress={() =>setModalVisibile(false)}
+                            colors={['#003300', '#ffffff','#003300']}
+                            width='15%'
+                            height='70%'
+
+                            />
+                          
+                </View>
+            </View>
+        </View>  
+      </Modal>
      
   </SafeAreaView>
 
@@ -147,16 +248,16 @@ const styles = StyleSheet.create({
     backgroundColor:'white' , 
     borderColor:'blue', 
    // borderWidth:5,
-   // alignItems:'center'
+    alignItems:'center'
   },
   mobileContainer:{
     width:'100%',
     height:'99%',
-    marginTop:0,
+    marginTop:'1%',
     backgroundColor:'white' , 
     borderColor:'blue', 
   //  borderWidth:5,
-   // alignItems:'center'
+    alignItems:'center'
   },
 
   flatListContainer:{
@@ -176,11 +277,7 @@ const styles = StyleSheet.create({
     width: '100%', // Imposta la larghezza degli item al 95% del box
     // height:50 
   },
-  activeItem:{
-    backgroundColor: 'rgba(0, 26, 255,0.1)',
-    borderWidth: 0,
-    borderColor: 'blue',
-  },
+  
  
   row: {
     flexDirection: 'row', // Dispone i campi in una riga
@@ -194,13 +291,15 @@ const styles = StyleSheet.create({
   fontSize: 14,
   marginLeft:7,
  },
-occhio:{
+
+ occhio:{
   borderColor:'black',
   borderWidth:0,
   width:'10%',
   justifyContent:'center',
   alignItems:'center'
  },
+
  modalContainer: {
   flex: 1,
   //justifyContent: 'center',

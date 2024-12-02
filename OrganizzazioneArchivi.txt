@@ -1,0 +1,38 @@
+app/
+|-- (Accessi)
+|-- (Auth)
+|-- (Azienbda)
+|-- (Clienti)
+|-- (Fornitori)
+|-- components/
+|-- context/
+|   |-- AziendaContext.js
+|   |-- ClientiContext.js
+|   |-- AuthContext.js
+|   |-- FornitoriContext.js
+|   |-- NewContext.js
+|-- hooks/
+|   |-- useAzienda.js
+|   |-- useClienti.js
+|-- servizi/
+|   |-- aziendaService.js
+|   |-- clientiService.js
+|-- schemi/
+|   |-- FunzioniSchemi.js
+|   |-- schemaCliente.js
+|-- screens/
+|   |-- MenuClienti.js
+|-- utlis
+|   |-- cacheManager.js
+|-- App.js
+
+
+
+La directory config è generalmente utilizzata per memorizzare configurazioni e impostazioni che sono utilizzate in tutta l'applicazione. Questi file di configurazione possono includere:
+
+1. **Configurazioni delle Rotte:** Definizioni delle rotte dell'applicazione.
+2. **Configurazioni delle Icone:** Configurazioni per le icone utilizzate nell'applicazione.
+3. **Configurazioni delle API:** URL delle API e chiavi di accesso.
+4. **Configurazioni Tematiche:** Temi e stili globali dell'applicazione.
+5. **Configurazioni delle Costanti:** Costanti globali utilizzate nell'applicazione.
+

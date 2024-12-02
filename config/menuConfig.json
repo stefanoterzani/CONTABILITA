@@ -1,0 +1,137 @@
+{
+    "home": [
+      {
+        "label": "Azienda",
+        "route": "/(Azienda)/menuAzienda"
+      },
+      {
+        "label": "Clienti",
+        "route": "/(Clienti)/menuClienti"
+      },
+      {
+        "label": "Fornitori",
+        "route": "/(Fornitori)/menuFornitori"
+      },
+      {
+        "label": "Preventivi",
+        "route": "/(Preventivi)/menuPreventivi"
+      },
+      {
+        "label": "Ordini",
+        "route": "/(OrdiniClienti)/creaOrdineCliente"
+      },
+      {
+        "label": "Fatture",
+        "route": "/(Fatture)/menuFatture"
+      },
+      {
+        "label": "Prodotti",
+        "route": "/(Prodotti)/menuProdotti"
+      },
+      {
+        "label": "Magazzino",
+        "route": "/(Magazzino)/menuMagazzino"
+      },
+      {
+        "label": "Accessi",
+        "route": "/(Accessi)/menuAccessi"
+      },
+      {
+        "label": "Uscite",
+        "route": "/(Uscite)/menuUscite"
+      },
+      {
+        "label": "Statistiche",
+        "route": "/(Statistiche)/menuStatistiche"
+      },
+      {
+        "label": "Impostazioni",
+        "route": "/(Impostazioni)/menuImpostazioni"
+      }
+    ],
+    "menuClienti":[
+      {
+        "label": "Nuovo Cliente",
+        "route": "/(Clienti)/creaNuovoCliente" 
+      },
+      {
+        "label": "Fatture",
+        "route": "/(Fatture)/menuFatture"
+      },
+      {
+        "label": "Preventivi",
+        "route": "/(Preventivi)/menuPreventivi"
+      },
+      {
+        "label": "Ordini",
+        "route": "/(Ordini)/menuOrdini"
+      },
+      {
+        "label": "Prodotti",
+        "route": "/(Prodotti)/menuProdotti"
+      },
+      {
+        "label": "Magazzino",
+        "route": "/(Magazzino)/menuMagazzino"
+      },
+      {
+        "label": "Accessi",
+        "route": "/(Accessi)/menuAccessi"
+      },
+      {
+        "label": "Uscite",
+        "route": "/(Uscite)/menuUscite"
+      },
+      {
+        "label": "Statistiche",
+        "route": "/(Statistiche)/menuStatistiche"
+      },
+      {
+        "label": "Impostazioni",
+        "route": "/(Impostazioni)/menuImpostazioni"
+      }
+    ],
+    "menuFornitori":[
+      {
+        "label": "Nuovo Fornitore",
+        "route": "/(Fornitori)/creaNuovoFornitore" 
+      },
+      {
+        "label": "Fatture",
+        "route": "/(Fatture)/menuFatture"
+      },
+      {
+        "label": "Preventivi",
+        "route": "/(Preventivi)/menuPreventivi"
+      },
+      {
+        "label": "Ordini",
+        "route": "/(Ordini)/menuOrdini"
+      },
+      {
+        "label": "Prodotti",
+        "route": "/(Prodotti)/menuProdotti"
+      },
+      {
+        "label": "Magazzino",
+        "route": "/(Magazzino)/menuMagazzino"
+      },
+      {
+        "label": "Accessi",
+        "route": "/(Accessi)/menuAccessi"
+      },
+      {
+        "label": "Uscite",
+        "route": "/(Uscite)/menuUscite"
+      },
+      {
+        "label": "Statistiche",
+        "route": "/(Statistiche)/menuStatistiche"
+      },
+      {
+        "label": "Impostazioni",
+        "route": "/(Impostazioni)/menuImpostazioni"
+      }
+    ]
+
+  }

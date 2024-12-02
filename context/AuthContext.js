@@ -7,7 +7,8 @@ import { useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getReactNativePersistence } from 'firebase/auth';
 import { onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, browserLocalPersistence } from 'firebase/auth';
-import { registraAccessoUtente} from '../context/Azienda/FunzioniAzienda';
+import { registraAccessoUtente} from '../servizi/FunzioniAzienda';
+
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -17,6 +18,7 @@ export const AuthProvider = ({ children }) => {
   const [isLoggingOut, setIsLoggingOut] = useState(false);
   const [aziendaId,setAziendaId]=useState(null)
   const router = useRouter();
+  /*
   const [datiAzienda, setDatiAzienda]=useState({
   id:'',
   nome:'',
@@ -27,7 +29,7 @@ export const AuthProvider = ({ children }) => {
   provincia:'',
  
  })
-
+*/
 useEffect(() => {
   //signOut(auth);
   const configurePersistence = async () => {
