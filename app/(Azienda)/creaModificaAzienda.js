@@ -40,7 +40,7 @@ useEffect(() => {
       fetchAzienda(dataUser.idAzienda) 
      .then((dati) => {
     
-     console.log('Dati azienda nel contesto DATI:',dati)
+   //  console.log('Dati azienda nel contesto DATI:',dati)
        /*
       setDatiAzienda(azienda);
 

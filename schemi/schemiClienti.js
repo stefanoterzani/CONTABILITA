@@ -1,9 +1,13 @@
 const schemaCliente = {
-    
-    nome: { label: 'Nome ', type: 'text', obbligatorio:true,visibile:true ,
+   codice: { label: 'Codice ', type: 'text', obbligatorio:true,visibile:true ,
+    layout: { 
+      web: { row: 1, margineDx:0, width: '20%', visibile:true }, 
+      mobile: { row: 1, margineDx: '2%' , width:'20%', visibile:true} }
+    },
+    nome: { label: 'Nome Cliente ', type: 'text', obbligatorio:true,visibile:true ,
       layout: { 
         web: { row: 1, margineDx:0, width: '100%', visibile:true }, 
-        mobile: { row: 1, margineDx: 0 , width:'100%', visibile:true} }
+        mobile: { row: 1, margineDx: 0 , width:'77%', visibile:true} }
       },
     
     partitaIva: { label: 'Partita IVA', type: 'text', obbligatorio:true, visibile:true ,
@@ -102,6 +106,7 @@ const schemaCliente = {
             web: { row: 99, margineDx: 0 , visibile: false, width:'30%'}, 
             mobile: { row: 99, margineDx: 0 ,visibile: false, width:'45%'} } 
               },
+            
     sedeLegale: {
       citta: { label: 'Città', type: 'text'  , obbligatorio:false, 
         layout: { 
@@ -112,7 +117,7 @@ const schemaCliente = {
         indirizzo: { label: 'Indirizzo', type: 'text' , obbligatorio:false, 
         layout: { 
           web: { row:2, margineDx: '2%', visibile: true, width:'77%'}, 
-          mobile: { row:6, margineDx: '3%' , visibile: true, width:'77%'}
+          mobile: { row:6, margineDx: '2%' , visibile: true, width:'77%'}
          } },
 
          civico: { label: 'Civico', type: 'text' , obbligatorio:false, 
@@ -124,7 +129,7 @@ const schemaCliente = {
          provincia: { label: 'Provincia', type: 'text'  , obbligatorio:false, 
           layout: { 
             web: { row: 3, margineDx:'2%', visibile: true, width:'70%' }, 
-            mobile: { row: 7, margineDx:'3%', visibile: true, width:'67%'} 
+            mobile: { row: 7, margineDx:'2%', visibile: true, width:'67%'} 
           } },  
 
         cap: { label: 'CAP', type: 'text' , obbligatorio:false , 

@@ -234,12 +234,12 @@ occhio:{
          elevation: 10,
     },
 modalTitolo:{
-fontFamily: 'Poppins-SemiBold',
+fontFamily: 'Roboto-Medium',
 fontSize: 20,
 color:'black',
 },
 modalTitoloNome:{
-fontFamily: 'Poppins-SemiBold',
+fontFamily: 'Roboto',
 fontSize: 20,
 color:'black',
 },
@@ -280,7 +280,7 @@ color:'black',
   },
  modalLabel: {
   
-    fontFamily: 'Poppins-Regular',
+    fontFamily: 'Roboto-Regular',
     fontSize: 16,
     marginLeft:10,
     marginRight:10,
@@ -288,7 +288,7 @@ color:'black',
   },
   modalValore: {
     fontSize: 16,
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'Roboto-Bold',
   flexShrink: 1,
   color:'blue',
   flexBasis: 'auto',

@@ -1,266 +1,525 @@
 {
-"articles": [
-  {
-    "source": {
-      "id": "la-repubblica",
-      "name": "La Repubblica"
+  "articles": [
+    {
+      "source": {
+        "id": "la-repubblica",
+        "name": "La Repubblica"
+      },
+      "author": "repubblicawww@repubblica.it (Redazione Repubblica.it)",
+      "title": "Il Premio Prolo 2024 ad Ariane Ascaride",
+      "description": "La cerimonia martedì 10 dicembre al cinema Massimo",
+      "url": "https://torino.repubblica.it/cronaca/2024/12/05/news/premio_prolo_2024_ariane_ascaride-423825926/",
+      "urlToImage": "https://www.repstatic.it/content/localirep/img/rep-torino/2024/12/05/172817569-bd759eef-4de1-4c64-a973-00dd5055a179.jpg",
+      "publishedAt": "2024-12-05T16:31:37Z",
+      "content": "Il 10 dicembre al cinema Massimo di Torino sarà consegnato il Premio Maria Adriana Prolo all'attrice Ariane Ascaride, in occasione della Giornata mondiale dei Diritti umani. Promosso dall'Associazion… [+1301 chars]"
     },
-    "author": "repubblicawww@repubblica.it (Redazione Repubblica.it)",
-    "title": "Visti dal CineDams",
-    "description": "Le recensioni del Tff degli studenti di Cinema",
-    "url": "https://torino.repubblica.it/cronaca/2024/11/25/news/visti_dal_cinedams-423728201/",
-    "urlToImage": "https://www.repstatic.it/content/localirep/img/rep-torino/2024/11/25/211047890-015d3a3a-b133-42fd-bfda-1415e7417153.jpg",
-    "publishedAt": "2024-11-25T20:10:56Z",
-    "content": "THE LAST ACT DI PAYMON SHAHBOD The Last Act scritto e diretto dalliraniano Paymon Shahbod si apre nei corridoi diun ospedale di Teheran dove sono in corso le riprese di un film con protagonista lat… [+6720 chars]"
-  },
-  {
-    "source": {
-      "id": "il-sole-24-ore",
-      "name": "Il Sole 24 Ore"
+    {
+      "source": {
+        "id": "il-sole-24-ore",
+        "name": "Il Sole 24 Ore"
+      },
+      "author": null,
+      "title": "Rd Congo, oltre 70 morti per malattia sconosciuta. Governo «in allerta»",
+      "description": "Le vittime sono soprattutto bambini: i sintomi sono febbre, mal di testa, tosse e anemia. L’Oms ha inviato una squadra di esperti per valutare la situazione che le autorità locali definiscono preoccupante.",
+      "url": "https://www.ilsole24ore.com/art/rd-congo-oltre-70-morti-malattia-sconosciuta-governo-in-allerta-AG1gD1ZB",
+      "urlToImage": "https://i2.res.24o.it/images2010/S24/Documenti/2024/12/06/Immagini/Ritagli/AFP_36MW4HV(1)-U08151150342kfM-1440x752@IlSole24Ore-Web.jpg?r=1170x507",
+      "publishedAt": "2024-12-05T16:30:12Z",
+      "content": "Ascolta la versione audio dell'articolo\r\n3' di lettura\r\nSono oltre 70, di cui circa la metà bambini, i decessi per unepidemia causata da una malattia simil-influenzale - al momento sconosciuta - che … [+3333 chars]"
     },
-    "author": null,
-    "title": "Capitol Hill e documenti riservati, il procuratore speciale Smith chiede archiviazione per Trump",
-    "description": "Trump ha più volte minacciato di licenziare e perseguire Smith e il suo team una volta reinsediatosi alla Casa Bianca. Per l’ex presidente rimangono in essere i procedimenti giudiziari a livello statale in Georgia e New York",
-    "url": "https://www.ilsole24ore.com/art/capitol-hill-e-documenti-riservati-procuratore-speciale-smith-chiede-archiviazione-trump-AG2CLwOB",
-    "urlToImage": "https://i2.res.24o.it/images2010/S24/Documenti/2024/11/26/Immagini/Ritagli/AFP_36N49DP-U18841257704nUp-1440x752@IlSole24Ore-Web.jpg?r=1170x507",
-    "publishedAt": "2024-11-25T19:25:33Z",
-    "content": "Ascolta la versione audio dell'articolo\r\n1' di lettura\r\nIl procuratore speciale Jack Smith ha chiesto larchiviazione per Donald Trump anche del caso dei documenti riservati della Casa Bianca sequestr… [+869 chars]"
-  },
-  {
-    "source": {
-      "id": "la-repubblica",
-      "name": "La Repubblica"
+    {
+      "source": {
+        "id": "la-repubblica",
+        "name": "La Repubblica"
+      },
+      "author": "repubblicawww@repubblica.it (Redazione Repubblica.it)",
+      "title": "Poliambulatorio di via Montanaro in Barriera di Milano al freddo: 15 gradi",
+      "description": "La denuncia della consigliera Alice Ravinale",
+      "url": "https://torino.repubblica.it/cronaca/2024/12/05/news/poliambulatorio_di_via_montanaro_in_barriera_di_milano_al_freddo_15_gradi-423825907/",
+      "urlToImage": "https://www.repstatic.it/content/localirep/img/rep-torino/2024/12/05/172039557-06bfc785-bf58-48fc-8bd3-57aea6ffa1e3.jpg",
+      "publishedAt": "2024-12-05T16:20:41Z",
+      "content": "Una vecchietta in attesa del suo turno si rimette la cuffietta in lana che si era appena levata. Alla sua sinistra un signore indossa i guanti. É questa la situazione che stamattina la consigliera re… [+1836 chars]"
     },
-    "author": "repubblicawww@repubblica.it (Redazione Repubblica.it)",
-    "title": "Alec Baldwin a Torino: “Avete un festival bellissimo”",
-    "description": "Questa sera alle 21.30 sarà al Cinema Romano per introdurre la proiezione di “Caccia a ottobre rosso” e ricevere il premio Stella della Mole",
-    "url": "https://torino.repubblica.it/cronaca/2024/11/25/news/alec_baldwin_a_torino-423726172/",
-    "urlToImage": "https://www.repstatic.it/content/localirep/img/rep-torino/2024/11/25/172840817-07feca70-ee30-4ebf-a60f-81a20e0650d7.jpg",
-    "publishedAt": "2024-11-25T16:28:42Z",
-    "content": "«Sono davvero grato per questo riconoscimento. Ho 66 anni e sette figli piccoli: la maggiore ha 11 anni il minore2 e quando me lo hanno chiesto non avevo molta voglia di salire su un aereo per venir… [+2640 chars]"
-  },
-  {
-    "source": {
-      "id": "il-sole-24-ore",
-      "name": "Il Sole 24 Ore"
+    {
+      "source": {
+        "id": "la-repubblica",
+        "name": "La Repubblica"
+      },
+      "author": "repubblicawww@repubblica.it (Redazione Repubblica.it)",
+      "title": "A Torino la prima scuola del Piemonte dedicata a Morricone",
+      "description": "Cerimonia di intitolazione domani al Serming",
+      "url": "https://torino.repubblica.it/cronaca/2024/12/05/news/a_torino_la_prima_scuola_del_piemonte_dedicata_a_morricone-423825971/",
+      "urlToImage": "https://www.repstatic.it/content/localirep/img/rep-torino/2024/12/05/174940653-bfc48b64-a379-4651-a01c-35a858ac1972.jpg",
+      "publishedAt": "2024-12-05T15:56:00Z",
+      "content": "Con una cerimonia, che si svolgerà domani al teatro del Serming di Torino, alle 18, l'istituto comprensivo di corso Vercelli sarà intitolato a Ennio Morricone.\r\n\"Si tratta del primo istituto in Piemo… [+686 chars]"
     },
-    "author": "di Marika Gervasio",
-    "title": "L’Erbolario con Amnesty International Italia per i diritti di donne e ragazze",
-    "description": "Dal 25 novembre all’8 marzo, L’Erbolario contribuirà alla diffusione della campagna #IoLoChiedo di Amnesty International Italia: il sesso senza consenso è stupro. Avviata nel 2019, la campagna di Amnesty International...",
-    "url": "https://www.ilsole24ore.com/art/l-erbolario-amnesty-international-italia-i-diritti-donne-e-ragazze-AGuS5WOB",
-    "urlToImage": "https://i2.res.24o.it/images2010/S24/Documenti/2024/11/26/Immagini/Ritagli/comunicato_amnesty-kcQG-U42263857080KeV-1440x752@IlSole24Ore-Web.jpg?r=1170x507",
-    "publishedAt": "2024-11-25T16:27:01Z",
-    "content": "Ascolta la versione audio dell'articolo\r\n3' di lettura\r\nDal 25 novembre all8 marzo, LErbolario contribuirà alla diffusione della campagna #IoLoChiedo di Amnesty International Italia: il sesso senza c… [+2130 chars]"
-  },
-  {
-    "source": {
-      "id": "la-repubblica",
-      "name": "La Repubblica"
+    {
+      "source": {
+        "id": "il-sole-24-ore",
+        "name": "Il Sole 24 Ore"
+      },
+      "author": "dal nostro inviato a New York Luca Veronese",
+      "title": "Trump pronto a mandare gli immigrati irregolari nelle isole dei Caraibi",
+      "description": "Il piano prevede di spedire i migranti senza permesso in Paesi terzi: dalle isole Turcks and Caicos, alle Bahamas, a Panama e Grenada. Gli esplusi sarebbero soprattutto persone provenienti da Venezuela, Cuba e Cina",
+      "url": "https://www.ilsole24ore.com/art/trump-pronto-mandare-immigrati-irregolari-isole-caraibi-AGbwNyZB",
+      "urlToImage": "https://i2.res.24o.it/images2010/S24/Documenti/2024/12/06/Immagini/Ritagli/AFP_36MZ6ZE-U88212542486uNY-1440x752@IlSole24Ore-Web.jpg?r=1170x507",
+      "publishedAt": "2024-12-05T15:54:58Z",
+      "content": "Ascolta la versione audio dell'articolo\r\n2' di lettura\r\nSugli immigrati la stretta di Donald Trump arriverà subito: «Fin dal primo giorno alla Casa Bianca», ripetono nel team del presidente eletto. «… [+2110 chars]"
     },
-    "author": "repubblicawww@repubblica.it (Redazione Repubblica.it)",
-    "title": "La stagione 2025 dei concerti al Regio apre con Pinchas Steinberg",
-    "description": null,
-    "url": "https://torino.repubblica.it/cronaca/2024/11/25/news/stagione_2025_dei_concerti_al_regio-423726122/",
-    "urlToImage": "https://www.repstatic.it/content/localirep/img/rep-torino/2024/11/25/172317703-7f7d8967-dc58-491b-a57d-99c19a6dc574.jpg",
-    "publishedAt": "2024-11-25T16:23:19Z",
-    "content": "Questa sera, in occasione della giornata internazionale per leliminazione della violenza contro le donne il Teatro Regio metterà delle luci rosa alle proprie finestre che danno su Piazza Castello.\r\nE… [+1386 chars]"
-  },
-  {
-    "source": {
-      "id": "il-sole-24-ore",
-      "name": "Il Sole 24 Ore"
+    {
+      "source": {
+        "id": "il-sole-24-ore",
+        "name": "Il Sole 24 Ore"
+      },
+      "author": null,
+      "title": "Assassinio Manhattan, i proiettili avevano parole incise. Perquisito ostello",
+      "description": "Gli inquirenti seguono la pista del libro «Ritardare, negare, difendere: perché le compagnie assicurative non pagano i risarcimenti e cosa si può fare»",
+      "url": "https://www.ilsole24ore.com/art/assassinio-manhattan-proiettili-avevano-parole-incise-perquisito-ostello-AGmyqyZB",
+      "urlToImage": "https://i2.res.24o.it/images2010/S24/Documenti/2024/12/06/Immagini/Ritagli/LP_22931138-U02126667783ehU-1440x752@IlSole24Ore-Web.jpg?r=1170x507",
+      "publishedAt": "2024-12-05T15:19:00Z",
+      "content": "Ascolta la versione audio dell'articolo\r\n2' di lettura\r\nGuardando il video, sembra che sia abile nelluso delle armi da fuoco, poiché è stato in grado di risolvere i malfunzionamenti abbastanza rapida… [+1579 chars]"
     },
-    "author": null,
-    "title": "Mar Rosso, barca affonda nel reef di Marsa Alam: 17 dispersi. Terzo episodio quest’anno",
-    "description": "Si tratta soprattutto di cittadini tedeschi. Lo yacht, utilizzato per una delle tipiche escursioni di gruppodi queste località, ha probabilmente colpito la barriera corallina",
-    "url": "https://www.ilsole24ore.com/art/mar-rosso-barca-affonda-reef-marsa-alam-17-dispersi-terzo-episodio-quest-anno-AGI3sdOB",
-    "urlToImage": "https://i2.res.24o.it/images2010/S24/Documenti/2024/11/26/Immagini/Ritagli/m3x3aqarf7s93kv6to-U62231831262DNE-1440x752@IlSole24Ore-Web.jpg?r=1170x507",
-    "publishedAt": "2024-11-25T16:14:00Z",
-    "content": "Ascolta la versione audio dell'articolo\r\n2' di lettura\r\nVentotto persone sono state salvate dopo che la barcasu cui viaggiano è affondata nel Mar Rosso, mentre 17 persone risultano tuttora disperse.… [+1908 chars]"
-  },
-  {
-    "source": {
-      "id": "il-sole-24-ore",
-      "name": "Il Sole 24 Ore"
+    {
+      "source": {
+        "id": "la-repubblica",
+        "name": "La Repubblica"
+      },
+      "author": "repubblicawww@repubblica.it (Redazione Repubblica.it)",
+      "title": "Assolto da accusa violenza minori, la madre dei bambini lo aggredisce",
+      "description": null,
+      "url": "https://torino.repubblica.it/cronaca/2024/12/05/news/assolto_da_accusa_violenza_minori_la_madre_dei_bambini_lo_aggredisce-423825933/",
+      "urlToImage": "https://www.repstatic.it/content/localirep/img/rep-torino/2024/12/05/173518943-9313c8b3-0fe6-43cc-b528-74a58c692e82.jpg",
+      "publishedAt": "2024-12-05T15:10:00Z",
+      "content": "Lui viene assolto dall'accusa di molestie sessuali ai danni dei bambini di un'amica, e lei, all'uscita dal tribunale, lo minaccia di morte e lo aggredisce con un martello.\r\nE' accaduto questa mattina… [+735 chars]"
     },
-    "author": "di Marco Masciaga",
-    "title": "Adani, i progetti del gruppo sotto attacco dopo il mandato d’arresto Usa",
-    "description": "Il colosso indiano delle infrastrutture, delle miniere e dell’energia è accusato di aver pianificato il pagamento di tangenti per 265 milioni di dollari e di aver tenuto nascosto agli investitori il fatto di essere sotto indagine negli Usa"
-,
-    "url": "https://www.ilsole24ore.com/art/adani-progetti-gruppo-sotto-attacco-il-mandato-d-arresto-usa-AGFjQMOB",
-    "urlToImage": "https://i2.res.24o.it/images2010/S24/Documenti/2024/11/26/Immagini/Ritagli/b615235f05a06c639f6c34b334bd523f-U06035610661aXA-1440x752@IlSole24Ore-Web.jpg?r=1170x507",
-    "publishedAt": "2024-11-25T15:41:28Z",
-    "content": "Ascolta la versione audio dell'articolo\r\n3' di lettura\r\nDal nostro corrispondente\r\nNEW DELHI - Le ricadutedellinchiesta condotta dal Dipartimento della Giustizia americano sugli affari del Gruppo Ad… [+3680 chars]"
-  },
-  {
-    "source": {
-      "id": "il-sole-24-ore",
-      "name": "Il Sole 24 Ore"
+    {
+      "source": {
+        "id": "il-sole-24-ore",
+        "name": "Il Sole 24 Ore"
+      },
+      "author": "di Lucilla Incorvati",
+      "title": "Neve, cultura ed esperienze tra le valli trentine",
+      "description": "In Trentino Alto Adige l’inverno entra nel vivo con le sue località quasi tutte imbiancate dalla neve che puntuale è arrivata anche quest’anno e con essa le tante esperienze che...",
+      "url": "https://www.ilsole24ore.com/art/neve-cultura-ed-esperienze-le-valli-trentine-AG8HjtZB",
+      "urlToImage": "https://i2.res.24o.it/images2010/2024/12/AG8HjtZB/images/afe6ab0c-b312-11ef-aa0a-473f7a01d900-fotohome0.jpg",
+      "publishedAt": "2024-12-05T14:19:58Z",
+      "content": "In Trentino Alto Adige linverno entra nel vivo con le sue località quasi tutte imbiancate dalla neve che puntuale è arrivata anche questanno e con essa le tante esperienze che si organizzano da qui a… [+177 chars]"
     },
-    "author": "di Corrado Canali",
-    "title": "È partita ad Atessa la produzione dei nuovi veicoli elettrici di Stellantis Pro One",
-    "description": "La locazion è il più grande stabilimento europeo di veicoli commerciali leggeri in grado di produrre fino a 1.200 veicoli al giorno ed esportarli in 75 Paesi al mondo.",
-    "url": "https://www.ilsole24ore.com/art/e-partita-ad-atessa-produzione-nuovi-veicoli-elettrici-stellantis-pro-one-AGHYRXOB",
-    "urlToImage": "https://i2.res.24o.it/images2010/S24/Documenti/2024/11/26/Immagini/Ritagli/Foto%20e-Ducato-kFaC--1440x752@IlSole24Ore-Web.jpg?r=1170x507",
-    "publishedAt": "2024-11-25T14:31:35Z",
-    "content": "Ascolta la versione audio dell'articolo\r\n2' di lettura\r\nAvviata la produzione dei nuovi Large Van elettrici di Stellantis Pro One nello stabilimento di Atessa (Chieti), il più grande impianto europeo… [+2883 chars]"
-  },
-  {
-    "source": {
-      "id": "la-repubblica",
-      "name": "La Repubblica"
+    {
+      "source": {
+        "id": "il-sole-24-ore",
+        "name": "Il Sole 24 Ore"
+      },
+      "author": "di Marta Casadei",
+      "title": "Pmi della moda, verso l’ok alla moratoria dei prestiti garantiti da Simest",
+      "description": "L’11 dicembre aprono le domande per accedere ai fondi Invitalia per la transizione green stanziati con la legge di Bilancio 2024 per un totale di 15 milioni di euro. Il 20 gennaio, invece, si terrà il prossimo Tavolo della Moda al Mimit",
+      "url": "https://www.ilsole24ore.com/art/pmi-moda-l-ok-moratoria-prestiti-garantiti-simest-AGOwodXB",
+      "urlToImage": "https://i2.res.24o.it/images2010/S24/Documenti/2024/12/04/Immagini/Ritagli/Imagoeconomica_1939797-U60138672241ddD-1440x752@IlSole24Ore-Web.jpg?r=1170x507",
+      "publishedAt": "2024-12-05T13:48:57Z",
+      "content": "Ascolta la versione audio dell'articolo\r\n2' di lettura\r\nMentre il settore della moda si avvia a concludere un anno di sofferenza, con la crisi che ha investito in modo importante le Pmi della filiera… [+2880 chars]"
     },
-    "author": "repubblicawww@repubblica.it (Redazione Repubblica.it)",
-    "title": "Tassisti torinesi, scarpette rosse davanti al Comune",
-    "description": "Un biglietto ricorda la tassista rapinata e ferita sull'Aurelia",
-    "url": "https://torino.repubblica.it/cronaca/2024/11/25/news/tassisti_torinesi_scarpette_rosse_davanti_al_comune-423724929/",
-    "urlToImage": "https://www.repstatic.it/content/localirep/img/rep-torino/2024/11/25/150724169-04c0755d-28c5-482b-91e4-18daecfb30da.jpg",
-    "publishedAt": "2024-11-25T14:07:26Z",
-    "content": "Anche i tassisti torinesi si mobilitano per sensibilizzare l'opinione pubblica nella Giornata internazionale perl'eliminazione della violenza contro le donne.\r\nQuaranta paia di scarpe rosse sono sta… [+375 chars]"
-  },
-  {
-    "source": {
-      "id": "la-repubblica",
-      "name": "La Repubblica"
+    {
+      "source": {
+        "id": "la-repubblica",
+        "name": "La Repubblica"
+      },
+      "author": "repubblicawww@repubblica.it (Redazione Repubblica.it)",
+      "title": "Vesta, il piano della Regione Piemonte per le famiglie prevede un voucher di 1000 euro a bambino",
+      "description": "La somma destinata a 10 mila famiglie Piemontesi può essere speso per pagare servizi per l’infanzia (dal nido alla scuola materna), baby sitter, centri estivi, attività sportive.",
+      "url": "https://torino.repubblica.it/cronaca/2024/12/05/news/vesta_piano_regione_piemonte_famiglie_voucher_1000_euro_bambino-423825446/",
+      "urlToImage": "https://www.repstatic.it/content/localirep/img/rep-torino/2024/12/05/133154281-d5314e5d-6f3a-4e43-8a9e-cc6990282cb2.jpg",
+      "publishedAt": "2024-12-05T12:29:21Z",
+      "content": "Vesta, come la dea romana del focolare domestico. E un simbolo che sembra ma, mette le mani avanti il governatore Alberto Cirio, non è una fiamma. Si chiama così il nuovo provvedimento della Regione … [+843 chars]"
     },
-    "author": "repubblicawww@repubblica.it (Redazione Repubblica.it)",
-    "title": "Violenza donne: “Chiedete aiuto”, il manifesto di Chiara vince",
-    "description": "Progetto a Torino dei carabinieri e del liceo artistico Cottini",
-    "url": "https://torino.repubblica.it/cronaca/2024/11/25/news/violenza_donne_chiedete_aiuto_il_manifesto_di_chiara_vince-423724833/",
-    "urlToImage": "https://www.repstatic.it/content/localirep/img/rep-torino/2024/11/25/145521088-99f8b225-302b-4a94-9e24-8de2f9a4489f.jpg",
-    "publishedAt": "2024-11-25T13:55:22Z",
-    "content": "\"Il primo passo per cambiare tutto è chiedere aiuto\". E' il manifesto realizzato da Chiara Pasquero, studentessa\r\n17enne, ad essere stato scelto come testimonial conclusivo di un ciclo di incontri fr… [+1452 chars]"
-  },
-  {
-    "source": {
-      "id": "il-sole-24-ore",
-      "name": "Il Sole 24 Ore"
+    {
+      "source": {
+        "id": "il-sole-24-ore",
+        "name": "Il Sole 24 Ore"
+      },
+      "author": "Luca Tremolada",
+      "title": "Google anticipa Sora e lancia dentro Vertex Ai Veo, la nuova Ai generativa dedicata ai video",
+      "description": "Veo, il Large Language Model proprietario sviluppato dagli ingegneri di DeepMind che permette di generare video a partire da testo o immagini, sarà disponibile in anteprima privata per i clienti di Google Cloud tramite la piattaforma di apprendimento automati…",
+      "url": "https://www.infodata.ilsole24ore.com/2024/12/05/google-anticipa-sora-e-lancia-dentro-vertex-ai-veo-la-nuova-ai-generativa-dedicata-ai-video/",
+      "urlToImage": "https://www.infodata.ilsole24ore.com/wp-content/uploads/sites/89/2024/12/imagen-3-customization.png",
+      "publishedAt": "2024-12-05T12:20:36Z",
+      "content": "Le regole della Community\r\nIl Sole 24 ORE incoraggia i lettori al dibattito ed al libero scambio di opinioni sugli argomenti oggetto di discussione nei nostri articoli. I commenti non devono necessar… [+1942 chars]"
     },
-    "author": "Luca Tremolada",
-    "title": "The budget game, nei panni del premier britannico #MathGamesAndWeirdThings",
-    "description": "Il Financial Times ha sviluppato un videgiocoche consente di calarsi nei panni del premier del Regno Unito e di prendere decisioni sulla politica fiscale e sulla spesa per il pareggio di bilancio. Quello di quest'anno sarà un bilancio storico, con conseguenze…",
-    "url": "https://www.infodata.ilsole24ore.com/2024/11/25/the-budget-game-nei-panni-del-premier-britannico-mathgamesandweirdthings-2/",
-    "urlToImage": "https://www.infodata.ilsole24ore.com/wp-content/uploads/sites/89/2024/10/FireShot-Capture-007-The-Budget-Game_-puoi-governare-leconomia-del-Regno-Unito_-ig.ft_.com_.png",
-    "publishedAt": "2024-11-25T13:05:00Z",
-    "content": "Le regole della Community\r\nIl Sole 24 ORE incoraggia i lettori al dibattito ed al libero scambio di opinioni sugli argomenti oggetto di discussione nei nostri articoli. I commenti non devono necessar… [+1942 chars]"
-  },
-  {
-    "source": {
-      "id": "il-sole-24-ore",
-      "name": "Il Sole 24 Ore"
+    {
+      "source": {
+        "id": "la-repubblica",
+        "name": "La Repubblica"
+      },
+      "author": "repubblicawww@repubblica.it (Redazione Repubblica.it)",
+      "title": "Alessandro Bollo: “Il Risorgimento rivivrà con gli avatar di Mazzini e Cavour ”",
+      "description": "Voglio togliere la polvere che copre l’Ottocento e far capire quanto siano attuali i temi sociali affrontati all’epoca Molte persone hanno ricordi fermi alle nozioni di scuola",
+      "url": "https://torino.repubblica.it/cronaca/2024/12/05/news/alessandro_bollo_il_risorgimento_rivivra_con_gli_avatar_di_mazzini_e_cavour_-423825410/",
+      "urlToImage": "https://www.repstatic.it/content/localirep/img/rep-torino/2024/12/05/131544887-20327cc9-4ee1-4409-8fc7-7ed0ed42670e.jpg",
+      "publishedAt": "2024-12-05T12:15:55Z",
+      "content": "Un avatar di Mazzini o Cavour che si interfacci nelle sale con i visitatori e risponda alle loro domande. Sembra un sogno, ma con lintelligenza artificiale progetti come questo fra due o tre anni sar… [+5979 chars]"
     },
-    "author": "di Luca Bergamin",
-    "title": "Spiagge, deserti e templi nel Gujarat col mito del Mahatma Gandhi",
-    "description": "Aavo Padharo. E’ la frase, il cui significato sarebbe l’ospite, è come un Dio, che ci si sente rivolgere tantissime volte al giorno durante un viaggio allo scoperta del Gujarat,...",
-    "url": "https://www.ilsole24ore.com/art/spiagge-deserti-e-templi-gujarat-col-mito-mahatma-gandhi-AGAvyMOB",
-    "urlToImage": "https://i2.res.24o.it/images2010/2024/11/AGAvyMOB/images/2aee144e-ab29-11ef-a762-0b51e978ef58-fotohome0.jpg",
-    "publishedAt": "2024-11-25T12:59:17Z",
-    "content": "Aavo Padharo. E la frase, il cui significato sarebbe lospite, è come un Dio, che ci si sente rivolgere tantissimevolte al giorno durante un viaggio allo scoperta del Gujarat, lo Stato indiano affacc… [+525 chars]"
-  },
-  {
-    "source": {
-      "id": "la-repubblica",
-      "name": "La Repubblica"
+    {
+      "source": {
+        "id": "la-repubblica",
+        "name": "La Repubblica"
+      },
+      "author": "repubblicawww@repubblica.it (Redazione Repubblica.it)",
+      "title": "Luci e giochi giganti per Natale: domenica si accende l’albero",
+      "description": "Le iniziative del Comune di Torino",
+      "url": "https://torino.repubblica.it/cronaca/2024/12/05/news/luci_e_giochi_giganti_per_natale_domenica_si_accende_l_albero-423825405/",
+      "urlToImage": "https://www.repstatic.it/content/localirep/img/rep-torino/2024/12/05/131120172-f4b4f4a0-f4f3-4898-9e55-5e4a37789d1d.jpg",
+      "publishedAt": "2024-12-05T12:11:31Z",
+      "content": "È un Natale ricco di appuntamenti, di luci e sorprese quello torinese. Ci sarà tanta musica e tanta luce per le strade. E in piazza Carlo Alberto farà la sua comparsa dal 14 al 22 dicembre lagrande … [+2007 chars]"
     },
-    "author": "repubblicawww@repubblica.it (Redazione Repubblica.it)",
-    "title": "Nel 2025 +10% di multe a Torino anche grazie agli autovelox: il bilancio previsionale del Comune",
-    "description": "Un annuncio che ha fatto scattare i commenti di consiglieri comunali come Pierlucio Firrao che parla di ulteriore stangata",
-    "url": "https://torino.repubblica.it/cronaca/2024/11/25/news/multe_2025_torino_bilancio-423723931/",
-    "urlToImage": "https://www.repstatic.it/content/localirep/img/rep-torino/2024/11/25/131807683-8922d276-994f-4fc2-bbd4-0c365df5bab5.jpg",
-    "publishedAt": "2024-11-25T12:58:43Z",
-    "content": "I due nuovi autovelox che la città dovrebbe installare nei prossimi mesi e le telecamere che sorveglieranno le corsie preferenziali dedicate ai tram e bus, fanno prevedere un aumento degli incassi de… [+1356 chars]"
-  },
-  {
-    "source": {
-      "id": "il-sole-24-ore",
-      "name": "Il Sole 24 Ore"
+    {
+      "source": {
+        "id": "la-repubblica",
+        "name": "La Repubblica"
+      },
+      "author": "repubblicawww@repubblica.it (Redazione Repubblica.it)",
+      "title": "Tornano “Cuori” e Alberto Angela La Rai di Torino punta anche sull’IA",
+      "description": "La sede sotto la Mole con mille addetti lavora a pieno ritmo per le produzioni in corso come “La porta magica” e per le novità 2025. Grande investimento anche sulla tecnologia come il nuovo studio virtuale unico in Italia",
+      "url": "https://torino.repubblica.it/cronaca/2024/12/05/news/tornano_cuori_e_alberto_angela_la_rai_di_torino_punta_anche_sull_ia-423825398/",
+      "urlToImage": "https://www.repstatic.it/content/localirep/img/rep-torino/2024/12/05/130440968-176f9c93-5abd-423d-b303-0ec9e5abe468.jpg",
+      "publishedAt": "2024-12-05T12:09:15Z",
+      "content": "È un buon momento per il Centro di produzione della Rai di Torino, gli studi storici di via Verdi 16 tornano a riempirsi e il direttore Guido Rossi, con i vertici della tv pubblica, è impegnato a dar… [+2665 chars]"
     },
-    "author": "Infodata",
-    "title": "Una giornata uggiosa (e nebbiosa) nella pianura padana (vista dall’alto)",
-    "description": "Sappiamo che il bacino del fiume Po è una delle regioni più densamente popolate d'Italia con oltre 16 milionidi abitanti, è noto per la frequente presenza di nebbia e foschia, specialmente durante i mesi autunnali e invernali. Questi fenomeni sono spesso pre…",
-    "url": "https://www.infodata.ilsole24ore.com/2024/11/25/una-giornata-uggiosa-e-nebbiosa-nella-pianura-padana-vista-dallalto/"
-,
-    "urlToImage": "https://www.infodata.ilsole24ore.com/wp-content/uploads/sites/89/2024/11/dwqweqq.jpg",
-    "publishedAt": "2024-11-25T12:37:34Z",
-    "content": "Le regole della Community\r\nIl Sole 24 ORE incoraggia i lettori al dibattito ed al libero scambio di opinioni sugli argomenti oggetto di discussione nei nostri articoli. I commenti non devono necessar… [+1942 chars]"
-  },
-  {
-    "source": {
-      "id": "il-sole-24-ore",
-      "name": "Il Sole 24 Ore"
+    {
+      "source": {
+        "id": "la-repubblica",
+        "name": "La Repubblica"
+      },
+      "author": "repubblicawww@repubblica.it (Redazione Repubblica.it)",
+      "title": "Stretta ai minimarket a Barriera di Milano stop alla vendita di alcolici di sera",
+      "description": "",
+      "url": "https://torino.repubblica.it/cronaca/2024/12/05/news/stretta_ai_minimarket_a_barriera_di_milano_stop_alla_vendita_di_alcolici_di_sera-423825396/",
+      "urlToImage": "https://www.repstatic.it/content/localirep/img/rep-torino/2024/12/05/130335962-b9728fa0-cda6-4daa-ab28-94534cd065d0.jpg",
+      "publishedAt": "2024-12-05T12:03:37Z",
+      "content": "Urla, risse, avventori che restano per strada per buona parte della notte. I due minimarket di corso Taranto, nel cuore di Barriera di Milano, da tempo creano disturbo e malumore tra i residenti. \r\nD… [+696 chars]"
     },
-    "author": "di Redazione Moda",
-    "title": "Il Gruppo Pattern presenta i suoi obiettivi Esg per il 2030",
-    "description": "Il gruppo conferma gli investimenti, nonostante il difficile momento di mercato, per lo sviluppo di un innovativo Modello di Gestione Integrato ESG",
-    "url": "https://www.ilsole24ore.com/art/il-gruppo-pattern-presenta-suoi-obiettivi-esg-il-2030-AGp7yMOB",
-    "urlToImage": "https://i2.res.24o.it/images2010/S24/Documenti/2024/11/26/Immagini/Ritagli/pattern-U02170148748xJX-1440x752@IlSole24Ore-Web.jpg?r=1170x507",
-    "publishedAt": "2024-11-25T12:35:10Z",
-    "content": "Ascolta la versione audio dell'articolo\r\n3' di lettura\r\nNel 2024 le 13 aziende - per oltre 800 dipendenti - del Gruppo Pattern, azienda leader nella progettazione, ingegneria e produzione di capi sfi… [+2683 chars]"
-  },
-  {
-    "source": {
-      "id": "la-repubblica",
-      "name": "La Repubblica"
+    {
+      "source": {
+        "id": "la-repubblica",
+        "name": "La Repubblica"
+      },
+      "author": "repubblicawww@repubblica.it (Redazione Repubblica.it)",
+      "title": "Paziente violentò due donne ricoverate in psichiatria, ospedale sotto inchiesta",
+      "description": "Un fotografo afgano è accusato di stupro ma era “incapace di intendere”. Indagine sulle omissioni nella sorveglianza del personale sanitario \n   \n …",
+      "url": "https://torino.repubblica.it/cronaca/2024/12/05/news/paziente_violento_due_donne_ricoverate_in_psichiatria_ospedale_sotto_inchiesta-423825384/",
+      "urlToImage": "https://www.repstatic.it/content/localirep/img/rep-torino/2024/12/05/130046407-3c068456-6dfc-40f4-ae93-92b5f1fa6c75.jpg",
+      "publishedAt": "2024-12-05T12:00:49Z",
+      "content": "Gli avevano diagnosticato un generico disturbo dansia legato a crisi di panico, gli avevano dato 20 gocce di alprazolam e dopo alcune ore dattesa al pronto soccorso delle Molinette, dove era arrivato… [+3047 chars]"
     },
-    "author": "repubblicawww@repubblica.it (Redazione Repubblica.it)",
-    "title": "Carabinieri, poliziotti e finanzieri uniti in corteo a Torino:“Giù le mani dalla divisa”",
-    "description": "Ad aprire la manifestazione lo striscione “Chiudiamo Askatasuna”",
-    "url": "https://torino.repubblica.it/cronaca/2024/11/25/news/corteo_forze_dell_ordine_torino-423722707/",
-    "urlToImage": "https://www.repstatic.it/content/localirep/img/rep-torino/2024/11/25/111547360-c00a5449-4595-45b4-899f-a35bad1c9c3e.jpg",
-    "publishedAt": "2024-11-25T10:16:14Z",
-    "content": "Il corteo, partito dalla questura al grido di «Giù le mani dalle divise», terminerà davanti alla prefettura. Ad aprire la manifestazione lo striscione «Chiudiamo Askatasuna». Stamattinac carabinieri,… [+2210 chars]"
-  },
-  {
-    "source": {
-      "id": "la-repubblica",
-      "name": "La Repubblica"
+    {
+      "source": {
+        "id": "la-repubblica",
+        "name": "La Repubblica"
+      },
+      "author": "repubblicawww@repubblica.it (Redazione Repubblica.it)",
+      "title": "Un parcheggio diventa un'opera d'arte di mattoncini colorati a Beinasco",
+      "description": "Art Site Park ed è un grande intervento di decoro urbano al centro commerciale Le Fornaci",
+      "url": "https://torino.repubblica.it/cronaca/2024/12/05/news/parcheggio_opera_d_arte_beinasco-423825323/",
+      "urlToImage": "https://www.repstatic.it/content/localirep/img/rep-torino/2024/12/05/123600592-f8fac01a-26e3-4630-8753-72456bad2262.jpg",
+      "publishedAt": "2024-12-05T11:36:02Z",
+      "content": "Unesplosione di colori ma anche unopera di arte urbana di cinquemila metri quadri di superficie, sviluppata per 2,5 chilometri e altra oltre 12 metri, che per realizzarla ci sono voluti 700 litri di … [+1940 chars]"
     },
-    "author": "repubblicawww@repubblica.it (Redazione Repubblica.it)",
-    "title": "Per Epat Ascom locale più peso nazionale. Successione al Touring",
-    "description": "",
-    "url": "https://torino.repubblica.it/cronaca/2024/11/25/news/per_epat_ascom_locale_piu_peso_nazionale_successione_al_touring-423722332/",
-    "urlToImage": "https://www.repstatic.it/content/localirep/img/rep-torino/2024/11/25/104309056-e363256c-a9c8-454f-b522-bcc73de380d6.jpg",
-    "publishedAt": "2024-11-25T09:43:19Z",
-    "content": "Torino ribadisce il suo peso a livello nazionale, se si parla del settore del commercio. In occasione della conferma di Lino Enrico Stoppanialla presidenza nazionale dellassociazione dei pubblici ese… [+150 chars]"
-  },
-  {
-    "source": {
-      "id": "la-repubblica",
-      "name": "La Repubblica"
+    {
+      "source": {
+        "id": "la-repubblica",
+        "name": "La Repubblica"
+      },
+      "author": "repubblicawww@repubblica.it (Redazione Repubblica.it)",
+      "title": "Aumentano compravendite di immobili a Torino ma prezzi in calo",
+      "description": "Osservatorio sul mercato 2024 di Nomisma",
+      "url": "https://torino.repubblica.it/cronaca/2024/12/05/news/aumentano_compravendite_di_immobili_a_torino_ma_prezzi_in_calo-423825239/",
+      "urlToImage": "https://www.repstatic.it/content/localirep/img/rep-torino/2024/12/05/121215448-b2b54b78-22c3-47cf-a009-b1aea2231455.jpg",
+      "publishedAt": "2024-12-05T11:12:16Z",
+      "content": "Nella seconda parte dell'anno il mercato residenziale di Torino ha continuato a mostrare \"segnali di appannamento\". Le compravendite sono in calo del 6% e, per l'acquisto, il ricorso al mutuo resta f… [+2069 chars]"
     },
-    "author": "repubblicawww@repubblica.it (Redazione Repubblica.it)",
-    "title": "Prende il via da Torino la riscossa degli osteopati: “Riconosciuti per legge”",
-    "description": "",
-    "url": "https://torino.repubblica.it/cronaca/2024/11/25/news/prende_il_via_da_torino_la_riscossa_degli_osteopati_riconosciuti_per_legge-423722313/",
-    "urlToImage": "https://www.repstatic.it/content/localirep/img/rep-torino/2024/11/25/104152531-f9c2bd7f-adef-4301-b259-2c65eb86f190.jpg",
-    "publishedAt": "2024-11-25T09:41:55Z",
-    "content": "«Negli anni Novanta mi sono trovato i carabinieri in studio: mi accusavano di esercizio abusivo della professionedel fisioterapista. Ho dimostrato che così non era e nel tempo ho lavorato per cambia… [+2797 chars]"
-  },
-  {
-    "source": {
-      "id": "la-repubblica",
-      "name": "La Repubblica"
+    {
+      "source": {
+        "id": "il-sole-24-ore",
+        "name": "Il Sole 24 Ore"
+      },
+      "author": "di Paco Guarnaccia",
+      "title": "Garmin Italia premia i campioni dello sport e inaugura la nuova sede di Milano",
+      "description": "Nei giorni scorsi la nona edizione dei Garmin Beat Yesterday Awards 2024, nuova edizione dell’evento organizzato dalla filiale italiana del brand americano leader nel settore della tecnologia indossabile",
+      "url": "https://www.ilsole24ore.com/art/garmin-italia-premia-campioni-sport-e-inaugura-nuova-sede-milano-AGvsVdZB",
+      "urlToImage": "https://i2.res.24o.it/images2010/S24/Documenti/2024/12/06/Immagini/1%20GRUPPO%20immagine%205.jpg?r=1170x507",
+      "publishedAt": "2024-12-05T10:28:23Z",
+      "content": "Ascolta la versione audio dell'articolo\r\n3' di lettura\r\nUn ricco parterre di atleti, freschi di medaglia alle ultime Olimpiadi di Parigi, il 3 dicembre ha premiato i vincitori dei Garmin Beat Yesterd… [+4022 chars]"
     },
-    "author": "repubblicawww@repubblica.it (Redazione Repubblica.it)",
-    "title": "Fassone, Spin-To “È faticoso, ma creare una community paga”",
-    "description": "Parla l’imprenditore ed esperto di comunicazione",
-    "url": "https://torino.repubblica.it/cronaca/2024/11/25/news/fassone_spin-to_e_faticoso_ma_creare_una_community_paga-423722198/",
-    "urlToImage": "https://www.repstatic.it/content/localirep/img/rep-torino/2024/11/25/102911335-faaa4d20-a898-4a6b-9c33-3c2442b949a5.jpg",
-    "publishedAt": "2024-11-25T09:29:45Z",
-    "content": "«Il mondo della comunicazione è in continua evoluzione e noi, in 15 anni, abbiamo visto cambiare molte cose. Sonocambiati i cosiddetti oldmedia, ma ancora di più i social». Parola di Stefano Fassone… [+2841 chars]"
-  },
-  {
-    "source": {
-      "id": "la-repubblica",
-      "name": "La Repubblica"
+    {
+      "source": {
+        "id": "la-repubblica",
+        "name": "La Repubblica"
+      },
+      "author": "repubblicawww@repubblica.it (Redazione Repubblica.it)",
+      "title": "Colpisce con un pugno infermiere del pronto soccorso, arrestato",
+      "description": "È accaduto nell'ospedale Maggiore di Chieri, nel Torinese",
+      "url": "https://torino.repubblica.it/cronaca/2024/12/05/news/chieri_pugno_infermiere_pronto_soccorso_arrestato-423825073/",
+      "urlToImage": "https://www.repstatic.it/content/localirep/img/rep-torino/2024/12/05/104617136-f95d7ac2-a1bd-4737-b82b-b4e6fa8a2e1e.jpg",
+      "publishedAt": "2024-12-05T09:46:19Z",
+      "content": "Ha sferrato un pugno al volto di un infermiere, che è dovuto ricorrere alle cure dei suoi colleghi.\r\nÈ accaduto nell'ospedale Maggiore di Chieri, nel Torinese. Protagonista un uomo di 50 anni, senza … [+354 chars]"
     },
-    "author": "repubblicawww@repubblica.it (Redazione Repubblica.it)",
-    "title": "Da X a Instagram, ecco perché i colossi torinesi puntano sui social",
-    "description": "Caffè, automotive, credito: ultimo esempio il fenomeno Sinner ma strategie diverse a seconda di brand, piattaforma, età del pubblico \n …",
-    "url": "https://torino.repubblica.it/cronaca/2024/11/25/news/da_x_a_instagram_ecco_perche_i_colossi_torinesi_puntano_sui_social-423722135/",
-    "urlToImage": "https://www.repstatic.it/content/localirep/img/rep-torino/2024/11/25/102127389-ecb947fc-3550-423b-8256-3a1ff530b51e.jpg",
-    "publishedAt": "2024-11-25T09:26:35Z",
-    "content": "Esaurita (nemmeno troppo in fretta) letà dellinnocenza, il mondo dei social network ha abbracciato letà matura; se non per lutenza generalista, sicuramente per le aziende che in questo mondo virtuale… [+62 chars]"
-  }
-]
+
+    {
+      "source": {
+        "id": "la-repubblica",
+        "name": "La Repubblica"
+      },
+      "author": "repubblicawww@repubblica.it (Redazione Repubblica.it)",
+      "title": "Il Premio Prolo 2024 ad Ariane Ascaride",
+      "description": "La cerimonia martedì 10 dicembre al cinema Massimo",
+      "url": "https://torino.repubblica.it/cronaca/2024/12/05/news/premio_prolo_2024_ariane_ascaride-423825926/",
+      "urlToImage": "https://www.repstatic.it/content/localirep/img/rep-torino/2024/12/05/172817569-bd759eef-4de1-4c64-a973-00dd5055a179.jpg",
+      "publishedAt": "2024-12-05T16:31:37Z",
+      "content": "Il 10 dicembre al cinema Massimo di Torino sarà consegnato il Premio Maria Adriana Prolo all'attrice Ariane Ascaride, in occasione della Giornata mondiale dei Diritti umani. Promosso dall'Associazion… [+1301 chars]"
+    },
+    {
+      "source": {
+        "id": "il-sole-24-ore",
+        "name": "Il Sole 24 Ore"
+      },
+      "author": null,
+      "title": "Rd Congo, oltre 70 morti per malattia sconosciuta. Governo «in allerta»",
+      "description": "Le vittime sono soprattutto bambini: i sintomi sono febbre, mal di testa, tosse e anemia. L’Oms ha inviato una squadra di esperti per valutare la situazione che le autorità locali definiscono preoccupante.",
+      "url": "https://www.ilsole24ore.com/art/rd-congo-oltre-70-morti-malattia-sconosciuta-governo-in-allerta-AG1gD1ZB",
+      "urlToImage": "https://i2.res.24o.it/images2010/S24/Documenti/2024/12/06/Immagini/Ritagli/AFP_36MW4HV(1)-U08151150342kfM-1440x752@IlSole24Ore-Web.jpg?r=1170x507",
+      "publishedAt": "2024-12-05T16:30:12Z",
+      "content": "Ascolta la versione audio dell'articolo\r\n3' di lettura\r\nSono oltre 70, di cui circa la metà bambini, i decessi per unepidemia causata da una malattia simil-influenzale - al momento sconosciuta - che … [+3333 chars]"
+    },
+    {
+      "source": {
+        "id": "la-repubblica",
+        "name": "La Repubblica"
+      },
+      "author": "repubblicawww@repubblica.it (Redazione Repubblica.it)",
+      "title": "Poliambulatorio di via Montanaro in Barriera di Milano al freddo: 15 gradi",
+      "description": "La denuncia della consigliera Alice Ravinale",
+      "url": "https://torino.repubblica.it/cronaca/2024/12/05/news/poliambulatorio_di_via_montanaro_in_barriera_di_milano_al_freddo_15_gradi-423825907/",
+      "urlToImage": "https://www.repstatic.it/content/localirep/img/rep-torino/2024/12/05/172039557-06bfc785-bf58-48fc-8bd3-57aea6ffa1e3.jpg",
+      "publishedAt": "2024-12-05T16:20:41Z",
+      "content": "Una vecchietta in attesa del suo turno si rimette la cuffietta in lana che si era appena levata. Alla sua sinistra un signore indossa i guanti. É questa la situazione che stamattina la consigliera re… [+1836 chars]"
+    },
+    {
+      "source": {
+        "id": "la-repubblica",
+        "name": "La Repubblica"
+      },
+      "author": "repubblicawww@repubblica.it (Redazione Repubblica.it)",
+      "title": "A Torino la prima scuola del Piemonte dedicata a Morricone",
+      "description": "Cerimonia di intitolazione domani al Serming",
+      "url": "https://torino.repubblica.it/cronaca/2024/12/05/news/a_torino_la_prima_scuola_del_piemonte_dedicata_a_morricone-423825971/",
+      "urlToImage": "https://www.repstatic.it/content/localirep/img/rep-torino/2024/12/05/174940653-bfc48b64-a379-4651-a01c-35a858ac1972.jpg",
+      "publishedAt": "2024-12-05T15:56:00Z",
+      "content": "Con una cerimonia, che si svolgerà domani al teatro del Serming di Torino, alle 18, l'istituto comprensivo di corso Vercelli sarà intitolato a Ennio Morricone.\r\n\"Si tratta del primo istituto in Piemo… [+686 chars]"
+    },
+    {
+      "source": {
+        "id": "il-sole-24-ore",
+        "name": "Il Sole 24 Ore"
+      },
+      "author": "dal nostro inviato a New York Luca Veronese",
+      "title": "Trump pronto a mandare gli immigrati irregolari nelle isole dei Caraibi",
+      "description": "Il piano prevede di spedire i migranti senza permesso in Paesi terzi: dalle isole Turcks and Caicos, alle Bahamas, a Panama e Grenada. Gli esplusi sarebbero soprattutto persone provenienti da Venezuela, Cuba e Cina",
+      "url": "https://www.ilsole24ore.com/art/trump-pronto-mandare-immigrati-irregolari-isole-caraibi-AGbwNyZB",
+      "urlToImage": "https://i2.res.24o.it/images2010/S24/Documenti/2024/12/06/Immagini/Ritagli/AFP_36MZ6ZE-U88212542486uNY-1440x752@IlSole24Ore-Web.jpg?r=1170x507",
+      "publishedAt": "2024-12-05T15:54:58Z",
+      "content": "Ascolta la versione audio dell'articolo\r\n2' di lettura\r\nSugli immigrati la stretta di Donald Trump arriverà subito: «Fin dal primo giorno alla Casa Bianca», ripetono nel team del presidente eletto. «… [+2110 chars]"
+    },
+    {
+      "source": {
+        "id": "il-sole-24-ore",
+        "name": "Il Sole 24 Ore"
+      },
+      "author": null,
+      "title": "Assassinio Manhattan, i proiettili avevano parole incise. Perquisito ostello",
+      "description": "Gli inquirenti seguono la pista del libro «Ritardare, negare, difendere: perché le compagnie assicurative non pagano i risarcimenti e cosa si può fare»",
+      "url": "https://www.ilsole24ore.com/art/assassinio-manhattan-proiettili-avevano-parole-incise-perquisito-ostello-AGmyqyZB",
+      "urlToImage": "https://i2.res.24o.it/images2010/S24/Documenti/2024/12/06/Immagini/Ritagli/LP_22931138-U02126667783ehU-1440x752@IlSole24Ore-Web.jpg?r=1170x507",
+      "publishedAt": "2024-12-05T15:19:00Z",
+      "content": "Ascolta la versione audio dell'articolo\r\n2' di lettura\r\nGuardando il video, sembra che sia abile nelluso delle armi da fuoco, poiché è stato in grado di risolvere i malfunzionamenti abbastanza rapida… [+1579 chars]"
+    },
+    {
+      "source": {
+        "id": "la-repubblica",
+        "name": "La Repubblica"
+      },
+      "author": "repubblicawww@repubblica.it (Redazione Repubblica.it)",
+      "title": "Assolto da accusa violenza minori, la madre dei bambini lo aggredisce",
+      "description": null,
+      "url": "https://torino.repubblica.it/cronaca/2024/12/05/news/assolto_da_accusa_violenza_minori_la_madre_dei_bambini_lo_aggredisce-423825933/",
+      "urlToImage": "https://www.repstatic.it/content/localirep/img/rep-torino/2024/12/05/173518943-9313c8b3-0fe6-43cc-b528-74a58c692e82.jpg",
+      "publishedAt": "2024-12-05T15:10:00Z",
+      "content": "Lui viene assolto dall'accusa di molestie sessuali ai danni dei bambini di un'amica, e lei, all'uscita dal tribunale, lo minaccia di morte e lo aggredisce con un martello.\r\nE' accaduto questa mattina… [+735 chars]"
+    },
+    {
+      "source": {
+        "id": "il-sole-24-ore",
+        "name": "Il Sole 24 Ore"
+      },
+      "author": "di Lucilla Incorvati",
+      "title": "Neve, cultura ed esperienze tra le valli trentine",
+      "description": "In Trentino Alto Adige l’inverno entra nel vivo con le sue località quasi tutte imbiancate dalla neve che puntuale è arrivata anche quest’anno e con essa le tante esperienze che...",
+      "url": "https://www.ilsole24ore.com/art/neve-cultura-ed-esperienze-le-valli-trentine-AG8HjtZB",
+      "urlToImage": "https://i2.res.24o.it/images2010/2024/12/AG8HjtZB/images/afe6ab0c-b312-11ef-aa0a-473f7a01d900-fotohome0.jpg",
+      "publishedAt": "2024-12-05T14:19:58Z",
+      "content": "In Trentino Alto Adige linverno entra nel vivo con le sue località quasi tutte imbiancate dalla neve che puntuale è arrivata anche questanno e con essa le tante esperienze che si organizzano da qui a… [+177 chars]"
+    },
+    {
+      "source": {
+        "id": "il-sole-24-ore",
+        "name": "Il Sole 24 Ore"
+      },
+      "author": "di Marta Casadei",
+      "title": "Pmi della moda, verso l’ok alla moratoria dei prestiti garantiti da Simest",
+      "description": "L’11 dicembre aprono le domande per accedere ai fondi Invitalia per la transizione green stanziati con la legge di Bilancio 2024 per un totale di 15 milioni di euro. Il 20 gennaio, invece, si terrà il prossimo Tavolo della Moda al Mimit",
+      "url": "https://www.ilsole24ore.com/art/pmi-moda-l-ok-moratoria-prestiti-garantiti-simest-AGOwodXB",
+      "urlToImage": "https://i2.res.24o.it/images2010/S24/Documenti/2024/12/04/Immagini/Ritagli/Imagoeconomica_1939797-U60138672241ddD-1440x752@IlSole24Ore-Web.jpg?r=1170x507",
+      "publishedAt": "2024-12-05T13:48:57Z",
+      "content": "Ascolta la versione audio dell'articolo\r\n2' di lettura\r\nMentre il settore della moda si avvia a concludere un anno di sofferenza, con la crisi che ha investito in modo importante le Pmi della filiera… [+2880 chars]"
+    },
+    {
+      "source": {
+        "id": "la-repubblica",
+        "name": "La Repubblica"
+      },
+      "author": "repubblicawww@repubblica.it (Redazione Repubblica.it)",
+      "title": "Vesta, il piano della Regione Piemonte per le famiglie prevede un voucher di 1000 euro a bambino",
+      "description": "La somma destinata a 10 mila famiglie Piemontesi può essere speso per pagare servizi per l’infanzia (dal nido alla scuola materna), baby sitter, centri estivi, attività sportive.",
+      "url": "https://torino.repubblica.it/cronaca/2024/12/05/news/vesta_piano_regione_piemonte_famiglie_voucher_1000_euro_bambino-423825446/",
+      "urlToImage": "https://www.repstatic.it/content/localirep/img/rep-torino/2024/12/05/133154281-d5314e5d-6f3a-4e43-8a9e-cc6990282cb2.jpg",
+      "publishedAt": "2024-12-05T12:29:21Z",
+      "content": "Vesta, come la dea romana del focolare domestico. E un simbolo che sembra ma, mette le mani avanti il governatore Alberto Cirio, non è una fiamma. Si chiama così il nuovo provvedimento della Regione … [+843 chars]"
+    },
+    {
+      "source": {
+        "id": "il-sole-24-ore",
+        "name": "Il Sole 24 Ore"
+      },
+      "author": "Luca Tremolada",
+      "title": "Google anticipa Sora e lancia dentro Vertex Ai Veo, la nuova Ai generativa dedicata ai video",
+      "description": "Veo, il Large Language Model proprietario sviluppato dagli ingegneri di DeepMind che permette di generare video a partire da testo o immagini, sarà disponibile in anteprima privata per i clienti di Google Cloud tramite la piattaforma di apprendimento automati…",
+      "url": "https://www.infodata.ilsole24ore.com/2024/12/05/google-anticipa-sora-e-lancia-dentro-vertex-ai-veo-la-nuova-ai-generativa-dedicata-ai-video/",
+      "urlToImage": "https://www.infodata.ilsole24ore.com/wp-content/uploads/sites/89/2024/12/imagen-3-customization.png",
+      "publishedAt": "2024-12-05T12:20:36Z",
+      "content": "Le regole della Community\r\nIl Sole 24 ORE incoraggia i lettori al dibattito ed al libero scambio di opinioni sugli argomenti oggetto di discussione nei nostri articoli. I commenti non devono necessar… [+1942 chars]"
+    },
+    {
+      "source": {
+        "id": "la-repubblica",
+        "name": "La Repubblica"
+      },
+      "author": "repubblicawww@repubblica.it (Redazione Repubblica.it)",
+      "title": "Alessandro Bollo: “Il Risorgimento rivivrà con gli avatar di Mazzini e Cavour ”",
+      "description": "Voglio togliere la polvere che copre l’Ottocento e far capire quanto siano attuali i temi sociali affrontati all’epoca Molte persone hanno ricordi fermi alle nozioni di scuola",
+      "url": "https://torino.repubblica.it/cronaca/2024/12/05/news/alessandro_bollo_il_risorgimento_rivivra_con_gli_avatar_di_mazzini_e_cavour_-423825410/",
+      "urlToImage": "https://www.repstatic.it/content/localirep/img/rep-torino/2024/12/05/131544887-20327cc9-4ee1-4409-8fc7-7ed0ed42670e.jpg",
+      "publishedAt": "2024-12-05T12:15:55Z",
+      "content": "Un avatar di Mazzini o Cavour che si interfacci nelle sale con i visitatori e risponda alle loro domande. Sembra un sogno, ma con lintelligenza artificiale progetti come questo fra due o tre anni sar… [+5979 chars]"
+    },
+    {
+      "source": {
+        "id": "la-repubblica",
+        "name": "La Repubblica"
+      },
+      "author": "repubblicawww@repubblica.it (Redazione Repubblica.it)",
+      "title": "Luci e giochi giganti per Natale: domenica si accende l’albero",
+      "description": "Le iniziative del Comune di Torino",
+      "url": "https://torino.repubblica.it/cronaca/2024/12/05/news/luci_e_giochi_giganti_per_natale_domenica_si_accende_l_albero-423825405/",
+      "urlToImage": "https://www.repstatic.it/content/localirep/img/rep-torino/2024/12/05/131120172-f4b4f4a0-f4f3-4898-9e55-5e4a37789d1d.jpg",
+      "publishedAt": "2024-12-05T12:11:31Z",
+      "content": "È un Natale ricco di appuntamenti, di luci e sorprese quello torinese. Ci sarà tanta musica e tanta luce per le strade. E in piazza Carlo Alberto farà la sua comparsa dal 14 al 22 dicembre lagrande … [+2007 chars]"
+    },
+    {
+      "source": {
+        "id": "la-repubblica",
+        "name": "La Repubblica"
+      },
+      "author": "repubblicawww@repubblica.it (Redazione Repubblica.it)",
+      "title": "Tornano “Cuori” e Alberto Angela La Rai di Torino punta anche sull’IA",
+      "description": "La sede sotto la Mole con mille addetti lavora a pieno ritmo per le produzioni in corso come “La porta magica” e per le novità 2025. Grande investimento anche sulla tecnologia come il nuovo studio virtuale unico in Italia",
+      "url": "https://torino.repubblica.it/cronaca/2024/12/05/news/tornano_cuori_e_alberto_angela_la_rai_di_torino_punta_anche_sull_ia-423825398/",
+      "urlToImage": "https://www.repstatic.it/content/localirep/img/rep-torino/2024/12/05/130440968-176f9c93-5abd-423d-b303-0ec9e5abe468.jpg",
+      "publishedAt": "2024-12-05T12:09:15Z",
+      "content": "È un buon momento per il Centro di produzione della Rai di Torino, gli studi storici di via Verdi 16 tornano a riempirsi e il direttore Guido Rossi, con i vertici della tv pubblica, è impegnato a dar… [+2665 chars]"
+    },
+    {
+      "source": {
+        "id": "la-repubblica",
+        "name": "La Repubblica"
+      },
+      "author": "repubblicawww@repubblica.it (Redazione Repubblica.it)",
+      "title": "Stretta ai minimarket a Barriera di Milano stop alla vendita di alcolici di sera",
+      "description": "",
+      "url": "https://torino.repubblica.it/cronaca/2024/12/05/news/stretta_ai_minimarket_a_barriera_di_milano_stop_alla_vendita_di_alcolici_di_sera-423825396/",
+      "urlToImage": "https://www.repstatic.it/content/localirep/img/rep-torino/2024/12/05/130335962-b9728fa0-cda6-4daa-ab28-94534cd065d0.jpg",
+      "publishedAt": "2024-12-05T12:03:37Z",
+      "content": "Urla, risse, avventori che restano per strada per buona parte della notte. I due minimarket di corso Taranto, nel cuore di Barriera di Milano, da tempo creano disturbo e malumore tra i residenti. \r\nD… [+696 chars]"
+    },
+    {
+      "source": {
+        "id": "la-repubblica",
+        "name": "La Repubblica"
+      },
+      "author": "repubblicawww@repubblica.it (Redazione Repubblica.it)",
+      "title": "Paziente violentò due donne ricoverate in psichiatria, ospedale sotto inchiesta",
+      "description": "Un fotografo afgano è accusato di stupro ma era “incapace di intendere”. Indagine sulle omissioni nella sorveglianza del personale sanitario \n   \n …",
+      "url": "https://torino.repubblica.it/cronaca/2024/12/05/news/paziente_violento_due_donne_ricoverate_in_psichiatria_ospedale_sotto_inchiesta-423825384/",
+      "urlToImage": "https://www.repstatic.it/content/localirep/img/rep-torino/2024/12/05/130046407-3c068456-6dfc-40f4-ae93-92b5f1fa6c75.jpg",
+      "publishedAt": "2024-12-05T12:00:49Z",
+      "content": "Gli avevano diagnosticato un generico disturbo dansia legato a crisi di panico, gli avevano dato 20 gocce di alprazolam e dopo alcune ore dattesa al pronto soccorso delle Molinette, dove era arrivato… [+3047 chars]"
+    },
+    {
+      "source": {
+        "id": "la-repubblica",
+        "name": "La Repubblica"
+      },
+      "author": "repubblicawww@repubblica.it (Redazione Repubblica.it)",
+      "title": "Un parcheggio diventa un'opera d'arte di mattoncini colorati a Beinasco",
+      "description": "Art Site Park ed è un grande intervento di decoro urbano al centro commerciale Le Fornaci",
+      "url": "https://torino.repubblica.it/cronaca/2024/12/05/news/parcheggio_opera_d_arte_beinasco-423825323/",
+      "urlToImage": "https://www.repstatic.it/content/localirep/img/rep-torino/2024/12/05/123600592-f8fac01a-26e3-4630-8753-72456bad2262.jpg",
+      "publishedAt": "2024-12-05T11:36:02Z",
+      "content": "Unesplosione di colori ma anche unopera di arte urbana di cinquemila metri quadri di superficie, sviluppata per 2,5 chilometri e altra oltre 12 metri, che per realizzarla ci sono voluti 700 litri di … [+1940 chars]"
+    },
+    {
+      "source": {
+        "id": "la-repubblica",
+        "name": "La Repubblica"
+      },
+      "author": "repubblicawww@repubblica.it (Redazione Repubblica.it)",
+      "title": "Aumentano compravendite di immobili a Torino ma prezzi in calo",
+      "description": "Osservatorio sul mercato 2024 di Nomisma",
+      "url": "https://torino.repubblica.it/cronaca/2024/12/05/news/aumentano_compravendite_di_immobili_a_torino_ma_prezzi_in_calo-423825239/",
+      "urlToImage": "https://www.repstatic.it/content/localirep/img/rep-torino/2024/12/05/121215448-b2b54b78-22c3-47cf-a009-b1aea2231455.jpg",
+      "publishedAt": "2024-12-05T11:12:16Z",
+      "content": "Nella seconda parte dell'anno il mercato residenziale di Torino ha continuato a mostrare \"segnali di appannamento\". Le compravendite sono in calo del 6% e, per l'acquisto, il ricorso al mutuo resta f… [+2069 chars]"
+    },
+    {
+      "source": {
+        "id": "il-sole-24-ore",
+        "name": "Il Sole 24 Ore"
+      },
+      "author": "di Paco Guarnaccia",
+      "title": "Garmin Italia premia i campioni dello sport e inaugura la nuova sede di Milano",
+      "description": "Nei giorni scorsi la nona edizione dei Garmin Beat Yesterday Awards 2024, nuova edizione dell’evento organizzato dalla filiale italiana del brand americano leader nel settore della tecnologia indossabile",
+      "url": "https://www.ilsole24ore.com/art/garmin-italia-premia-campioni-sport-e-inaugura-nuova-sede-milano-AGvsVdZB",
+      "urlToImage": "https://i2.res.24o.it/images2010/S24/Documenti/2024/12/06/Immagini/1%20GRUPPO%20immagine%205.jpg?r=1170x507",
+      "publishedAt": "2024-12-05T10:28:23Z",
+      "content": "Ascolta la versione audio dell'articolo\r\n3' di lettura\r\nUn ricco parterre di atleti, freschi di medaglia alle ultime Olimpiadi di Parigi, il 3 dicembre ha premiato i vincitori dei Garmin Beat Yesterd… [+4022 chars]"
+    },
+    {
+      "source": {
+        "id": "la-repubblica",
+        "name": "La Repubblica"
+      },
+      "author": "repubblicawww@repubblica.it (Redazione Repubblica.it)",
+      "title": "Colpisce con un pugno infermiere del pronto soccorso, arrestato",
+      "description": "È accaduto nell'ospedale Maggiore di Chieri, nel Torinese",
+      "url": "https://torino.repubblica.it/cronaca/2024/12/05/news/chieri_pugno_infermiere_pronto_soccorso_arrestato-423825073/",
+      "urlToImage": "https://www.repstatic.it/content/localirep/img/rep-torino/2024/12/05/104617136-f95d7ac2-a1bd-4737-b82b-b4e6fa8a2e1e.jpg",
+      "publishedAt": "2024-12-05T09:46:19Z",
+      "content": "Ha sferrato un pugno al volto di un infermiere, che è dovuto ricorrere alle cure dei suoi colleghi.\r\nÈ accaduto nell'ospedale Maggiore di Chieri, nel Torinese. Protagonista un uomo di 50 anni, senza … [+354 chars]"
+    }
+  ]
 }

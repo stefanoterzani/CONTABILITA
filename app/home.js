@@ -89,8 +89,8 @@ export default function Home() {
        // https://newsapi.org/v2/top-headlines?country=us&language=it&pageSize=10&apiKey=YOUR_API_KEY
      
      
-   //   const response = await fetch('https://newsapi.org/v2/everything?domains=repubblica.it,ilsole24ore.com&language=it&from=2024-11-26&to=2024-11-28&sortBy=publishedAt&pageSize=20&page%3E=1&apiKey=72ffccf13a934f7eaeee8fcb69551efa'); // Sostituisci con l'URL della tua API per le news italiane
-   // const data = await response.json();
+   //   const response = await fetch('https://newsapi.org/v2/everything?domains=repubblica.it,ilsole24ore.com&language=it&from=2024-12-048&to=2024-12-06&sortBy=publishedAt&pageSize=20&page%3E=1&apiKey=72ffccf13a934f7eaeee8fcb69551efa'); // Sostituisci con l'URL della tua API per le news italiane
+  //  const data = await response.json();
 
        const data=datiApi
     //   console.log('response',JSON.stringify(data, null, 2))

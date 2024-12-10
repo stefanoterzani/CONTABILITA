@@ -1,7 +1,8 @@
-import { Platform,StyleSheet, Text, View } from 'react-native'
+import { Platform, Text, View, TextInput,StyleSheet } from 'react-native';
 import React from 'react'
 import InputField from '../components/inputField'; 
-import { setSyntheticLeadingComments } from 'typescript';
+
+import ElencoDiscesa from '../components/ElencoDiscesa'; // Assicurati di avere il percorso corretto
 
 export const filtraDatiSchema = (schema, data) => {
     const datiFiltrati = Object.keys(schema).reduce((acc, key) => {
@@ -25,15 +26,13 @@ export const filtraDatiSchema = (schema, data) => {
 
 export const raggruppaSchemaPerRighe = (fields) => {
     const rows = {};
- //  console.log('Fields:', JSON.stringify(fields, null, 2)); // Loggare i campi interni in modo dettagliato
     fields.forEach(([name, field]) => {
-
       const layout =  (Platform.OS === 'web' ? field.layout.web  : field.layout.mobile)                         
       const row = layout.row || 1;
       if (!rows[row]) {
         rows[row] = [];
       }
-      rows[row].push([name, field.label,field.type, field.obbligatorio, layout]);
+      rows[row].push([name, field.label,field.type, field.obbligatorio, layout,]);
     
       });
    
@@ -43,29 +42,32 @@ export const raggruppaSchemaPerRighe = (fields) => {
 
 
   export const renderFields = (rowFields, control, errors, prefix = '',inputStile) => {
-   // console.log('STYLE INPUT renderfilds' , inputStile);
-    return rowFields.map(([name, label, type, obbligatorio, layout]) => (
-      layout.visibile === true &&  
-        <InputField
-          key={name}
-          control={control}
-          name={prefix ? `${prefix}.${name}` : name}
-          field={{ label, type, obbligatorio, layout }}
-          errors={errors}
-          stileInput={inputStile}
-      />
-    
-    ));
-  };
-  
+  //  console.log('ROWS:', JSON.stringify(rowFields, null, 2))
+        return rowFields.map(([name, label, type, obbligatorio, layout]) => {
+            return (
+                
+                layout.visibile === true && (
+                  <InputField
+                      key={prefix ? `${prefix}.${name}` : name} // Aggiungi una chiave unica
+                      control={control}
+                      name={prefix ? `${prefix}.${name}` : name}
+                      field={{ label, type, obbligatorio, layout }}
+                       errors={errors}
+                      stileInput={inputStile}
+                    
+                  />
+                )
+            )
+    });
+     
+   };
+
+ // console.log('ROWS:', JSON.stringify(fields, null, 2));
+   
 
   export const renderCampi = (title, fields, schema, control, errors, styles,  prefix = '') => {
-  
-    const rows = raggruppaSchemaPerRighe(fields);
-
-    //************************************************************************ */
+   const rows = raggruppaSchemaPerRighe(fields);
    const inputStile={height:35}
-    //************************************************************************ */
     return (
       <View key={prefix} style={styles.sectionContainer}>
         <Text style={styles.title}>{title}</Text>
@@ -78,11 +80,22 @@ export const raggruppaSchemaPerRighe = (fields) => {
     );
   };
 
+
+
+
   export const impostaValoriCampiNonVisibili = (schema, setValue) => {
     Object.keys(schema).forEach((key) => {
+      const field = schema[key];
     // console.log('KEY', key);
-      if (schema[key].layout && !schema[key].layout.visibile) {
-        setValue(key, schema[key].defaultValue || '');
+    if (field.layout) {
+      const layout = Platform.OS === 'web' ? field.layout.web : field.layout.mobile;
+      if (!layout.visibile) {
+        setValue(key, field.defaultValue || '');
       }
+    }
     });
   };
+
+  const styles = StyleSheet.create({
+ 
+});

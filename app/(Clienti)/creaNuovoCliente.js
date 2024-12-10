@@ -19,6 +19,7 @@ const CreaNuovoCliente = () => {
   const scrollViewRef = useRef(null);
   const { fetchClienti } = useClienti(); // Usa il contesto
   const router = useRouter();
+
   const methods = useForm();
 
   /*****************************non serve da sistemare ******************* */
@@ -48,6 +49,8 @@ const handleIconPress = () => {
 
     const datiFiltrati= filtraDatiSchema(schemaCliente, data);
     const clienti = await getClienti(dataUser.idAzienda);
+    
+    
     if (clienti.length === 0) {
       // La collezione non esiste, aggiungi il primo cliente
       console.log('DATAUSER', dataUser.idAzienda);
@@ -82,7 +85,7 @@ const handleIconPress = () => {
 
 const renderCampiNormali = () => {
   const filteredFields = Object.entries(schemaCliente).filter(([name]) => name !== 'sedeLegale');
- 
+ // console.log(JSON.stringify(filteredFields, null, 2))
   return renderCampi(
     'Anagrafica', 
     filteredFields, 

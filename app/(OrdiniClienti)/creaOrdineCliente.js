@@ -1,19 +1,18 @@
 import React, { useState, useRef, useEffect ,useContext} from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
-import { View, Button, StyleSheet, ScrollView, Text, Platform ,Alert} from 'react-native';
+import { View, Button, StyleSheet, ScrollView, Text, Platform } from 'react-native';
 import { useRouter} from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import Header from '../../components/Header'; // importa l'header
-// import Applicazione context
+import Header from '../../components/HeaderBasso'; // importa l'header
 import { AuthContext } from '../../context/AuthContext'; // Importa il contesto
 import {schemaOrdineCliente,schemaRigaOrdineCliente } from '../../schemi/schemiOrdini'; // Importa lo schema
 
 import { filtraDatiSchema,  renderCampi, impostaValoriCampiNonVisibili  } from '../../schemi/FunzioniSchemi'; // Importa le funzio
 import { useClienti } from '../../context/ClientiContext'; // Importa il contesto
-
-
-
+import { getFooterIcons } from '../../config/footerIconsConfig'
+import Footer from '../../components/Footer'
+import comuni from '../../assets/dati/comuni.json';
 
 
 
@@ -22,8 +21,10 @@ const CreaOrdineCliente = () => {
  
   const router = useRouter();
   const methods = useForm();
- 
-  const scrollViewRef = useRef(null);
+  const { clienti } = useClienti(); // Assicurati di avere il contesto corretto
+  const footerIcons = getFooterIcons('creaOrdineCliente', router, unreadMessages);
+  const unreadMessages = 5; // Numero di messaggi non letti
+
 
   useEffect(() => {
     // Imposta i valori dei campi non visibili
@@ -39,97 +40,101 @@ const CreaOrdineCliente = () => {
     console.log('Ho premuto l\'icona Home sul header di ordiniCliente');
   };
 
+
   const renderCampiNormali = () => {
-    const filteredFields = Object.entries(schemaOrdineCliente).filter(([name]) => name !== 'sedeLegale');
-    return renderCampi('', filteredFields, schemaOrdineCliente, control, errors, styles);
+    const filteredFields = Object.entries(schemaOrdineCliente);
+    return renderCampi(
+      '', 
+      filteredFields, 
+      schemaOrdineCliente, 
+      control, 
+      errors, 
+      styles
+    );
   };
+
   const renderCampiRighe = () => {
-    const filteredFields = Object.entries(schemaRigaOrdineCliente).filter(([name]) => name !== 'sedeLegale');
-    return renderCampi('', filteredFields, schemaRigaOrdineCliente, control, errors, styles);
+    const filteredFields = Object.entries(schemaRigaOrdineCliente);
+    return renderCampi(
+      '', 
+      filteredFields, 
+      schemaRigaOrdineCliente, 
+      control, 
+      errors, 
+      styles
+    );
   };
 
   return (
-  <FormProvider {...methods}>
-  <View  style={Platform.OS === 'web' ? styles.webContainer : styles.mobileContainer}> 
+    <FormProvider {...methods}>    
+      <SafeAreaView style={Platform.OS === 'web' ? styles.webContainer : styles.mobileContainer}>
   
-  
-    
-        <Header 
-          screenName=" Nuovo Ordine" // Nome della schermata
-          icon="home" // Nome dell'icona da visualizzare (es. 'add', 'menu', ecc.)
-          onIconPress={handleIconPress} // Funzione da eseguire quando l'icona viene premuta
-        />
-         <ScrollView contentContainerStyle={ styles.scrollContainer} ref={scrollViewRef}>
-            {renderCampiNormali()}       
-        </ScrollView>
-
+          <Header 
+              screenName=" Nuovo Ordine" // Nome della schermata
+              icon="home" // Nome dell'icona da visualizzare (es. 'add', 'menu', ecc.)
+              onIconPress={handleIconPress} // Funzione da eseguire quando l'icona viene premuta
+          />
       
-            <View style={{width:'100%',borderColor:'red',borderWidth:2,height:'50%'}}>
-                <View style={{paddingHorizontal:10,width:'100%',borderColor:'blue',borderWidth:2,height:'75%'}}>
-                  {renderCampiRighe()}   
-                </View>
-            </View>
-      
+         {console.log('ORDINI CLIENTI')}
+     
+              <View  style={{width:'100%',height:'30%'}}>     
+                {renderCampiNormali()}               
+              </View>
+          
+              <Text style={{fontSize:18  ,fontFamily:'Roboto-Medium' ,  marginTop:10, marginBottom:5}}>RigheOrdine</Text>
+              
+              <View style={{width:'100%',height:'40%'}}>             
+                  {renderCampiRighe()}                  
+              </View>
+                                                 
 
 
-    </View>
+              <Footer icons={footerIcons} />     
+             
+        </SafeAreaView>
+      </FormProvider>      
 
-        
-  </FormProvider>
   );
 };
 
 const styles = StyleSheet.create({
-  mobileContainer: {
+ mobileContainer: {
     flex: 1,
-    marginTop:0,
-    width:'100%',
-    marginHorizontal:'auto',
-     height:'100%',
-     borderColor:'red',
-     borderWidth:2,
+    marginTop: 0,
+    height: '100%',
+    alignItems:'center'
   },
   webContainer: {
     flex: 1,
-    width:'70%',
-    borderColor:'red',
-    borderWidth:2,
-    marginHorizontal:'auto',
-    backgroundColor:'white',
-    height:'100%'
+    width: '70%',
+    borderColor: 'red',
+    borderWidth: 2,
+    marginHorizontal: 'auto',
+    backgroundColor: 'white',
+    height: '100%',
+     alignItems:'center'
   },
   scrollContainer: {
-    paddingLeft: 10,
-   // alignItems: 'center',
-    borderColor:'blue',
-    borderWidth:2,
-    height:'92%'
+    padding: 20,
   },
-  scrollContainerRiga: {
-    paddingLeft: 10,
-   // alignItems: 'center',
-    borderColor:'blue',
-    borderWidth:3,
-    
+  campiOrdineContainer: {
+    marginBottom: 20,
   },
-  sectionContainer: {
-    marginBottom: 0,
-    width: '100%',
+  intestazioneRigheOrdine: {
+    marginBottom: 10,
   },
-  title: {
-   // fontSize: 16,
-   // fontWeight: 'bold',
-    marginBottom:0,
- 
+  campiOrdineConteinerRighe: {
+    marginBottom: 20,
   },
   row: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     marginBottom: 0,
-  
-  //  justifyContent: 'space-between', // Aggiungi questa linea per distribuire uniformemente i campi
   },
- 
 });
 
 export default CreaOrdineCliente;
+
+  
+//<Footer icons={footerIcons} />
+// <View style={{marginLeft:10}}>

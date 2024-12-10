@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         width: '100%',
-        height:'7%',
+        height:'5%',
        // marginTop:10,
       // gap:'30%',
         paddingHorizontal: 20, // Aggiungi padding orizzontale per spostare le icone verso il centro

@@ -2,16 +2,16 @@ import { StyleSheet, Text, View,Platform ,Pressable} from 'react-native'
 import React, { useState, useContext, useRef } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import Tooltip from '../components/Tooltip';
+import Tooltip from './Tooltip';
 
-const Header = ({ screenName, icon, onIconPress }) => {
+const HeaderBasso = ({ screenName, icon, onIconPress }) => {
     const [piattaforma,setPiattaforma] = useState(Platform.OS);
     const { logoutUser, loading,dataUser,aziendaId} = useContext(AuthContext);
     const [tooltipVisible, setTooltipVisible] = useState(false);
   const [tooltipPosition, setTooltipPosition] = useState({});
   const [tooltipArrowPosition, setTooltipArrowPosition] = useState('left');
   const iconRef = useRef(null);
-  console.log('SONO HEADER')
+//console.log('SONO HEADER BASSO')
   const handleMouseEnter = () => {
     if (iconRef.current) {
       iconRef.current.measure((fx, fy, width, height, px, py) => {
@@ -27,23 +27,25 @@ const Header = ({ screenName, icon, onIconPress }) => {
   
     return (
     <View style={styles.header}>
-         <View style={[styles.snHeader,piattaforma==='web' ? {width:'10%'} : {width:'22%'}]}>
-            <Text style={{}}>logo</Text>
+         <View style={[styles.snHeader,piattaforma==='web' ? {width:'20%'} : {width:'25%'}]}>
+           
+            <Text style={{fontFamily:'Poppins-Bold',color:'white'}}>{dataUser?.nome}</Text>
          </View>
 
-         <View style={[styles.centroHeader,piattaforma==='web' ? {width:'77%'} : {width:'53%'}]}>
-              <Text style={{fontSize:20,fontFamily:'Poppins-Bold',marginBottom:0,lineHeight: 30}}>{screenName}</Text>
-         <Text style={{fontSize:18,fontFamily:'Poppins-Regular',marginTop:0,lineHeight: 18}}>{dataUser?.nome}</Text>
+         <View style={[styles.centroHeader]}>
+         
+              <Text style={{fontSize:20,color:'white',fontFamily:'Poppins-SemiBold',marginBottom:0,lineHeight: 30}}>{screenName}</Text>
+      
          </View>
 
-         <View style={[styles.dxHeader,piattaforma==='web' ? {width:'10%'} : {width:'22%'}]}>
+         <View style={[styles.dxHeader,piattaforma==='web' ? {width:'20%'} : {width:'25%'}]}>
             <Pressable  
                 onPress={onIconPress} 
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
                 style={{justifyContent:'center',alignItems:'center'}} 
                 >
-                <MaterialCommunityIcons name={icon} size={30} color="black" style={{marginRight:10}} />
+                <MaterialCommunityIcons name={icon} size={30} color='white' style={{marginRight:10}} />
             </Pressable>
             <Tooltip
              visible={tooltipVisible}
@@ -57,26 +59,26 @@ const Header = ({ screenName, icon, onIconPress }) => {
   )
 }
 
-export default Header
+export default HeaderBasso
 
 const styles = StyleSheet.create({ 
-    header:{
+header:{
     width: '100%',
-    height: '7%',
-   // backgroundColor:'grey',
+    //height: '5%',
+  backgroundColor:'rgb(0, 26, 255)',
    // flexDirection: 'row',
    // justifyContent: 'space-between',
    
-    borderColor:'grey',
-    borderBottomWidth:1,
+    borderColor:'blue',
+    borderWidth:2,
     flexDirection:'row',
     justifyContent:'space-between',
-    height:'10%'
+    height:'5%'
   },
     dxHeader:{
       height:'100%',
       borderColor:'blue',
-      borderWidth:0,
+      borderWidth:1,
       justifyContent:'center',
       alignItems:'center',
       flexDirection:'column'
@@ -87,13 +89,15 @@ const styles = StyleSheet.create({
       borderColor:'blue',
       borderWidth:0,
       justifyContent:'center',
-      alignItems:'center',
+     alignItems:'center',
+      borderColor:'blue',
+      borderWidth:1,
     //  backgroundColor:'blue'
     },
     centroHeader:{
       height:'100%',
       borderColor:'blue',
-      borderWidth:0,
+      borderWidth:1,
       justifyContent:'center',
       alignItems:'center',
      

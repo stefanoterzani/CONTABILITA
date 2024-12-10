@@ -102,7 +102,7 @@ const schemaAzienda = {
         indirizzo: { label: 'Indirizzo', type: 'text' , obbligatorio:false, visibile:true,
         layout: { 
           web: { row:2, margineDx: '2%', visibile: true, width:'77%'}, 
-          mobile: { row:6, margineDx: '3%' , visibile: true, width:'77%'}
+          mobile: { row:6, margineDx: '2%' , visibile: true, width:'75%'}
          } },
 
          civico: { label: 'Civico', type: 'text' , obbligatorio:false, visibile:true,
