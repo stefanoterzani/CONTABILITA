@@ -1,14 +1,15 @@
 import { View,ScrollView, Platform ,Text,StyleSheet,TouchableOpacity} from 'react-native'
 import React ,{useRef,useEffect, useState} from 'react'
 import AntDesign from '@expo/vector-icons/AntDesign';
-
-const PaginaScroll = ({scrollWidth,scrollHeight,children,barra}) => {
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+const PaginaScroll = ({scrollWidth,scrollHeight,children,barra,barraInserisciElimina,top, onNuovo, onElimina,}) => {
     const scrollViewRef = useRef(null);
     const [scrollPosition, setScrollPosition] = useState(0);
-const [isMobile,setIsMobile] = useState(null);
-const [currentPage, setCurrentPage] = useState(1);
-const [barraVisibile,setBarraVisibile]=useState(false)
-
+    const [isMobile,setIsMobile] = useState(null);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [barraVisibile,setBarraVisibile]=useState(false)
+    const [inserisciEliminaVisibile,setInserisciEliminaVisibile]=useState(false)
 
 useEffect(() => {
  
@@ -20,6 +21,12 @@ useEffect(() => {
 
  if(barra=== true){
   setBarraVisibile(true)
+  if (barraInserisciElimina===true) {
+    setInserisciEliminaVisibile(true)
+  } else {
+    setInserisciEliminaVisibile(false)
+  }
+
  }  else {
   setBarraVisibile(false)
   }
@@ -89,21 +96,34 @@ const handlePrevPage = () => {
         handlePageJump(maxPage);
       };
 
+      const handleNuovo = () => {
+        if (onNuovo) {
+          onNuovo();
+        }
+      };
+    
+      const handleElimina = () => {
+        if (onElimina) {
+          onElimina(currentPage);
+        }
+      };
+
+
       const maxPage = React.Children.count(children);
 
     return (
           <View>
           
                <ScrollView
-                ref={scrollViewRef}
-                 horizontal
-                 pagingEnabled={!isMobile}
-                 showsHorizontalScrollIndicator={false}  
-                 style={{width:scrollWidth,height:scrollHeight}}
-                 onMomentumScrollEnd={handleScrollEndDrag}
-                 onScroll={handleScroll}
-                 onScrollEndDrag={handleScrollEndDrag}
-                 scrollEventThrottle={16}
+                    ref={scrollViewRef}
+                    horizontal
+                    pagingEnabled={!isMobile}
+                    showsHorizontalScrollIndicator={false}  
+                    style={{width:scrollWidth,height:scrollHeight}}
+                    onMomentumScrollEnd={handleScrollEndDrag}
+                    onScroll={handleScroll}
+                    onScrollEndDrag={handleScrollEndDrag}
+                    scrollEventThrottle={16}
                 >
                 {React.Children.map(children, (child, index) =>  ( 
                     <View key={index} style={{ width: scrollWidth, height: scrollHeight}}> 
@@ -111,12 +131,19 @@ const handlePrevPage = () => {
                     </View> 
                 ))}
              </ScrollView>
+
              {barraVisibile && 
              <View style={[styles.barraContainer,{width:scrollWidth}]}>
                 <View style={[styles.barra]}>
+                {inserisciEliminaVisibile && 
+                  <TouchableOpacity onPress={handleElimina} style={[styles.arrowButton,{paddingRight:Platform.OS ==='web' ? '4%' : '2%' }]}>
+                    <MaterialIcons name="cancel" size={24} color="red" />
+                  </TouchableOpacity>
+                }
                   <View style={styles.pageNumberContainer}>
                       <Text style={styles.pageNumber}>1</Text>
                   </View>
+                 
                   <TouchableOpacity onPress={handleFirstPage} style={styles.arrowButton}>
                       <AntDesign name="stepbackward" size={16} color="black" />
                   </TouchableOpacity>
@@ -135,6 +162,12 @@ const handlePrevPage = () => {
                   <View style={styles.pageNumberContainer}>
                       <Text style={styles.pageNumber}>{maxPage}</Text>
                   </View>
+                  {inserisciEliminaVisibile && 
+                  <TouchableOpacity onPress={handleNuovo} style={[styles.arrowButton,{paddingLeft:Platform.OS ==='web' ? '4%' : '2%' }]}>
+                  <MaterialIcons name="add-circle" size={24} color="green" />
+                  </TouchableOpacity>
+                  }
+               
                 </View>
             </View>
              }
@@ -159,7 +192,7 @@ const styles = StyleSheet.create({
   },
   arrowButton: {
     marginHorizontal: 10,
-    padding: 7, // Aumenta il padding per aumentare l'area touchable
+    paddingHorizontal:7, // Aumenta il padding per aumentare l'area touchable
   },
   pageNumberContainer: {
     backgroundColor: 'gray',

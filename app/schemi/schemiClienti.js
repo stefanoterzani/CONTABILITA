@@ -714,200 +714,249 @@ export const schemaCliente = {
 
 
   export const schemaSedi={
-  tpoSede: { label: 'Tipo Sede', type: 'text'  , obbligatorio:false, 
-      layout: { 
-        web: { 
-          visibile:true,
-          margineDx: '2%' ,
-          height:40, 
-          width:'10%',
-          bordoColor:'blue', 
-          bordoWidth:2,
-          labelColor:'red',
-          inputColor:'green',     
-          row: 1, 
-          pagina:1},
-        
-        mobile: { 
-          visibile:true,
-          margineDx: '1%' ,
-          height:40, 
-          width:'10%',
-          bordoColor:'red', 
-          bordoWidth:2,
-          labelColor:'red',
-          inputColor:'green',     
-          row: 1, 
-          pagina:1
-        } 
-      } },
-    citta: { label: 'Città', type: 'text'  , obbligatorio:false, 
-      layout: { 
-        web: { 
-          visibile:true,
-          margineDx: '2%' ,
-          height:40, 
-          width:'10%',
-          bordoColor:'blue', 
-          bordoWidth:2,
-          labelColor:'red',
-          inputColor:'green',     
-          row: 1, 
-          pagina:1},
-        
-        mobile: { 
-          visibile:true,
-          margineDx: '1%' ,
-          height:40, 
-          width:'10%',
-          bordoColor:'red', 
-          bordoWidth:2,
-          labelColor:'red',
-          inputColor:'green',     
-          row: 1, 
-          pagina:1
-        } 
-      } },
-    
-      indirizzo: { label: 'Indirizzo', type: 'text' , obbligatorio:false, 
-      layout: { 
+  tipoSede: { label: 'Tipo Sede', type: 'text'  , obbligatorio:false, 
+    layout: { 
       web: { 
+        visibile:true,
+        margineDx: '2%' ,
+        height:40, 
+        width:'50%',
+        bordoColor:'gray', 
+        bordoWidth:1,
+        labelColor:'',
+        inputColor:'green',     
+        row: 1, 
+        pagina:1,
+        tipoElenco:'',
+        campo:'',
+        tipoInput:''},
+      
+      mobile: { 
+        visibile:true,
+        margineDx: 0,
+        height:40, 
+        width:'100%',
+        bordoColor:'', 
+        bordoWidth:1,
+        labelColor:'blue',
+        inputColor:'',     
+        row: 1, 
+        pagina:1,
+        tipoElenco:'',
+        campo:'',
+        tipoInput:''
+      } 
+    } 
+     },
+    comune: { label: 'Città', type: 'text'  , obbligatorio:false, 
+      layout: { 
+        web: { 
           visibile:true,
           margineDx: '2%' ,
           height:40, 
-          width:'10%',
-          bordoColor:'blue', 
-          bordoWidth:2,
-          labelColor:'red',
+          width:'60%',
+          bordoColor:'gray', 
+          bordoWidth:1,
+          labelColor:'',
           inputColor:'green',     
-          row: 1, 
-          pagina:1},
+          row: 2, 
+          pagina:1,
+          tipoElenco:'',
+          campo:'',
+          tipoInput:''},
         
         mobile: { 
           visibile:true,
-          margineDx: '1%' ,
+          margineDx: '2%' ,
           height:40, 
-          width:'10%',
-          bordoColor:'red', 
-          bordoWidth:2,
-          labelColor:'red',
-          inputColor:'green',     
-          row: 1, 
-          pagina:1
+          width:'49%',
+          bordoColor:'', 
+          bordoWidth:1,
+          labelColor:'blue',
+          inputColor:'',     
+          row: 2, 
+          pagina:1,
+          tipoElenco:'',
+          campo:'',
+          tipoInput:''
         } 
-       } },
+      } 
+     },
+     provincia: { label: 'Provincia', type: 'text'  , obbligatorio:false, 
+      layout: { 
+        web: { 
+          visibile:true,
+          margineDx: '2%' ,
+          height:40, 
+          width:'30%',
+          bordoColor:'gray', 
+          bordoWidth:1,
+          labelColor:'',
+          inputColor:'green',     
+          row: 2, 
+          pagina:1,
+          tipoElenco:'',
+          campo:'',
+          tipoInput:''},
+        
+        mobile: { 
+          visibile:true,
+          margineDx: 0 ,
+          height:40, 
+          width:'49%',
+          bordoColor:'', 
+          bordoWidth:1,
+          labelColor:'blue',
+          inputColor:'',     
+          row: 2, 
+          pagina:1,
+          tipoElenco:'',
+          campo:'',
+          tipoInput:''
+        } 
+      } 
+    },  
+      indirizzo: { label: 'Indirizzo', type: 'text' , obbligatorio:false, 
+         layout: { 
+          web: { 
+            visibile:true,
+            margineDx: '1%' ,
+            height:40, 
+            width:'55%',
+            bordoColor:'gray', 
+            bordoWidth:1,
+            labelColor:'',
+            inputColor:'green',     
+            row: 3, 
+            pagina:1,
+            tipoElenco:'',
+            campo:'',
+            tipoInput:''},
+          
+          mobile: { 
+            visibile:true,
+            margineDx: '1%' ,
+            height:40, 
+            width:'81%',
+            bordoColor:'', 
+            bordoWidth:1,
+            labelColor:'blue',
+            inputColor:'',     
+            row: 3, 
+            pagina:1,
+            tipoElenco:'',
+            campo:'',
+            tipoInput:''
+          } 
+        } 
+       },
 
        civico: { label: 'Civico', type: 'text' , obbligatorio:false, 
         layout: { 
-         web: { 
-          visibile:true,
-          margineDx: '2%' ,
-          height:40, 
-          width:'10%',
-          bordoColor:'blue', 
-          bordoWidth:2,
-          labelColor:'red',
-          inputColor:'green',     
-          row: 1, 
-          pagina:1},
-        
-        mobile: { 
-          visibile:true,
-          margineDx: '1%' ,
-          height:40, 
-          width:'10%',
-          bordoColor:'red', 
-          bordoWidth:2,
-          labelColor:'red',
-          inputColor:'green',     
-          row: 1, 
-          pagina:1
-        } 
-         } },
-
-       provincia: { label: 'Provincia', type: 'text'  , obbligatorio:false, 
-        layout: { 
           web: { 
-          visibile:true,
-          margineDx: '2%' ,
-          height:40, 
-          width:'10%',
-          bordoColor:'blue', 
-          bordoWidth:2,
-          labelColor:'red',
-          inputColor:'green',     
-          row: 1, 
-          pagina:1},
-        
-        mobile: { 
-          visibile:true,
-          margineDx: '1%' ,
-          height:40, 
-          width:'10%',
-          bordoColor:'red', 
-          bordoWidth:2,
-          labelColor:'red',
-          inputColor:'green',     
-          row: 1, 
-          pagina:1
+            visibile:true,
+            margineDx: '1%' ,
+            height:40, 
+            width:'7%',
+            bordoColor:'gray', 
+            bordoWidth:1,
+            labelColor:'',
+            inputColor:'green',     
+            row: 3, 
+            pagina:1,
+            tipoElenco:'',
+            campo:'',
+            tipoInput:''},
+          
+          mobile: { 
+            visibile:true,
+            margineDx: 0 ,
+            height:40, 
+            width:'18%',
+            bordoColor:'', 
+            bordoWidth:1,
+            labelColor:'blue',
+            inputColor:'',     
+            row: 3, 
+            pagina:1,
+            tipoElenco:'',
+            campo:'',
+            tipoInput:''
+          } 
         } 
-        } },  
+         },
+
+     
 
       cap: { label: 'CAP', type: 'text' , obbligatorio:false , 
         layout: { 
-        web: { 
-          visibile:true,
-          margineDx: '2%' ,
-          height:40, 
-          width:'10%',
-          bordoColor:'blue', 
-          bordoWidth:2,
-          labelColor:'red',
-          inputColor:'green',     
-          row: 1, 
-          pagina:1},
-        
-        mobile: { 
-          visibile:true,
-          margineDx: '1%' ,
-          height:40, 
-          width:'10%',
-          bordoColor:'red', 
-          bordoWidth:2,
-          labelColor:'red',
-          inputColor:'green',     
-          row: 1, 
-          pagina:1
+          web: { 
+            visibile:true,
+            margineDx: '1%' ,
+            height:40, 
+            width:'10%',
+            bordoColor:'gray', 
+            bordoWidth:1,
+            labelColor:'',
+            inputColor:'green',     
+            row: 3, 
+            pagina:1,
+            tipoElenco:'',
+            campo:'',
+            tipoInput:''},
+          
+          mobile: { 
+            visibile:true,
+            margineDx: '1%' ,
+            height:40, 
+            width:'20%',
+            bordoColor:'', 
+            bordoWidth:1,
+            labelColor:'',
+            inputColor:'',     
+            row: 4, 
+            pagina:1,
+            tipoElenco:'',
+            campo:'',
+            tipoInput:''
+          } 
         } 
-        } },
+      },
 
       nazione: { label: 'Nazione', type: 'text' , obbligatorio:false, 
-       layout: { 
-         web: { 
-          visibile:true,
-          margineDx: '2%' ,
-          height:40, 
-          width:'10%',
-          bordoColor:'blue', 
-          bordoWidth:2,
-          labelColor:'red',
-          inputColor:'green',     
-          row: 1, 
-          pagina:1},
-        
-        mobile: { 
-          visibile:true,
-          margineDx: '1%' ,
-          height:40, 
-          width:'10%',
-          bordoColor:'red', 
-          bordoWidth:2,
-          labelColor:'red',
-          inputColor:'green',     
-          row: 1, 
-          pagina:1
+        layout: { 
+          web: { 
+            visibile:true,
+            margineDx: '2%' ,
+            height:40, 
+            width:'24%',
+            bordoColor:'gray', 
+            bordoWidth:1,
+            labelColor:'',
+            inputColor:'green',     
+            row: 3, 
+            pagina:1,
+            tipoElenco:'',
+            campo:'',
+            tipoInput:''},
+          
+          mobile: { 
+            visibile:true,
+            margineDx: '1%' ,
+            height:40, 
+            width:'78%',
+            bordoColor:'', 
+            bordoWidth:1,
+            labelColor:'blue',
+            inputColor:'',     
+            row: 4, 
+            pagina:1,
+            tipoElenco:'',
+            campo:'',
+            tipoInput:''
+          } 
         } 
-      } },
+     },
  
       
 

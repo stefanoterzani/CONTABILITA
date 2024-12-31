@@ -13,7 +13,7 @@ export default function Index() {
       }}
     >
     <TouchableOpacity onPress={()=> router.push('/Home')}>
-      <Text style={{color:'blue', fontSize:30}}>Vai a Home</Text>
+      <Text style={{color:'blue', fontSize:30}}>Vai a prova</Text>
       </TouchableOpacity>
     </View>
   );

@@ -62,7 +62,45 @@ export const raggruppaSchemaPerRiga = (schemaPerPagina) => {
     return schemaOrganizzato;
   };
 
+
+  export const aggiungiPagina = (pagine, schemaOrganizzato) => {
+    const newPageNumber = Object.keys(pagine).length + 1;
+    const newPage = JSON.parse(JSON.stringify(schemaOrganizzato[1])); // Copia della struttura della prima pagina
+  
+    // Aggiorna gli attributi specifici della nuova pagina
+    Object.keys(newPage).forEach((rowKey) => {
+      newPage[rowKey].forEach((field) => {
+        field.key = `${field.key}${newPageNumber}`;
+        field.layout.pagina = newPageNumber;
+      });
+    });
+  
+    return { ...pagine, [newPageNumber]: newPage };
+  };
+
+
+
+  export const eliminaPagina = (pagine, pageNumber) => {
+    const updatedPages = { ...pagine };
+    delete updatedPages[pageNumber];
+
+    // Crea un nuovo oggetto con le chiavi scalate
+  const newPages = {};
+  let newPageNumber = 1;
+  Object.keys(updatedPages).sort().forEach((key) => {
+    newPages[newPageNumber] = updatedPages[key];
+    newPageNumber++;
+  });
+
+ // console.log('eliminaPagina', newPages);
+  return newPages;
+    
+  };
+
   export default {
     organizzaSchema,
-  
+    aggiungiPagina,
+    eliminaPagina,
   };
+
+  expo
