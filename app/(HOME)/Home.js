@@ -6,19 +6,62 @@ import PaginaScroll from '../componenti/PaginaScroll';
 import { schemaCliente,schemaSedi } from '../schemi/schemiClienti';
 import { organizzaSchema,aggiungiPagina,eliminaPagina} from '../schemi/FunzioniSchemi';
 import FormDinamico  from '../componenti/FormDinamico';
+////import { ZoomAndColumnsContext } from '../context/ZoomAndColumnsContext';
+import { ColumnDimensionsContext } from '../context/ColumnDimensionsContext';
 
 const Home = () => {
-const { width, height } = useContext(WindowDimensionsContext);
+  const { 
+    windowHeight, 
+    windowWidth, 
+    leftColumnWidth, 
+    centralColumnWidth, 
+    rightColumnWidth, 
+    leftColumnLeft, 
+    centralColumnLeft, 
+    rightColumnLeft } = useContext(ColumnDimensionsContext)
 
-
-//console.log('Dimensioni window', width, 'x', height, 'Dimensioni container', containerWidth, 'x', containerHeight);
 const [schemaOrganizzato, setSchemaOrganizzato] = useState([]);
 const [schemaSediOrganizzato, setSchemaSediOrganizzato] = useState([]);
 const [posizioni, setPosizioni] = useState({});
 const [focusedInput, setFocusedInput] = useState(null);
 const [pagineForm2, setPagineForm2] = useState([]);
 
-  // console.log('SCHEMA',JSON.stringify(schemaCliente, null, 2))
+useEffect(()=>{
+  const posizioniIniziali={
+    header:{
+      top:0,
+      left:0 ,
+      bottom:0,
+      width:windowWidth,
+      height:windowHeight*0.07,
+    },
+    footer:{
+      top:windowHeight*0.93,
+      left: 0,
+      bottom:0,
+      width:windowWidth,
+      height:windowHeight*0.07,
+    },
+    finestraScroll:{
+      top:windowHeight*0.08,
+      left: centralColumnLeft,
+      bottom:0,
+      width:centralColumnWidth,
+      height:Platform.OS ==='web' ? windowHeight*0.30: windowHeight*0.42,
+    },
+  finestraScrollSedi:{
+      top:Platform.OS ==='web' ? windowHeight*0.48: windowHeight*0.56,
+      left: centralColumnLeft,
+      bottom:0,
+      width:centralColumnWidth,
+      height:Platform.OS ==='web' ? windowHeight*0.33: windowHeight*0.25,
+    },
+  }
+
+  setPosizioni(posizioniIniziali)
+ },[windowWidth,windowHeight])
+
+
  useEffect(() => {
   let organizzato=organizzaSchema(schemaCliente);
   setSchemaOrganizzato(organizzato);
@@ -42,81 +85,48 @@ const handleEliminaPagina = (pageNumber) => {
   setPagineForm2((prevPagine) => aggiungiPagina(prevPagine, schemaSediOrganizzato));
 };
 
-
- useEffect(() => {
-    const keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', () => {
-      if (focusedInput && focusedInput.formNumber === 2) {
-      setPosizioni((prevPosizioni) => ({      
-            ...prevPosizioni,
-            finestraScroll: {
-                ...prevPosizioni.finestraScroll,
-                top: prevPosizioni.finestraScroll.top-height, 
-              //  height: prevPosizioni.finestraScroll.height-200,
-            },       
-            finestraScrollSedi: {
-                ...prevPosizioni.finestraScrollSedi,
-                top: prevPosizioni.finestraScrollSedi.top - 200, 
-            }
-      }));  
-    }
-    });
-
-    const keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', () => {
-      if (focusedInput && focusedInput.formNumber === 2) {
-      setPosizioni((prevPosizioni) => ({        
-        ...prevPosizioni,
-        finestraScroll: {
-          ...prevPosizioni.finestraScroll,
-          top: prevPosizioni.finestraScroll.top+height, // Modifica il valore di top come desiderato
-         // height: prevPosizioni.finestraScroll.height+500,
-        },
-        finestraScrollSedi: {
-          ...prevPosizioni.finestraScrollSedi,
-          top: prevPosizioni.finestraScrollSedi.top +200, // Modifica il valore di top come desiderato
-        },
-      }));  
-      }
-    });
-    return () => {
-      keyboardDidHideListener.remove();
-      keyboardDidShowListener.remove();
-    };
-  }, [focusedInput]);
-
- useEffect(()=>{
-  const posizioniIniziali={
-    header:{
-      top:height*0.01,
-      left:0 ,
-      bottom:0,
-      width:width,
-      height:height*0.07,
-    },
-    footer:{
-      top:height*0.93,
-      left: 0,
-      bottom:0,
-      width:width,
-      height:height*0.07,
-    },
-    finestraScroll:{
-      top:height*0.10,
-      left: width*0.02,
-      bottom:0,
-      width:width-(( width*0.02))*2,
-      height:Platform.OS ==='web' ? height*0.32: height*0.42,
-    },
-  finestraScrollSedi:{
-      top:Platform.OS ==='web' ? height*0.48: height*0.58,
-      left: width*0.02,
-      bottom:0,
-      width:width-(( width*0.02))*2,
-      height:Platform.OS ==='web' ? height*0.32: height*0.25,
-    },
+useEffect(() => {
+  const keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', () => {
+    if (focusedInput && focusedInput.formNumber === 2) {
+    setPosizioni((prevPosizioni) => ({      
+          ...prevPosizioni,
+          finestraScroll: {
+              ...prevPosizioni.finestraScroll,
+              top: prevPosizioni.finestraScroll.top-windowHeight, 
+            //  height: prevPosizioni.finestraScroll.height-200,
+          },       
+          finestraScrollSedi: {
+              ...prevPosizioni.finestraScrollSedi,
+              top: prevPosizioni.finestraScrollSedi.top - 200, 
+          }
+    }));  
   }
+  });
 
-  setPosizioni(posizioniIniziali)
- },[width,height])
+  const keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', () => {
+    if (focusedInput && focusedInput.formNumber === 2) {
+    setPosizioni((prevPosizioni) => ({        
+      ...prevPosizioni,
+      finestraScroll: {
+        ...prevPosizioni.finestraScroll,
+        top: prevPosizioni.finestraScroll.top+windowHeight, // Modifica il valore di top come desiderato
+       // height: prevPosizioni.finestraScroll.height+500,
+      },
+      finestraScrollSedi: {
+        ...prevPosizioni.finestraScrollSedi,
+        top: prevPosizioni.finestraScrollSedi.top +200, // Modifica il valore di top come desiderato
+      },
+    }));  
+    }
+  });
+  return () => {
+    keyboardDidHideListener.remove();
+    keyboardDidShowListener.remove();
+  };
+}, [focusedInput]);
+
+
+
 
   return (
     <SafeAreaView style={{flex:1}}>
@@ -130,7 +140,7 @@ const handleEliminaPagina = (pageNumber) => {
                 }}>
                 <View style={{alignItems:'center'}}>
                   <Text style={{color:'white'}}>POSTO HEADER</Text>
-                  <Text style={{fontSize:16,color:'white'}}>Window {width.toFixed(1)} 'x' {height.toFixed(1)}/Contenitore: {posizioni.finestraScroll.width.toFixed(1)}  x  {posizioni.finestraScroll.height.toFixed(1)}</Text>
+               
                 </View>
               </View>
         )}
@@ -154,9 +164,11 @@ const handleEliminaPagina = (pageNumber) => {
         {posizioni.finestraScroll && (
             <View 
                 style={{position:'absolute', flex:1, top:posizioni.finestraScroll.top, left: posizioni.finestraScroll.left,
-                    width:posizioni.finestraScroll.width, height: posizioni.finestraScroll.height, }}>
+                    width:posizioni.finestraScroll.width, height: posizioni.finestraScroll.height,
+                  //  borderColor:'red',  borderWidth:2,
+                    }}>
                     {/* borderColor:'red',  borderWidth:2,  */}                                            
-               
+             
                 <PaginaScroll 
                     top={posizioni.finestraScroll.top}
                     scrollWidth={posizioni.finestraScroll.width}  
@@ -164,20 +176,29 @@ const handleEliminaPagina = (pageNumber) => {
                     barra={true}
                     barraInserisciElimina={false}
                     placeholder={false} >
-                 
-                    {Object.keys(schemaOrganizzato).map((pagina, index) => (
+                  
+                    {Object.keys(schemaOrganizzato).map((pagina, index) =>{
+                      const numeroRighe = Object.keys(schemaOrganizzato[pagina]).length;
+                       return (
                         <View key={index}  
-                              style={{ marginTop:10,  width: posizioni.finestraScroll.width, height: posizioni.finestraScroll.height }}>            
+                              style={{  width: posizioni.finestraScroll.width, height: posizioni.finestraScroll.height }}>  
+ {/*  */}  
                               <FormDinamico 
                                   schemaPagina={schemaOrganizzato[pagina]} 
                                   containerWidth={posizioni.finestraScroll.width} 
                                   containerHeight={posizioni.finestraScroll.height} 
                                   etichetta={true} 
                                   formNumber={1}
-                                  handleFocus={handleFocus}  />               
+                                  handleFocus={handleFocus}  
+                                  numeroRighe={numeroRighe} 
+                                  />      
+ 
                         </View>
-                     ))}
-                </PaginaScroll>         
+                      )
+                      })}
+                      
+                </PaginaScroll>   
+                 
             </View>
         )}
 
@@ -187,11 +208,11 @@ const handleEliminaPagina = (pageNumber) => {
                     left: posizioni.finestraScrollSedi.left,
                     width:posizioni.finestraScrollSedi.width,
                     height: posizioni.finestraScrollSedi.height,
-                    //borderColor:'red',
-                    //borderWidth:2,
+                    borderColor:'blue',
+                    borderWidth:2,
                 }}>
                 <PaginaScroll 
-                    top={posizioni.finestraScroll.top}
+                    top={posizioni.finestraScrollSedi.top}
                     scrollWidth={posizioni.finestraScrollSedi.width}  
                     scrollHeight={posizioni.finestraScrollSedi.height} 
                     barra={true}
@@ -199,18 +220,23 @@ const handleEliminaPagina = (pageNumber) => {
                     onNuovo={handleAggiungiPagina}
                     onElimina={handleEliminaPagina}   >
              
-                    {Object.keys(pagineForm2).map((pagina, index) => (
+                    {Object.keys(pagineForm2).map((pagina, index) => {
+                      const numeroRighe = Object.keys(pagineForm2[pagina]).length;
+                      return (
                         <View key={index} 
-                              style={{ marginTop:10, width: posizioni.finestraScrollSedi.width, height: posizioni.finestraScrollSedi.height }}>
+                              style={{ width: posizioni.finestraScrollSedi.width, height: posizioni.finestraScrollSedi.height }}>
                               <FormDinamico 
                                   schemaPagina={pagineForm2[pagina]}
                                   containerWidth={posizioni.finestraScrollSedi.width} 
                                   containerHeight={posizioni.finestraScrollSedi.height}  
-                                  etichetta={true}
+                                  etichetta={false}
                                   formNumber={2} 
-                                  handleFocus={handleFocus} />
+                                  handleFocus={handleFocus} 
+                                  numeroRighe={numeroRighe} // Passa il numero di righe 
+                                  />
                         </View>
-                     ))}
+                     )
+                    })}
                 </PaginaScroll>               
             </View>
         )}

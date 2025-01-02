@@ -3,9 +3,10 @@ export const schemaCliente = {
     layout: { 
       web: { 
         visibile:true,
-        margineDx: '5%' ,
-        height:40, 
-        width:'10%',
+        margineSn: 1 ,
+        margineDx: 4 ,
+        height:30, 
+        width:10,
         bordoColor:'grey', 
         bordoWidth:1,
         labelColor:'',
@@ -19,9 +20,10 @@ export const schemaCliente = {
       
       mobile: { 
         visibile:true,
-        margineDx: '6%' ,
+        margineSn: 2,
+        margineDx: 5 ,
         height:40, 
-        width:'30%',
+        width:20,
         bordoColor:'', 
         bordoWidth:1,
         labelColor:'blue',
@@ -38,9 +40,10 @@ export const schemaCliente = {
       layout: { 
         web: { 
           visibile:true,
-          margineDx: '2%' ,
-          height:40, 
-          width:'15%',
+          margineSn: 0 ,
+          margineDx: 2 ,
+          height:30, 
+          width:15,
           bordoColor:'grey', 
           bordoWidth:1,
           labelColor:'',
@@ -54,9 +57,10 @@ export const schemaCliente = {
         
         mobile: { 
           visibile:true,
-          margineDx: '2%' ,
+          margineSn: 0 ,
+          margineDx: 2 ,
           height:40, 
-          width:'30%',
+          width:30,
           bordoColor:'', 
           bordoWidth:1,
           labelColor:'',
@@ -74,9 +78,10 @@ export const schemaCliente = {
         layout: { 
           web: { 
             visibile:true,
-            margineDx: '2%' ,
-            height:40, 
-            width:'15%',
+            margineSn: 0 ,
+            margineDx: 3 ,
+            height:30, 
+            width:15,
             bordoColor:'grey', 
             bordoWidth:1,
             labelColor:'',
@@ -89,9 +94,10 @@ export const schemaCliente = {
           
           mobile: { 
             visibile:true,
-            margineDx: '1%' ,
+            margineSn: 0 ,
+            margineDx: 0 ,
             height:40, 
-            width:'30%',
+            width:30,
             bordoColor:'', 
             bordoWidth:1,
             labelColor:'blue',
@@ -108,9 +114,10 @@ export const schemaCliente = {
       layout: { 
        web: { 
         visibile:true,
-        margineDx: '2%' ,
-        height:40, 
-        width:'77%',
+        margineSn: 1 ,
+        margineDx: 2 ,
+        height:30, 
+        width:80,
         bordoColor:'grey', 
         bordoWidth:1,
         labelColor:'',
@@ -123,14 +130,15 @@ export const schemaCliente = {
       
       mobile: { 
         visibile:true,
+        margineSn:2 ,
         margineDx: '0' ,
         height:40, 
-        width:'98%',
+        width:90,
         bordoColor:'', 
         bordoWidth:1,
         labelColor:'blue',
         inputColor:'',     
-        row: 3, 
+        row: 2, 
         pagina:1,tipoElenco:'',
         campo:'',
         tipoInput:''
@@ -145,9 +153,11 @@ export const schemaCliente = {
       layout: { 
         web: { 
           visibile:true,
-          margineDx: '2%' ,
-          height:40, 
-          width:'20%',
+          margineSn: 0 ,
+          margineDx:2 ,
+          margineSn: 0 ,
+          height:30, 
+          width:20,
           bordoColor:'grey', 
           bordoWidth:1,
           labelColor:'',
@@ -160,14 +170,15 @@ export const schemaCliente = {
         
         mobile: { 
           visibile:true,
-          margineDx: '5%' ,
+          margineSn: 2 ,
+          margineDx: 2 ,
           height:40, 
-          width:'45%',
+          width:33,
           bordoColor:'', 
           bordoWidth:1,
           labelColor:'blue',
           inputColor:'',     
-          row: 2, 
+          row: 3, 
           pagina:1,
           tipoElenco:'',
           campo:'',
@@ -181,9 +192,10 @@ export const schemaCliente = {
         layout: { 
           web: { 
             visibile:true,
-            margineDx: '2%' ,
-            height:40, 
-            width:'28%',
+            margineSn: 0 ,
+            margineDx: 0,
+            height:30, 
+            width:23,
             bordoColor:'grey', 
             bordoWidth:1,
             labelColor:'',
@@ -196,14 +208,15 @@ export const schemaCliente = {
           
           mobile: { 
             visibile:true,
-            margineDx: '' ,
+            margineSn: 0 ,
+            margineDx: 1 ,
             height:40, 
-            width:'48%',
+            width:40,
             bordoColor:'', 
             bordoWidth:1,
             labelColor:'blue',
             inputColor:'',     
-            row: 2, 
+            row:3, 
             pagina:1,
             tipoElenco:'',
         campo:'',
@@ -221,9 +234,10 @@ export const schemaCliente = {
           layout: { 
             web: { 
               visibile:true,
-              margineDx: '1%' ,
-              height:40, 
-              width:'49%',
+              margineSn: 1 ,
+              margineDx: 2 ,
+              height:30, 
+              width:48,
               bordoColor:'grey', 
               bordoWidth:1,
               labelColor:'',
@@ -236,9 +250,10 @@ export const schemaCliente = {
             
             mobile: { 
               visibile:true,
-              margineDx: '1%' ,
+              margineSn: 2 ,
+              margineDx: 0 ,
               height:40, 
-              width:'98%',
+              width:95,
               bordoColor:'', 
               bordoWidth:1,
               labelColor:'blue',
@@ -256,9 +271,10 @@ export const schemaCliente = {
         layout: { 
           web: { 
             visibile:true,
-            margineDx: '2%' ,
-            height:40, 
-            width:'49%',
+            margineSn: 0 ,
+            margineDx: 0 ,
+            height:30, 
+            width:48,
             bordoColor:'grey', 
             bordoWidth:1,
             labelColor:'',
@@ -271,9 +287,10 @@ export const schemaCliente = {
           
           mobile: { 
             visibile:true,
+            margineSn: 2 ,
             margineDx: '1%' ,
             height:40, 
-            width:'98%',
+            width:95,
             bordoColor:'', 
             bordoWidth:1,
             labelColor:'blue',
@@ -299,9 +316,10 @@ export const schemaCliente = {
           layout: { 
             web: { 
               visibile:true,
-              margineDx: '2%' ,
-              height:40, 
-              width:'30%',
+              margineDx: 1 ,
+              margineSn: 1 ,
+              height:30, 
+              width:30,
               bordoColor:'grey', 
               bordoWidth:1,
               labelColor:'',
@@ -314,9 +332,10 @@ export const schemaCliente = {
             
             mobile: { 
               visibile:true,
-              margineDx: '1%' ,
+              margineSn: 2 ,
+              margineDx:0 ,
               height:40, 
-              width:'98%',
+              width:95,
               bordoColor:'', 
               bordoWidth:1,
               labelColor:'blue',
@@ -333,9 +352,10 @@ export const schemaCliente = {
           layout: { 
             web: { 
               visibile:true,
-              margineDx: '2%' ,
-              height:40, 
-              width:'50%',
+              margineSn: 0 ,
+              margineDx: 1 ,
+              height:30, 
+              width:58,
               bordoColor:'grey', 
               bordoWidth:1,
               labelColor:'',
@@ -348,9 +368,10 @@ export const schemaCliente = {
             
             mobile: { 
               visibile:true,
-              margineDx: '1%' ,
+              margineSn: 2 ,
+              margineDx: 2 ,
               height:40, 
-              width:'80%',
+              width:78,
               bordoColor:'', 
               bordoWidth:1,
               labelColor:'blue',
@@ -367,9 +388,10 @@ export const schemaCliente = {
             layout: { 
               web: { 
                 visibile:true,
-                margineDx: '2%' ,
-                height:40, 
-                width:'8%',
+                margineSn: 0 ,
+                margineDx:0 ,
+                height:30, 
+                width:8,
                 bordoColor:'', 
                 bordoWidth:2,
                 labelColor:'blue',
@@ -382,9 +404,10 @@ export const schemaCliente = {
               
               mobile: { 
                 visibile:true,
-                margineDx: '1%' ,
+                margineSn: 0 ,
+                margineDx:0 ,
                 height:40, 
-                width:'18%',
+                width:15,
                 bordoColor:'', 
                 bordoWidth:1,
                 labelColor:'blue',
@@ -400,9 +423,10 @@ export const schemaCliente = {
               layout: { 
                 web: { 
                   visibile:true,
-                  margineDx: '5%' ,
-                  height:40, 
-                  width:'30%',
+                  
+                  margineDx: 1 ,
+                  height:30, 
+                  width:30,
                   bordoColor:'grey', 
                   bordoWidth:1,
                   labelColor:'',
@@ -415,9 +439,10 @@ export const schemaCliente = {
                 
                 mobile: { 
                   visibile:true,
-                  margineDx: '1%' ,
+                  margineSn: 2 ,
+                  margineDx: 2 ,
                   height:40, 
-                  width:'80%',
+                  width:75,
                   bordoColor:'', 
                   bordoWidth:1,
                   labelColor:'blue',
@@ -434,9 +459,10 @@ export const schemaCliente = {
               layout: { 
                 web: { 
                   visibile:true,
-                  margineDx: '5%' ,
-                  height:40, 
-                  width:'10%',
+                  margineSn: 0 ,
+                  margineDx: 1 ,
+                  height:30, 
+                  width:10,
                   bordoColor:'grey', 
                   bordoWidth:1,
                   labelColor:'',
@@ -449,9 +475,10 @@ export const schemaCliente = {
                 
                 mobile: { 
                   visibile:true,
-                  margineDx: '1%' ,
+                  margineSn: 0 ,
+                  margineDx: 0 ,
                   height:40, 
-                  width:'18%',
+                  width:18,
                   bordoColor:'', 
                   bordoWidth:1,
                   labelColor:'blue',
@@ -468,9 +495,9 @@ export const schemaCliente = {
              layout: { 
               web: { 
                 visibile:true,
+                margineSn: 0 ,
                 margineDx: '2%' ,
-                height:40, 
-                width:'40%',
+                height:30,
                 bordoColor:'grey', 
                 bordoWidth:1,
                 labelColor:'',
@@ -483,9 +510,10 @@ export const schemaCliente = {
               
               mobile: { 
                 visibile:true,
+                margineSn: 2,
                 margineDx: '1%' ,
                 height:40, 
-                width:'98%',
+                width:95,
                 bordoColor:'', 
                 bordoWidth:1,
                 labelColor:'blue',
@@ -502,9 +530,10 @@ export const schemaCliente = {
       layout: { 
         web: { 
           visibile:true,
-          margineDx: '2%' ,
-          height:40, 
-          width:'40%',
+          margineSn: 1 ,
+          margineDx: 1 ,
+          height:30, 
+          width:35,
           bordoColor:'grey', 
           bordoWidth:1,
           labelColor:'',
@@ -517,9 +546,10 @@ export const schemaCliente = {
         
         mobile: { 
           visibile:true,
-          margineDx: '1%' ,
+          margineSn: 1 ,
+          margineDx: 0 ,
           height:40, 
-          width:'65%',
+          width:95,
           bordoColor:'', 
           bordoWidth:1,
           labelColor:'blue',
@@ -537,9 +567,10 @@ export const schemaCliente = {
         layout: { 
           web: { 
             visibile:true,
-            margineDx: '2%' ,
-            height:40, 
-            width:'18%',
+            margineSn: 0 ,
+            margineDx: 1 ,
+            height:30, 
+            width:20,
             bordoColor:'grey', 
             bordoWidth:1,
             labelColor:'',
@@ -552,9 +583,10 @@ export const schemaCliente = {
           
           mobile: { 
             visibile:true,
-            margineDx: '1%' ,
+            margineSn: 0 ,
+            margineDx: 2 ,
             height:40, 
-            width:'32%',
+            width:48,
             bordoColor:'', 
             bordoWidth:1,
             labelColor:'blue',
@@ -571,9 +603,10 @@ export const schemaCliente = {
         layout: { 
           web: { 
             visibile:true,
-            margineDx: '2%' ,
-            height:40, 
-            width:'18%',
+            margineSn: 0 ,
+            margineDx: 1 ,
+            height:30, 
+            width:20,
             bordoColor:'grey', 
             bordoWidth:1,
             labelColor:'',
@@ -586,9 +619,10 @@ export const schemaCliente = {
           
           mobile: { 
             visibile:true,
-            margineDx: '1%' ,
+            margineSn: 0 ,
+            margineDx: 0 ,
             height:40, 
-            width:'32%',
+            width:48,
             bordoColor:'', 
             bordoWidth:1,
             labelColor:'blue',
@@ -606,9 +640,10 @@ export const schemaCliente = {
         layout: { 
           web: { 
             visibile:true,
-            margineDx: '5%' ,
-            height:40, 
-            width:'18%',
+            margineSn: 0 ,
+            margineDx: 0 ,
+            height:30, 
+            width:20,
             bordoColor:'grey', 
             bordoWidth:1,
             labelColor:'',
@@ -621,9 +656,10 @@ export const schemaCliente = {
           
           mobile: { 
             visibile:true,
-            margineDx: '1%' ,
+            margineSn: 2 ,
+            margineDx: 0 ,
             height:40, 
-            width:'32%',
+            width:48,
             bordoColor:'', 
             bordoWidth:1,
             labelColor:'blue',
@@ -640,9 +676,10 @@ export const schemaCliente = {
           layout: { 
             web: { 
               visibile:true,
-              margineDx: '2%' ,
-              height:40, 
-              width:'20%',
+              margineSn: 0 ,
+              margineDx: 0 ,
+              height:30, 
+              width:16,
               bordoColor:'gray', 
               bordoWidth:1,
               labelColor:'',
@@ -655,15 +692,16 @@ export const schemaCliente = {
             
             mobile: { 
               visibile:true,
+              margineSn: 0 ,
               margineDx: '1%' ,
               height:40, 
-              width:'20%',
+              width:20,
               bordoColor:'', 
               bordoWidth:1,
               labelColor:'blue',
               inputColor:'',     
-              row: 6, 
-              pagina:2,
+              row: 3, 
+              pagina:1,
               tipoElenco:'',
               campo:'',
               tipoInput:''
@@ -718,9 +756,10 @@ export const schemaCliente = {
     layout: { 
       web: { 
         visibile:true,
-        margineDx: '2%' ,
-        height:40, 
-        width:'50%',
+        margineSn: 1 ,
+        margineDx: 0,
+        height:25, 
+        width:30,
         bordoColor:'gray', 
         bordoWidth:1,
         labelColor:'',
@@ -733,9 +772,10 @@ export const schemaCliente = {
       
       mobile: { 
         visibile:true,
-        margineDx: 0,
+        margineSn: 2 ,
+        margineDx: 2,
         height:40, 
-        width:'100%',
+        width:35,
         bordoColor:'', 
         bordoWidth:1,
         labelColor:'blue',
@@ -748,13 +788,50 @@ export const schemaCliente = {
       } 
     } 
      },
-    comune: { label: 'Città', type: 'text'  , obbligatorio:false, 
+     presso: { label: 'Presso', type: 'text'  , obbligatorio:false, 
       layout: { 
         web: { 
           visibile:true,
-          margineDx: '2%' ,
+          margineSn: 1 ,
+          margineDx: 0,
+          height:25, 
+          width:65,
+          bordoColor:'gray', 
+          bordoWidth:1,
+          labelColor:'',
+          inputColor:'green',     
+          row: 1, 
+          pagina:1,
+          tipoElenco:'',
+          campo:'',
+          tipoInput:''},
+        
+        mobile: { 
+          visibile:true,
+          margineSn: 0,
+          margineDx: 0,
           height:40, 
-          width:'60%',
+          width:58,
+          bordoColor:'', 
+          bordoWidth:1,
+          labelColor:'blue',
+          inputColor:'',     
+          row: 1, 
+          pagina:1,
+          tipoElenco:'',
+          campo:'',
+          tipoInput:''
+        } 
+      } 
+       },
+    comune: { label: 'Comune', type: 'text'  , obbligatorio:false, 
+      layout: { 
+        web: { 
+          visibile:true,
+          margineSn: 1 ,
+          margineDx: 1 ,
+          height:25, 
+          width:50,
           bordoColor:'gray', 
           bordoWidth:1,
           labelColor:'',
@@ -767,9 +844,10 @@ export const schemaCliente = {
         
         mobile: { 
           visibile:true,
-          margineDx: '2%' ,
+          margineSn: 2 ,
+          margineDx: 2 ,
           height:40, 
-          width:'49%',
+          width:55,
           bordoColor:'', 
           bordoWidth:1,
           labelColor:'blue',
@@ -786,9 +864,10 @@ export const schemaCliente = {
       layout: { 
         web: { 
           visibile:true,
-          margineDx: '2%' ,
-          height:40, 
-          width:'30%',
+          margineSn: 1 ,
+          margineDx: 1 ,
+          height:25, 
+          width:40,
           bordoColor:'gray', 
           bordoWidth:1,
           labelColor:'',
@@ -801,9 +880,10 @@ export const schemaCliente = {
         
         mobile: { 
           visibile:true,
+          margineSn: 0 ,
           margineDx: 0 ,
           height:40, 
-          width:'49%',
+          width:38,
           bordoColor:'', 
           bordoWidth:1,
           labelColor:'blue',
@@ -820,9 +900,10 @@ export const schemaCliente = {
          layout: { 
           web: { 
             visibile:true,
-            margineDx: '1%' ,
-            height:40, 
-            width:'55%',
+            margineSn: 1 ,
+            margineDx: 1 ,
+            height:25, 
+            width:50,
             bordoColor:'gray', 
             bordoWidth:1,
             labelColor:'',
@@ -835,9 +916,10 @@ export const schemaCliente = {
           
           mobile: { 
             visibile:true,
-            margineDx: '1%' ,
+            margineSn: 2 ,
+            margineDx: 1 ,
             height:40, 
-            width:'81%',
+            width:79,
             bordoColor:'', 
             bordoWidth:1,
             labelColor:'blue',
@@ -855,9 +937,10 @@ export const schemaCliente = {
         layout: { 
           web: { 
             visibile:true,
-            margineDx: '1%' ,
-            height:40, 
-            width:'7%',
+            margineSn:0 ,
+            margineDx: 1 ,
+            height:25, 
+            width:10,
             bordoColor:'gray', 
             bordoWidth:1,
             labelColor:'',
@@ -870,9 +953,10 @@ export const schemaCliente = {
           
           mobile: { 
             visibile:true,
+            margineSn:0 ,
             margineDx: 0 ,
             height:40, 
-            width:'18%',
+            width:15,
             bordoColor:'', 
             bordoWidth:1,
             labelColor:'blue',
@@ -892,9 +976,10 @@ export const schemaCliente = {
         layout: { 
           web: { 
             visibile:true,
-            margineDx: '1%' ,
-            height:40, 
-            width:'10%',
+            margineSn:0 ,
+            margineDx: 0 ,
+            height:25, 
+            width:10,
             bordoColor:'gray', 
             bordoWidth:1,
             labelColor:'',
@@ -907,9 +992,10 @@ export const schemaCliente = {
           
           mobile: { 
             visibile:true,
-            margineDx: '1%' ,
+            margineSn:2 ,
+            margineDx: 3,
             height:40, 
-            width:'20%',
+            width:20,
             bordoColor:'', 
             bordoWidth:1,
             labelColor:'',
@@ -927,14 +1013,15 @@ export const schemaCliente = {
         layout: { 
           web: { 
             visibile:true,
-            margineDx: '2%' ,
-            height:40, 
-            width:'24%',
+            margineSn:1 ,
+            margineDx:0 ,
+            height:25, 
+            width:40,
             bordoColor:'gray', 
             bordoWidth:1,
             labelColor:'',
             inputColor:'green',     
-            row: 3, 
+            row: 4, 
             pagina:1,
             tipoElenco:'',
             campo:'',
@@ -942,9 +1029,10 @@ export const schemaCliente = {
           
           mobile: { 
             visibile:true,
-            margineDx: '1%' ,
+            margineSn:0 ,
+            margineDx: 0,
             height:40, 
-            width:'78%',
+            width:72,
             bordoColor:'', 
             bordoWidth:1,
             labelColor:'blue',

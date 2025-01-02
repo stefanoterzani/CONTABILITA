@@ -1,7 +1,8 @@
 import { SplashScreen, Stack } from "expo-router";
 import { WindowDimensionsProvider } from './context/WindowDimensionsContext'
 import { useFonts } from 'expo-font'
-
+//import { ZoomAndColumnsProvider } from './context/ZoomAndColumnsContext';
+import { ColumnDimensionsProvider } from './context/ColumnDimensionsContext';
 export default function RootLayout() {
 
   const [fontsLoaded, error] = useFonts({
@@ -15,11 +16,11 @@ export default function RootLayout() {
   });
   
     return (
-        <WindowDimensionsProvider>
+      <ColumnDimensionsProvider>
           <Stack>
             <Stack.Screen name="index" options={{headerShown:false}}/>
             <Stack.Screen name="(HOME)" options={{headerShown:false}}/>  
           </Stack>
-        </WindowDimensionsProvider>
+      </ColumnDimensionsProvider>
     )
 }

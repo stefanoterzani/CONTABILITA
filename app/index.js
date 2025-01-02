@@ -1,20 +1,21 @@
-import { Text, TouchableOpacity, View } from "react-native";
-import React from "react";
+import {SafeAreaView, Text, TouchableOpacity, View , Platform,Button} from "react-native";
+import React, { useContext, useState,useEffect} from 'react';
 import {useRouter } from "expo-router";
+import { ColumnDimensionsContext } from './context/ColumnDimensionsContext';
 
-export default function Index() {
+
+const Index=() =>{
   const router = useRouter();
-  return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-    <TouchableOpacity onPress={()=> router.push('/Home')}>
-      <Text style={{color:'blue', fontSize:30}}>Vai a prova</Text>
-      </TouchableOpacity>
-    </View>
-  );
-}
+
+  const { windowHeight, windowWidth, leftColumnWidth, centralColumnWidth, rightColumnWidth } = useContext(ColumnDimensionsContext);
+    return ( 
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}> 
+    <TouchableOpacity onPress={() => router.push('Home')}>
+        <Text>vai alla home </Text> 
+        </TouchableOpacity>
+     </View> 
+     ); 
+     }; 
+     
+     export default Index;
+  
