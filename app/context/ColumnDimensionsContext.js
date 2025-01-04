@@ -12,14 +12,17 @@ const ColumnDimensionsProvider = ({ children }) => {
   const [leftColumnLeft, setLeftColumnLeft] = useState(0);
   const [centralColumnLeft, setCentralColumnLeft] = useState(0);
   const [rightColumnLeft, setRightColumnLeft] = useState(0);
-
+  const [headerHeight, setHeaderHeight] = useState(0);
+  const [footerHeight, setFooterHeight] = useState(0);
+  
   const isMobile = windowWidth < 768;
 
   const updateColumnDimensions = () => {
     const { width, height } = Dimensions.get('window');
     setWindowHeight(height);
     setWindowWidth(width);
-    
+    setHeaderHeight(height*0.07);
+    setFooterHeight(height*0.05);
     if (isMobile) {
         setLeftColumnLeft(0);
         setLeftColumnWidth(0);
@@ -41,10 +44,10 @@ const ColumnDimensionsProvider = ({ children }) => {
         setRightColumnWidth(0);
     } else {
         setLeftColumnLeft(0);
-        setLeftColumnWidth(width * 0.2);
+        setLeftColumnWidth(width * 0.15);
       
-        setCentralColumnLeft(width * 0.2);
-        setCentralColumnWidth(width * 0.6);
+        setCentralColumnLeft(width * 0.15);
+        setCentralColumnWidth(width * 0.65,);
         
         setRightColumnLeft(width * 0.8);
         setRightColumnWidth(width * 0.2);
@@ -61,7 +64,7 @@ const ColumnDimensionsProvider = ({ children }) => {
     return () => {
       subscription.remove();
     };
-  }, [windowWidth]);
+  }, [windowWidth,windowHeight]);
 
   useEffect(() => { 
     console.log("Column dimensions:", 
@@ -77,7 +80,7 @@ const ColumnDimensionsProvider = ({ children }) => {
 
 
   return (
-    <ColumnDimensionsContext.Provider value={{ windowHeight, windowWidth, leftColumnWidth, centralColumnWidth, rightColumnWidth, leftColumnLeft, centralColumnLeft, rightColumnLeft }}>
+    <ColumnDimensionsContext.Provider value={{ isMobile,windowHeight, windowWidth,headerHeight, footerHeight,leftColumnWidth, centralColumnWidth, rightColumnWidth, leftColumnLeft, centralColumnLeft, rightColumnLeft }}>
       {children}
     </ColumnDimensionsContext.Provider>
   );
