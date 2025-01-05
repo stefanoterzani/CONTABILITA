@@ -1,0 +1,58 @@
+import { StyleSheet, Text, View } from 'react-native'
+import React, { useContext, useState,useEffect} from 'react';
+import MenuComponent from './MenuComponent'
+import { ColumnDimensionsContext } from '../context/ColumnDimensionsContext';
+
+
+const ColonnaDestra = ({showColonnaDestra}) => {
+    
+            const { 
+              windowHeight, windowWidth,
+              headerHeight, footerHeight,
+              leftColumnWidth, centralColumnWidth, rightColumnWidth, 
+              leftColumnLeft, centralColumnLeft, rightColumnLeft ,
+              bordoSopraSotto,
+              bordoSnColonnaSn,bordoDxColonnaSn,
+              bordoSnColonnaDx,bordoDxColonnaDx,
+              bordoDxColonnaCn,bordoSnColonnaCn,
+              colonnaSnVisibile,colonnaDxVisibile,
+              isMobile
+                   } = useContext(ColumnDimensionsContext)
+
+                   console.log("showColonnaDestra",showColonnaDestra)
+                   
+  return (
+  <View style={[styles.container,{
+          backgroundColor:showColonnaDestra ?  'lightblue' : 'gray',
+          right: showColonnaDestra ?  rightColumnLeft :0, 
+          top:headerHeight, 
+          width:showColonnaDestra ?  250 : rightColumnWidth, 
+          height:windowHeight-footerHeight-headerHeight, 
+          borderTopWidth:showColonnaDestra ?  2 :bordoSopraSotto, 
+          borderBottomWidth:showColonnaDestra ?  2 :bordoSopraSotto, 
+          borderLeftWidth:showColonnaDestra ?  5 : bordoDxColonnaDx,
+          borderRightWidth:bordoDxColonnaDx,
+          borderTopLeftRadius: showColonnaDestra ?  15 : 0,
+          borderBottomLeftRadius: showColonnaDestra ?  15 : 0,
+          borderLeftColor: showColonnaDestra ?  'lightgray' : 'white',
+          borderBottomColor:showColonnaDestra ?  'lightgray' : 'white',
+          }]}>
+  
+  
+  </View>
+  )
+}
+
+export default ColonnaDestra
+
+const styles = StyleSheet.create({
+  container:{
+ position:'absolute',
+ backgroundColor:'gray',
+ borderLeftColor:'white',
+ borderRightColor:'white',
+ borderTopColor:'white',
+ borderBottomColor:'white',
+ zIndex:10,
+  }
+ });

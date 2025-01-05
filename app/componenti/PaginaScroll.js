@@ -3,7 +3,9 @@ import React ,{useRef,useEffect, useState} from 'react'
 import AntDesign from '@expo/vector-icons/AntDesign';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-const PaginaScroll = ({scrollWidth,scrollHeight,children,barra,barraInserisciElimina,top, onNuovo, onElimina,}) => {
+
+
+const PaginaScroll = ({scrollWidth,scrollHeight,children,barra,barraInserisciElimina,onNuovo, onElimina,}) => {
     const scrollViewRef = useRef(null);
     const [scrollPosition, setScrollPosition] = useState(0);
     const [isMobile,setIsMobile] = useState(null);
@@ -126,7 +128,8 @@ const handlePrevPage = () => {
                     scrollEventThrottle={16}
                 >
                 {React.Children.map(children, (child, index) =>  ( 
-                    <View key={index} style={{ width: scrollWidth, height: scrollHeight}}> 
+                    <View key={index} style={{
+                    }}> 
                         {child} 
                     </View> 
                 ))}

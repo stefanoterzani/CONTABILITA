@@ -11,7 +11,7 @@ const Index=() =>{
     return ( 
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}> 
     <TouchableOpacity onPress={() => router.push('Home')}>
-        <Text>vai alla home </Text> 
+        <Text style={{fontSize:30}}>vai alla home </Text> 
         </TouchableOpacity>
      </View> 
      ); 

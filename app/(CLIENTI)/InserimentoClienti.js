@@ -44,6 +44,11 @@ useEffect(() => {
   organizzato=organizzaSchema(schemaSedi);
   setSchemaSediOrganizzato(organizzato);
   setPagineForm2(organizzato);
+
+  setShowColonnaSinistra(false)
+  setShowColonnaDestra(false)
+  setLeftColumnWidth(leftColumnLeft)
+
   }, []);
 
 
@@ -97,6 +102,8 @@ const handleEliminaPagina = (pageNumber) => {
   setPagineForm2((prevPagine) => aggiungiPagina(prevPagine, schemaSediOrganizzato));
 };
 
+
+
   return (
     <SafeAreaView style={{flex:1}}>
    {/****************** HEADER  ---------------------------------- */}  
@@ -113,7 +120,7 @@ const handleEliminaPagina = (pageNumber) => {
                  <TouchableOpacity
                       onPress={()=>{
                         setLeftColumnWidth((prevWidth) => (prevWidth === 0 ? 200 : 0)) 
-                        setShowColonnaSinistra((prevShow) => !prevShow)
+                        setShowColonnaSinistra((prevShowSn) => !prevShowSn)
                         } }>
                      <MaterialIcons name="menu" size={30} color="white" />
                  </TouchableOpacity>
@@ -122,14 +129,13 @@ const handleEliminaPagina = (pageNumber) => {
                  
                   <View style={{width:'70%',height:'100%',borderColor:'red',borderWidth:1,alignItems:'center',justifyContent:'center'}}>
                       <Text style={{textAlign:'center' ,  color:'white'}}>{windowWidth.toFixed(2)} x {windowHeight.toFixed(2)}</Text>
-                      <Text style={{textAlign:'center' ,  color:'white'}}>HOME</Text>
                   </View>   
                   <View style={{width:'15%',height:'100%',borderColor:'red',borderWidth:1,justifyContent:'center',alignItems:'center'}}>
              
                  <TouchableOpacity
                       onPress={()=>{
                         setRightColumnWidth((prevWidth) => (prevWidth === 0 ? 200 : 0)) 
-                        setShowColonnaDestra((prevShow) => !prevShow)
+                        setShowColonnaDestra((prevShowDx) => !prevShowDx)
                         } }>
                      <Text style={{color:'white',textAlign:'center', fontSize:20}}>2</Text> 
                  </TouchableOpacity>
@@ -143,7 +149,7 @@ const handleEliminaPagina = (pageNumber) => {
 
       {/****************** FOOTER  ---------------------------------- */}  
         <View 
-            style={{position: 'absolute', borderColo: 'blue', borderWidth:0,backgroundColor:'blue',
+            style={{position: 'absolute', borderColor: 'blue', borderWidth:0,backgroundColor:'blue',
                     top:windowHeight- footerHeight,
                     left: 0,
                     width:windowWidth,
@@ -181,9 +187,77 @@ const handleEliminaPagina = (pageNumber) => {
 
          
             
+ {/******************CONTENITORE SCROLL 1 ---------------------------------- */}
+              <View style={{flex:1,position:'absolute',top:topScrollSchema,borderColor:'red',borderWidth:1}}>                                        
+             
+                  <PaginaScroll 
+                   // top={0}
+                    scrollWidth={centralColumnWidth-bordoSnColonnaCn-bordoDxColonnaCn}  
+                   // scrollHeight={heightScrollSchema} 
+                    barra={true}
+                    barraInserisciElimina={false}
+                    placeholder={false} >
+                  {/* */}
+                          {Object.keys(schemaOrganizzato).map((pagina, index) =>{
+                              const numeroRighe = Object.keys(schemaOrganizzato[pagina]).length;
+                              return (
+                                  <View key={index} >  
+                                        <FormDinamico 
+                                            schemaPagina={schemaOrganizzato[pagina]} 
+                                            containerWidth={centralColumnWidth-bordoSnColonnaCn-bordoDxColonnaCn} 
+                                            containerHeight={heightScrollSchema} 
+                                            etichetta={true} 
+                                            formNumber={1}
+                                            handleFocus={handleFocus}  
+                                            numeroRighe={numeroRighe}  />      
+                                    </View>
+                               )
+                            })}  
+
+
+
+
+                    </PaginaScroll>                   
+                </View>
+        
+                 
+
+ {/******************CONTENITORE SCROLL 2 ---------------------------------- */}
+
+       
+              <View style={{position:'absolute', top:topScrollSedi,borderColor:'red',borderWidth:1}}>
+                <PaginaScroll 
+                  //  top={topScrollSedi}
+                   // scrollWidth={centralColumnWidth}    
+                  //  scrollHeight={heightScrollSedi} 
+                    barra={true}
+                    barraInserisciElimina={true}
+                    onNuovo={handleAggiungiPagina}
+                    onElimina={handleEliminaPagina}   >
+             
+                    {Object.keys(pagineForm2).map((pagina, index) => {
+                      const numeroRighe = Object.keys(pagineForm2[pagina]).length;
+                      return (
+                        <View key={index} >
+                              <FormDinamico 
+                                  schemaPagina={pagineForm2[pagina]}
+                                  containerWidth={centralColumnWidth-bordoSnColonnaCn-bordoDxColonnaCn } 
+                                  containerHeight={heightScrollSedi}  
+                                  etichetta={false}
+                                  formNumber={2} 
+                                  handleFocus={handleFocus} 
+                                  numeroRighe={numeroRighe} // Passa il numero di righe 
+                                  />
+                        </View>
+                     )
+                    })}
+                </PaginaScroll>  
+                           
+            </View>            
+     {/***************FINE CONTENITORE SCROLL 2 ---------------------------------- */}
 
         </View>
-      
+       {/***************FINE COLONNA CENTRALE ---------------------------------- */}  
 
     </SafeAreaView>
   )

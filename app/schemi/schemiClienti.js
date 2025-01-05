@@ -110,14 +110,14 @@ export const schemaCliente = {
           } 
         }
         },
-    nome: { label: 'Nome Cliente ', type: 'text', obbligatorio:true,visibile:true ,
+    nome: { label: 'Nome Cliente lg=100 dx=0 sn=0 ', type: 'text', obbligatorio:true,visibile:true ,
       layout: { 
        web: { 
         visibile:true,
-        margineSn: 1 ,
-        margineDx: 2 ,
+        margineSn: 0 ,
+        margineDx: 0 ,
         height:30, 
-        width:80,
+        width:100,
         bordoColor:'grey', 
         bordoWidth:1,
         labelColor:'',
@@ -130,8 +130,8 @@ export const schemaCliente = {
       
       mobile: { 
         visibile:true,
-        margineSn:2 ,
-        margineDx: '0' ,
+        margineSn:0 ,
+        margineDx: 0 ,
         height:40, 
         width:100,
         bordoColor:'', 
@@ -675,7 +675,7 @@ export const schemaCliente = {
         codiceAteco: { label: 'ATECO', type: 'text' , obbligatorio:false, visibile:true ,
           layout: { 
             web: { 
-              visibile:true,
+              visibile:false,
               margineSn: 0 ,
               margineDx: 0 ,
               height:30, 
@@ -1009,14 +1009,14 @@ export const schemaCliente = {
         } 
       },
 
-      nazione: { label: 'Nazione', type: 'text' , obbligatorio:false, 
+      nazione: { label: 'Nazione lg=100 dx=0 sn=0', type: 'text' , obbligatorio:false, 
         layout: { 
           web: { 
             visibile:true,
-            margineSn:1 ,
+            margineSn:0 ,
             margineDx:0 ,
             height:25, 
-            width:40,
+            width:100,
             bordoColor:'gray', 
             bordoWidth:1,
             labelColor:'',
