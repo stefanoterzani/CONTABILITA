@@ -70,12 +70,16 @@ export const raggruppaSchemaPerRiga = (schemaPerPagina) => {
     // Aggiorna gli attributi specifici della nuova pagina
     Object.keys(newPage).forEach((rowKey) => {
       newPage[rowKey].forEach((field) => {
-        field.key = `${field.key}${newPageNumber}`;
+       // field.key = field.key;
+
+        field.key = `${newPageNumber}.${field.key}`;
         field.layout.pagina = newPageNumber;
       });
     });
-  
-    return { ...pagine, [newPageNumber]: newPage };
+  console.log('aggiungiPagina', newPage);
+    return {  ...pagine, [newPageNumber]: newPage };
+     
+     
   };
 
 

@@ -20,7 +20,7 @@ useEffect(() => {
  } else {
     setIsMobile(false);
  }
-
+console.log("barra",barra)
  if(barra=== true){
   setBarraVisibile(true)
   if (barraInserisciElimina===true) {
@@ -33,7 +33,7 @@ useEffect(() => {
   setBarraVisibile(false)
   }
  
-},[])
+},[barra])
 
 
 const handleScroll = (event) => {

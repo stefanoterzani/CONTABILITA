@@ -1,16 +1,18 @@
-import { StyleSheet, Text, View,Platform,Keyboard,TouchableOpacity} from 'react-native'
+import { StyleSheet, Text, View,Platform,Keyboard,TouchableOpacity,Button} from 'react-native'
 import React, { useContext, useState,useEffect} from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import PaginaScroll from '../componenti/PaginaScroll';
+//import PaginaScroll from '../componenti/componentiPagineScroll/PaginaScroll';
 import { schemaCliente,schemaSedi } from '../schemi/schemiClienti';
 import { organizzaSchema,aggiungiPagina,eliminaPagina} from '../schemi/FunzioniSchemi';
-import FormDinamico  from '../componenti/FormDinamico';
+import { useForm, Controller } from 'react-hook-form'; 
 import { ColumnDimensionsContext } from '../context/ColumnDimensionsContext';
 import ColonnaSinistra from '../componenti/ColonnaSinistra';
 import ColonnaDestra from '../componenti/ColonnaDestra';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import InputPagineMultiple from '../componenti/componentiPagineScroll/InputPagineMultiple';
+import InputPaginaSingola from '../componenti/componentiPagineScroll/InputPaginaSingola';
 
-const Home = () => {
+const InserimentoClienti = () => {
   const { 
     windowHeight, windowWidth,
     headerHeight, footerHeight,
@@ -25,6 +27,10 @@ const Home = () => {
     setLeftColumnWidth,setRightColumnWidth
         } = useContext(ColumnDimensionsContext)
 
+const { control: controlAnagrafica, handleSubmit: handleSubmitAnagrafica, setValue: setValueAnagrafica, getValues: getValuesAnagrafica, reset: resetAnagrafica, formState: { errors: errorsAnagrafica } } = useForm();
+const { control: controlSedi, handleSubmit: handleSubmitSedi, setValue: setValueSedi, getValues: getValuesSedi, reset: resetSedi, formState: { errors: errorsSedi } } = useForm();
+
+
 const [schemaOrganizzato, setSchemaOrganizzato] = useState([]);
 const [schemaSediOrganizzato, setSchemaSediOrganizzato] = useState([]);
 const [focusedInput, setFocusedInput] = useState(null);
@@ -37,20 +43,24 @@ const [heightScrollSedi,setHeightScrollSedi]=useState(0);
 const [showColonnaDestra, setShowColonnaDestra] = useState(false);
 const [showColonnaSinistra, setShowColonnaSinistra] = useState(false);
 
-// Organizza gli schemi in modo da avere un array di pagine
+const [key, setKey] = useState(0);
+
+
 useEffect(() => {
-  let organizzato=organizzaSchema(schemaCliente);
+  let organizzato = organizzaSchema(schemaCliente);
   setSchemaOrganizzato(organizzato);
-  organizzato=organizzaSchema(schemaSedi);
+  organizzato = organizzaSchema(schemaSedi);
   setSchemaSediOrganizzato(organizzato);
-  setPagineForm2(organizzato);
 
-  setShowColonnaSinistra(false)
-  setShowColonnaDestra(false)
+  let pagineIniziali = {};
+  pagineIniziali = aggiungiPagina(pagineIniziali, organizzato);
+
+  setPagineForm2(pagineIniziali);
+ 
+  setShowColonnaSinistra(false);
+  setShowColonnaDestra(false);
   setLeftColumnWidth(leftColumnLeft)
-
-  }, []);
-
+}, []);
 
   // Aggiorna le dimensioni dei contenitori scroll in base alla grandezza della finestra
 useEffect(()=>{
@@ -64,10 +74,7 @@ useEffect(()=>{
   },[windowWidth,windowHeight])
 
 
- 
-
-
-  useEffect(() => {
+   useEffect(() => {
     const keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', () => {
       if (focusedInput && focusedInput.formNumber === 2) {
         setTopScrollSchema((prevTopScrollSchema) => prevTopScrollSchema -windowHeight); 
@@ -91,18 +98,40 @@ useEffect(()=>{
 
  const handleFocus = (inputId, formNumber)  => {                                                                                                   
   setFocusedInput({ inputId, formNumber });
+  console.log("inputId",inputId,"formNumber",formNumber)
 };
 
 
 const handleEliminaPagina = (pageNumber) => {
-  setPagineForm2((prevPagine) => eliminaPagina(prevPagine, pageNumber));
+  setPagineForm2((prevPagine) => {
+    const newPagine=eliminaPagina(prevPagine, pageNumber)
+    setKey((prevKey) => prevKey + 1); 
+    return{...newPagine}
+  });
 };
 
  const handleAggiungiPagina = () => {
-  setPagineForm2((prevPagine) => aggiungiPagina(prevPagine, schemaSediOrganizzato));
+  setPagineForm2((prevPagine) => {
+    const newPagine=  aggiungiPagina(prevPagine, schemaSediOrganizzato)
+    setKey((prevKey) => prevKey + 1); 
+ 
+    return newPagine;
+  });
 };
 
+const onSubmitAnagrafica = (data) => {
+  console.log('Anagrafica:', data);
+};
 
+const onSubmitSedi = (data) => {
+  console.log("Sedi:", JSON.stringify(data, null, 2));
+  resetSedi();
+  // Imposta pagineForm2 con un solo oggetto vuoto
+  let pagineIniziali = {};
+  pagineIniziali = aggiungiPagina(pagineIniziali, schemaSediOrganizzato);
+  setPagineForm2(pagineIniziali);
+  setKey((prevKey) => prevKey + 1);
+};
 
   return (
     <SafeAreaView style={{flex:1}}>
@@ -162,18 +191,18 @@ const handleEliminaPagina = (pageNumber) => {
         </View>
 
 
-{/******************COLONNA SINISTRA  ---------------------------------- */}
+
 
 <ColonnaSinistra showColonnaSinistra={showColonnaSinistra} />
 
-{/******************COLONNA DESTRA  ---------------------------------- */}
+
 
 <ColonnaDestra showColonnaDestra={showColonnaDestra}  />
 
 {/******************COLONNA CENTRALE ---------------------------------- */}
        
         <View style={{ position:'absolute',  
-        flex:1,
+                  flex:1,
                   top: headerHeight, 
                   left: centralColumnLeft, 
                   width:centralColumnWidth, 
@@ -187,124 +216,57 @@ const handleEliminaPagina = (pageNumber) => {
 
          
             
- {/******************CONTENITORE SCROLL 1 ---------------------------------- */}
+ {/******* SCROLL 1 ---------------------------------- */}
               <View style={{flex:1,position:'absolute',top:topScrollSchema,borderColor:'red',borderWidth:1}}>                                        
-             
-                  <PaginaScroll 
-                   // top={0}
-                    scrollWidth={centralColumnWidth-bordoSnColonnaCn-bordoDxColonnaCn}  
-                   // scrollHeight={heightScrollSchema} 
-                    barra={true}
-                    barraInserisciElimina={false}
-                    placeholder={false} >
-                  {/* */}
-                          {Object.keys(schemaOrganizzato).map((pagina, index) =>{
-                              const numeroRighe = Object.keys(schemaOrganizzato[pagina]).length;
-                              return (
-                                  <View key={index} >  
-                                        <FormDinamico 
-                                            schemaPagina={schemaOrganizzato[pagina]} 
-                                            containerWidth={centralColumnWidth-bordoSnColonnaCn-bordoDxColonnaCn} 
-                                            containerHeight={heightScrollSchema} 
-                                            etichetta={true} 
-                                            formNumber={1}
-                                            handleFocus={handleFocus}  
-                                            numeroRighe={numeroRighe}  />      
-                                    </View>
-                               )
-                            })}  
-
-
-
-
-                    </PaginaScroll>                   
+                    <InputPagineMultiple 
+                        formNumber={1}
+                        top={0}
+                        altezzaScroll={heightScrollSchema}
+                        larghezzaScroll={centralColumnWidth-bordoSnColonnaCn-bordoDxColonnaCn}
+                        barra={true}
+                        barraInserisciElimina={false}
+                        placeholder={false}
+                        etichetta={true}
+                        schema={schemaOrganizzato}
+                        handleFocus ={handleFocus}
+                        control={controlAnagrafica}
+                        errors={errorsAnagrafica}
+                        />
                 </View>
         
                  
-
- {/******************CONTENITORE SCROLL 2 ---------------------------------- */}
-
-       
+    {/*console.log("Pagine Form 2 (prima dell imputPaginaSingola):", JSON.stringify(pagineForm2, null, 2))*/}
+ {/******** SCROLL 2 ---------------------------------- */}
               <View style={{position:'absolute', top:topScrollSedi,borderColor:'red',borderWidth:1}}>
-                <PaginaScroll 
-                  //  top={topScrollSedi}
-                   // scrollWidth={centralColumnWidth}    
-                  //  scrollHeight={heightScrollSedi} 
-                    barra={true}
-                    barraInserisciElimina={true}
-                    onNuovo={handleAggiungiPagina}
-                    onElimina={handleEliminaPagina}   >
-             
-                    {Object.keys(pagineForm2).map((pagina, index) => {
-                      const numeroRighe = Object.keys(pagineForm2[pagina]).length;
-                      return (
-                        <View key={index} >
-                              <FormDinamico 
-                                  schemaPagina={pagineForm2[pagina]}
-                                  containerWidth={centralColumnWidth-bordoSnColonnaCn-bordoDxColonnaCn } 
-                                  containerHeight={heightScrollSedi}  
-                                  etichetta={false}
-                                  formNumber={2} 
-                                  handleFocus={handleFocus} 
-                                  numeroRighe={numeroRighe} // Passa il numero di righe 
-                                  />
-                        </View>
-                     )
-                    })}
-                </PaginaScroll>  
-                           
-            </View>            
-     {/***************FINE CONTENITORE SCROLL 2 ---------------------------------- */}
+                    <InputPaginaSingola 
+                        key={key} 
+                        formNumber={2} 
+                        schema={pagineForm2}
+                        top={topScrollSedi}
+                        altezzaScroll={heightScrollSedi}
+                        larghezzaScroll={centralColumnWidth-bordoSnColonnaCn-bordoDxColonnaCn } 
+                        barra={true}
+                        barraInserisciElimina={true}
+                        placeholder={true}
+                        etichetta={false}
+                        handleFocus={handleFocus} 
+                        handleAggiungiPagina={handleAggiungiPagina}
+                        handleEliminaPagina={handleEliminaPagina}
+                        control={controlSedi}
+                        errors={errorsSedi} 
+                          /> 
+              </View>            
+    
 
         </View>
        {/***************FINE COLONNA CENTRALE ---------------------------------- */}  
-
+       <View style={{position:'absolute',top:windowHeight-50,left:0,width:windowWidth,height:50,backgroundColor:'red',flexDirection:'row',justifyContent:'space-around',alignItems:'center'}}>
+       <Button title="Submit Anagrafica" onPress={handleSubmitAnagrafica(onSubmitAnagrafica)} />
+       <Button title="Submit Sedi" onPress={handleSubmitSedi(onSubmitSedi)} />
+        </View>
     </SafeAreaView>
   )
 }
 
-export default Home
+export default InserimentoClienti
 
-const styles=(windowHeight, 
-              windowWidth,
-              headerHeight,
-              footerHeight,
-              centralColumnLeft,
-              centralColumnWidth,
-              bordoSopraSotto,
-              bordoSnColonnaCn,
-              bordoDxColonnaCn
-            ) => StyleSheet.create({
-              
-  colonnaCentraleContainer:{
-    position:'absolute',  
-    top: headerHeight, 
-    left: centralColumnLeft, 
-    width:centralColumnWidth,
-    height: windowHeight-footerHeight-headerHeight, 
-    borderColor:'white',
-    borderTopWidth: bordoSopraSotto,
-    borderBottomWidth:bordoSopraSotto,
-    borderLeftWidth: bordoSnColonnaCn,
-    borderRightWidth: bordoDxColonnaCn,
-  },
-  headerContainer:{
-    position: 'absolute', 
-    backgroundColor:'blue',
-    top:0,
-    left: 0,
-    width:windowWidth,
-    height: headerHeight,                 
-    flexDirection:'row',
-  },
-    
-  })
-/*
-position: 'absolute', 
-              backgroundColor:'blue',
-              top:0,
-              left: 0,
-              width:windowWidth,
-              height: headerHeight,                 
-              flexDirection:'row'
-              */

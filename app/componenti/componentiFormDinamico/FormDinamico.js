@@ -2,9 +2,8 @@ import React , {useEffect} from 'react';
 import { View, Text, StyleSheet,TextInput, Platform,ScrollView, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard  } from 'react-native';
 import FormDinamicoInput from './FormDinamicoInput';
 
-export const FormDinamico = ({ schemaPagina, containerWidth, containerHeight,borderColor, borderWidth,formNumber,handleFocus,etichetta,numeroRighe,control, errors, prefix, index  }) => {
-// console.log('FORM DINAMICO',containerHeight, containerHeight* (15/100) )
-//console.log('FORM DINAMICO',schemaPagina)
+export const FormDinamico = ({control,errors, schemaPagina, containerWidth, containerHeight,borderColor, borderWidth,formNumber,handleFocus,etichetta,numeroRighe, prefix, index  }) => {
+
   return (
    
     <View style={{ width: containerWidth, height: containerHeight,flex:1,borderColor,borderWidth }}>
@@ -26,6 +25,8 @@ export const FormDinamico = ({ schemaPagina, containerWidth, containerHeight,bor
                               etichetta={etichetta}
                               onFocus={handleFocus}
                               formNumber={formNumber}
+                              control={control}
+                              errors={errors}
                               />
 
                        </View>

@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View,Platform,Keyboard,TouchableOpacity} from 'react-native'
 import React, { useContext, useState,useEffect} from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import PaginaScroll from '../componenti/PaginaScroll';
+//import PaginaScroll from '../componenti/componentiPagineScroll/PaginaScroll';
 import { schemaCliente,schemaSedi } from '../schemi/schemiClienti';
 import { organizzaSchema,aggiungiPagina,eliminaPagina} from '../schemi/FunzioniSchemi';
-import FormDinamico  from '../componenti/FormDinamico';
+//import FormDinamico  from '../componenti/componentiFormDinamico/FormDinamico';
 import { ColumnDimensionsContext } from '../context/ColumnDimensionsContext';
 import ColonnaSinistra from '../componenti/ColonnaSinistra';
 import ColonnaDestra from '../componenti/ColonnaDestra';
@@ -84,18 +84,10 @@ useEffect(()=>{
 
 
 
- const handleFocus = (inputId, formNumber)  => {                                                                                                   
-  setFocusedInput({ inputId, formNumber });
-};
+ 
 
 
-const handleEliminaPagina = (pageNumber) => {
-  setPagineForm2((prevPagine) => eliminaPagina(prevPagine, pageNumber));
-};
 
- const handleAggiungiPagina = () => {
-  setPagineForm2((prevPagine) => aggiungiPagina(prevPagine, schemaSediOrganizzato));
-};
 
   return (
     <SafeAreaView style={{flex:1}}>
@@ -156,11 +148,9 @@ const handleEliminaPagina = (pageNumber) => {
         </View>
 
 
-{/******************COLONNA SINISTRA  ---------------------------------- */}
+
 
 <ColonnaSinistra showColonnaSinistra={showColonnaSinistra} />
-
-{/******************COLONNA DESTRA  ---------------------------------- */}
 
 <ColonnaDestra showColonnaDestra={showColonnaDestra}  />
 
@@ -191,46 +181,3 @@ const handleEliminaPagina = (pageNumber) => {
 
 export default Home
 
-const styles=(windowHeight, 
-              windowWidth,
-              headerHeight,
-              footerHeight,
-              centralColumnLeft,
-              centralColumnWidth,
-              bordoSopraSotto,
-              bordoSnColonnaCn,
-              bordoDxColonnaCn
-            ) => StyleSheet.create({
-              
-  colonnaCentraleContainer:{
-    position:'absolute',  
-    top: headerHeight, 
-    left: centralColumnLeft, 
-    width:centralColumnWidth,
-    height: windowHeight-footerHeight-headerHeight, 
-    borderColor:'white',
-    borderTopWidth: bordoSopraSotto,
-    borderBottomWidth:bordoSopraSotto,
-    borderLeftWidth: bordoSnColonnaCn,
-    borderRightWidth: bordoDxColonnaCn,
-  },
-  headerContainer:{
-    position: 'absolute', 
-    backgroundColor:'blue',
-    top:0,
-    left: 0,
-    width:windowWidth,
-    height: headerHeight,                 
-    flexDirection:'row',
-  },
-    
-  })
-/*
-position: 'absolute', 
-              backgroundColor:'blue',
-              top:0,
-              left: 0,
-              width:windowWidth,
-              height: headerHeight,                 
-              flexDirection:'row'
-              */
