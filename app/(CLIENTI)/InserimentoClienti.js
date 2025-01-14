@@ -1,18 +1,18 @@
 import { StyleSheet, Text, View,Platform,Keyboard,TouchableOpacity} from 'react-native'
 import React, { useContext, useState,useEffect} from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-//import PaginaScroll from '../componenti/componentiPagineScroll/PaginaScroll';
 import { schemaCliente,schemaSedi } from '../schemi/schemiClienti';
 import { organizzaSchema,aggiungiPagina,eliminaPagina} from '../schemi/FunzioniSchemi';
-
-import { ColumnDimensionsContext } from '../context/ColumnDimensionsContext';
-import ColonnaSinistra from '../componenti/ColonnaSinistra';
 import ColonnaDestra from '../componenti/ColonnaDestra';
+import ColonnaSinistra from '../componenti/ColonnaSinistra';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import InputPagineMultiple from '../componenti/componentiPagineScroll/InputPagineMultiple';
 import InputPaginaSingola from '../componenti/componentiPagineScroll/InputPaginaSingola';
-
-const Home = () => {
+import { useSelector,useDispatch} from 'react-redux';
+import { toggleLeftColumnWidth } from '../redux/slice/columnDimensionSlice';
+import { toggleRightColumnWidth } from '../redux/slice/columnDimensionSlice';
+const InserimentoClienti = () => {
+  const dispatch = useDispatch();
   const { 
     windowHeight, windowWidth,
     headerHeight, footerHeight,
@@ -25,12 +25,12 @@ const Home = () => {
     colonnaSnVisibile,colonnaDxVisibile,
     isMobile,
     setLeftColumnWidth,setRightColumnWidth
-        } = useContext(ColumnDimensionsContext)
+        }= useSelector((state) => state.columnDimensions);
 
-const [schemaOrganizzato, setSchemaOrganizzato] = useState([]);
-const [schemaSediOrganizzato, setSchemaSediOrganizzato] = useState([]);
+const [schemaOrganizzato1, setSchemaOrganizzato1] = useState([]);
+const [schemaOrganizzato2, setSchemaOrganizzato2] = useState([]);
 const [focusedInput, setFocusedInput] = useState(null);
-const [pagineForm2, setPagineForm2] = useState([]);
+const [pagineSchemaOrganizzato2, setPagineSchemaOrganizzato2] = useState([]);
 const [topScrollSchema,setTopScrollSchema]=useState(0);
 const [topScrollSedi,setTopScrollSedi]=useState(0);
 const [heightScrollSchema,setHeightScrollSchema]=useState(0);
@@ -43,14 +43,13 @@ const [key, setKey] = useState(0);
 // Organizza gli schemi in modo da avere un array di pagine
 useEffect(() => {
   let organizzato=organizzaSchema(schemaCliente);
-  setSchemaOrganizzato(organizzato);
-  organizzato=organizzaSchema(schemaSedi);
-  setSchemaSediOrganizzato(organizzato);
-  setPagineForm2(organizzato);
+  setSchemaOrganizzato1(organizzato);
 
-  setShowColonnaSinistra(false)
-  setShowColonnaDestra(false)
-  setLeftColumnWidth(leftColumnLeft)
+  organizzato=organizzaSchema(schemaSedi);
+  setSchemaOrganizzato2(organizzato);
+  setPagineSchemaOrganizzato2(organizzato);
+
+ 
 
   }, []);
 
@@ -100,7 +99,7 @@ useEffect(()=>{
 
 const handleEliminaPagina = (pageNumber) => {
   console.log("ELIMINA PAGINA",pageNumber)
-  setPagineForm2((prevPagine) => {
+  setPagineSchemaOrganizzato2((prevPagine) => {
     const newPagine=eliminaPagina(prevPagine, pageNumber)
     setKey((prevKey) => prevKey + 1); 
     return{...newPagine}
@@ -108,8 +107,8 @@ const handleEliminaPagina = (pageNumber) => {
 };
 
  const handleAggiungiPagina = () => {
-  setPagineForm2((prevPagine) => {
-    const newPagine=  aggiungiPagina(prevPagine, schemaSediOrganizzato)
+  setPagineSchemaOrganizzato2((prevPagine) => {
+    const newPagine=  aggiungiPagina(prevPagine, schemaOrganizzato2)
     setKey((prevKey) => prevKey + 1); 
     return newPagine;
   });
@@ -129,30 +128,25 @@ const handleEliminaPagina = (pageNumber) => {
               height: headerHeight,                 
               flexDirection:'row'}}>
                  <View style={{width:'15%',height:'100%',borderColor:'red',borderWidth:1,justifyContent:'center',alignItems:'center'}}>
-                 {isMobile && (
-                 <TouchableOpacity
-                      onPress={()=>{
-                        setLeftColumnWidth((prevWidth) => (prevWidth === 0 ? 200 : 0)) 
-                        setShowColonnaSinistra((prevShowSn) => !prevShowSn)
-                        } }>
-                     <MaterialIcons name="menu" size={30} color="white" />
-                 </TouchableOpacity>
-                 )}
+                 { windowWidth < 768 && (
+                          <TouchableOpacity
+                              onPress={()=>{ dispatch(toggleLeftColumnWidth())} } >
+                              <MaterialIcons name="menu" size={30} color="white" />
+                          </TouchableOpacity>
+                       )}
                   </View>
                  
                   <View style={{width:'70%',height:'100%',borderColor:'red',borderWidth:1,alignItems:'center',justifyContent:'center'}}>
                       <Text style={{textAlign:'center' ,  color:'white'}}>{windowWidth.toFixed(2)} x {windowHeight.toFixed(2)}</Text>
+                      <Text style={{textAlign:'center' ,  color:'white'}}>HOME</Text>
                   </View>   
+
                   <View style={{width:'15%',height:'100%',borderColor:'red',borderWidth:1,justifyContent:'center',alignItems:'center'}}>
-             
-                 <TouchableOpacity
-                      onPress={()=>{
-                        setRightColumnWidth((prevWidth) => (prevWidth === 0 ? 200 : 0)) 
-                        setShowColonnaDestra((prevShowDx) => !prevShowDx)
-                        } }>
-                     <Text style={{color:'white',textAlign:'center', fontSize:20}}>2</Text> 
-                 </TouchableOpacity>
-               
+                       
+                          <TouchableOpacity onPress={()=>{ dispatch(toggleRightColumnWidth())} }>
+                              <Text style={{color:'white',textAlign:'center', fontSize:16}}>Apriti Sesamo</Text> 
+                          </TouchableOpacity>
+                     
                   </View>
 
 
@@ -177,11 +171,11 @@ const handleEliminaPagina = (pageNumber) => {
 
 
 
-<ColonnaSinistra showColonnaSinistra={showColonnaSinistra} />
+<ColonnaSinistra  />
 
 
 
-<ColonnaDestra showColonnaDestra={showColonnaDestra}  />
+<ColonnaDestra   />
 
 {/******************COLONNA CENTRALE ---------------------------------- */}
        
@@ -211,7 +205,7 @@ const handleEliminaPagina = (pageNumber) => {
                         barraInserisciElimina={false}
                         placeholder={false}
                         etichetta={true}
-                        schema={schemaOrganizzato}
+                        schema={schemaOrganizzato1}
                         handleFocus ={handleFocus}/>
                 </View>
         
@@ -222,7 +216,7 @@ const handleEliminaPagina = (pageNumber) => {
                     <InputPaginaSingola 
                         key={key} 
                         formNumber={2} 
-                        schema={pagineForm2}
+                        schema={pagineSchemaOrganizzato2}
                         top={topScrollSedi}
                         altezzaScroll={heightScrollSedi}
                         larghezzaScroll={centralColumnWidth-bordoSnColonnaCn-bordoDxColonnaCn } 
@@ -243,5 +237,5 @@ const handleEliminaPagina = (pageNumber) => {
   )
 }
 
-export default Home
+export default InserimentoClienti
 

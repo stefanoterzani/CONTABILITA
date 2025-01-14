@@ -9,11 +9,13 @@ import ColonnaSinistra from '../componenti/ColonnaSinistra';
 import ColonnaDestra from '../componenti/ColonnaDestra';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
-import { useSelector} from 'react-redux';
+import { useSelector,useDispatch} from 'react-redux';
+import { toggleLeftColumnWidth } from '../redux/slice/columnDimensionSlice';
+import { toggleRightColumnWidth } from '../redux/slice/columnDimensionSlice';
 
 const Home = () => {
+  const dispatch = useDispatch();
 
- 
   const { 
     windowHeight, windowWidth,
     headerHeight, footerHeight,
@@ -25,11 +27,13 @@ const Home = () => {
     bordoDxColonnaCn,bordoSnColonnaCn,
     colonnaSnVisibile,colonnaDxVisibile,
     isMobile,
-    setLeftColumnWidth,setRightColumnWidth
+    setLeftColumnWidth,setRightColumnWidth,
+    showColonnaSinistra,
         }= useSelector((state) => state.columnDimensions);
 
+      
 const [showColonnaDestra, setShowColonnaDestra] = useState(false);
-const [showColonnaSinistra, setShowColonnaSinistra] = useState(false);
+//const [showColonnaSinistra, setShowColonnaSinistra] = useState(false);
 
 
   return (
@@ -50,31 +54,25 @@ const [showColonnaSinistra, setShowColonnaSinistra] = useState(false);
               height: headerHeight,                 
               flexDirection:'row'}}>
                  <View style={{width:'15%',height:'100%',borderColor:'red',borderWidth:1,justifyContent:'center',alignItems:'center'}}>
-                 {isMobile && (
-                 <TouchableOpacity
-                      onPress={()=>{
-                        setLeftColumnWidth((prevWidth) => (prevWidth === 0 ? 200 : 0)) 
-                        setShowColonnaSinistra((prevShow) => !prevShow)
-                        } }>
-                     <MaterialIcons name="menu" size={30} color="white" />
-                 </TouchableOpacity>
-                 )}
+                        { windowWidth < 768 && (
+                          <TouchableOpacity
+                              onPress={()=>{ dispatch(toggleLeftColumnWidth())} } >
+                              <MaterialIcons name="menu" size={30} color="white" />
+                          </TouchableOpacity>
+                       )}
                   </View>
                  
                   <View style={{width:'70%',height:'100%',borderColor:'red',borderWidth:1,alignItems:'center',justifyContent:'center'}}>
                       <Text style={{textAlign:'center' ,  color:'white'}}>{windowWidth.toFixed(2)} x {windowHeight.toFixed(2)}</Text>
                       <Text style={{textAlign:'center' ,  color:'white'}}>HOME</Text>
                   </View>   
+
                   <View style={{width:'15%',height:'100%',borderColor:'red',borderWidth:1,justifyContent:'center',alignItems:'center'}}>
-             
-                 <TouchableOpacity
-                      onPress={()=>{
-                        setRightColumnWidth((prevWidth) => (prevWidth === 0 ? 200 : 0)) 
-                        setShowColonnaDestra((prevShow) => !prevShow)
-                        } }>
-                     <Text style={{color:'white',textAlign:'center', fontSize:20}}>2</Text> 
-                 </TouchableOpacity>
-               
+                       
+                          <TouchableOpacity onPress={()=>{ dispatch(toggleRightColumnWidth())} }>
+                              <Text style={{color:'white',textAlign:'center', fontSize:16}}>Apriti Sesamo</Text> 
+                          </TouchableOpacity>
+                     
                   </View>
 
 
@@ -100,10 +98,10 @@ const [showColonnaSinistra, setShowColonnaSinistra] = useState(false);
 
 
 
+<ColonnaSinistra  />
 
-<ColonnaSinistra showColonnaSinistra={showColonnaSinistra} />
 
-<ColonnaDestra showColonnaDestra={showColonnaDestra}  />
+{rightColumnWidth && <ColonnaDestra  />}
  
 
 {/******************COLONNA CENTRALE ---------------------------------- */}

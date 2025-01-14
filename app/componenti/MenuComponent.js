@@ -28,7 +28,7 @@ const MenuComponent = () => {
         <FontAwesome5
           name="chevron-down"
           size={12}
-          color="white"
+          color="black"
           style={{
             marginLeft: 5,
             transform: expandedSubSection === subItem.label ? [{ rotate: '180deg' }] : [{ rotate: '0deg' }],
@@ -63,7 +63,7 @@ const MenuComponent = () => {
         <FontAwesome5
           name="chevron-down"
           size={12}
-          color="white"
+          color="black"
           style={{
             marginLeft: 5,
             transform: expandedSection === item.label ? [{ rotate: '180deg' }] : [{ rotate: '0deg' }],
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 0,
-    color: 'white',
+    color: 'black',
   },
   subMenuSection: {
     marginLeft: 20,
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: 'bold',
     marginBottom: 5,
-    color: 'white',
+    color: 'black',
   },
   menuItem: {
     flexDirection: 'row',
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
   menuItemLabel: {
     marginLeft: 5,
     fontSize: 12, // Font più piccolo per le voci dei sottomenu
-    color: 'white',
+    color: 'black',
     fontWeight: '700',
   },
 });

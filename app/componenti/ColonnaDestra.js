@@ -1,10 +1,9 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React, { useContext, useState,useEffect} from 'react';
-import MenuComponent from './MenuComponent'
 import { useSelector} from 'react-redux';
 
 
-const ColonnaDestra = ({showColonnaDestra}) => {
+const ColonnaDestra = () => {
     
             const { 
               windowHeight, windowWidth,
@@ -16,7 +15,7 @@ const ColonnaDestra = ({showColonnaDestra}) => {
               bordoSnColonnaDx,bordoDxColonnaDx,
               bordoDxColonnaCn,bordoSnColonnaCn,
               colonnaSnVisibile,colonnaDxVisibile,
-              isMobile
+              showColonnaDestra
                    } = useSelector((state) => state.columnDimensions)
 
                    console.log("showColonnaDestra",showColonnaDestra)
@@ -26,7 +25,7 @@ const ColonnaDestra = ({showColonnaDestra}) => {
           backgroundColor:showColonnaDestra ?  'lightblue' : 'gray',
           right: showColonnaDestra ?  rightColumnLeft :0, 
           top:headerHeight, 
-          width:showColonnaDestra ?  250 : rightColumnWidth, 
+          width:rightColumnWidth, 
           height:windowHeight-footerHeight-headerHeight, 
           borderTopWidth:showColonnaDestra ?  2 :bordoSopraSotto, 
           borderBottomWidth:showColonnaDestra ?  2 :bordoSopraSotto, 

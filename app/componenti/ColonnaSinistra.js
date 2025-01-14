@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React, { useContext, useState,useEffect} from 'react';
+import React, { useState,useEffect} from 'react';
 import MenuComponent from './MenuComponent'
 import { useSelector} from 'react-redux';
 
-const ColonnaSinistra = ( {showColonnaSinistra}) => {
+const ColonnaSinistra = () => {
     
 
         const { 
@@ -16,7 +16,7 @@ const ColonnaSinistra = ( {showColonnaSinistra}) => {
           bordoSnColonnaDx,bordoDxColonnaDx,
           bordoDxColonnaCn,bordoSnColonnaCn,
           colonnaSnVisibile,colonnaDxVisibile,
-          isMobile
+          showColonnaSinistra
                }= useSelector((state) => state.columnDimensions)
               
 
@@ -30,6 +30,7 @@ const ColonnaSinistra = ( {showColonnaSinistra}) => {
     <View style={[styles.container,{
         left:leftColumnLeft, 
         top:headerHeight, 
+        backgroundColor:showColonnaSinistra ? 'yellow' :'gray',
         width:leftColumnWidth, 
         height:windowHeight-footerHeight-headerHeight, 
         borderTopWidth:showColonnaSinistra ?  2 :bordoSopraSotto, 
@@ -41,6 +42,7 @@ const ColonnaSinistra = ( {showColonnaSinistra}) => {
         borderRightColor: showColonnaSinistra ?  'lightgray' : 'white',
         borderBottomColor:showColonnaSinistra ?  'lightgray' : 'white',
         }]}>
+
 <MenuComponent/>
 
 </View>
@@ -52,7 +54,7 @@ export default ColonnaSinistra
 const styles = StyleSheet.create({
  container:{
 position:'absolute',
-backgroundColor:'gray',
+
 borderLeftColor:'white',
 borderRightColor:'white',
 borderTopColor:'white',
