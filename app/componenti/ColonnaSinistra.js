@@ -1,8 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React, { useContext, useState,useEffect} from 'react';
 import MenuComponent from './MenuComponent'
-import { ColumnDimensionsContext } from '../context/ColumnDimensionsContext';
-
+import { useSelector} from 'react-redux';
 
 const ColonnaSinistra = ( {showColonnaSinistra}) => {
     
@@ -18,7 +17,7 @@ const ColonnaSinistra = ( {showColonnaSinistra}) => {
           bordoDxColonnaCn,bordoSnColonnaCn,
           colonnaSnVisibile,colonnaDxVisibile,
           isMobile
-               } = useContext(ColumnDimensionsContext)
+               }= useSelector((state) => state.columnDimensions)
               
 
      console.log("showColonnaSinistra",showColonnaSinistra)
