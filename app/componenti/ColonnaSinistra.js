@@ -20,7 +20,7 @@ const ColonnaSinistra = () => {
                }= useSelector((state) => state.columnDimensions)
               
 
-     console.log("showColonnaSinistra",showColonnaSinistra)
+  //   console.log("showColonnaSinistra",showColonnaSinistra)
         
        
        

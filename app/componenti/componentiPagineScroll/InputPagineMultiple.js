@@ -3,7 +3,7 @@ import React from 'react'
 import PaginaScroll from '../componentiPagineScroll/PaginaScroll';
 import FormDinamico  from '../componentiFormDinamico/FormDinamico';
 
-const InputPagineMultiple = ({formNumber,top,altezzaScroll,larghezzaScroll,barra,barraInserisciElimina,placeholder,etichetta,schema,handleFocus}) => {
+const InputPagineMultiple = ({formNumber,schema,handleEvent,initialDataForm,top,altezzaScroll,larghezzaScroll,barra,barraInserisciElimina,placeholder,etichetta}) => {
     
     return (
     <View>
@@ -21,12 +21,14 @@ const InputPagineMultiple = ({formNumber,top,altezzaScroll,larghezzaScroll,barra
                                   <View key={index} >  
                                         <FormDinamico 
                                             schemaPagina={schema[pagina]} 
+                                            initialDataForm={initialDataForm}
                                             containerWidth={larghezzaScroll}
                                             containerHeight={altezzaScroll}
                                             etichetta={etichetta} 
                                             formNumber={formNumber}
-                                            handleFocus={handleFocus}  
-                                            numeroRighe={numeroRighe}  />      
+                                            numeroRighe={numeroRighe} 
+                                            handleEvent={handleEvent}
+                                             />      
                                     </View>
                                )
                             })}  

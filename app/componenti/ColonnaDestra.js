@@ -18,7 +18,7 @@ const ColonnaDestra = () => {
               showColonnaDestra
                    } = useSelector((state) => state.columnDimensions)
 
-                   console.log("showColonnaDestra",showColonnaDestra)
+                 //  console.log("showColonnaDestra",showColonnaDestra)
                    
   return (
   <View style={[styles.container,{

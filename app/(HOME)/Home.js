@@ -1,10 +1,7 @@
-import { StyleSheet, Text, View,Platform,Keyboard,TouchableOpacity} from 'react-native'
-import React, { useContext, useState,useEffect} from 'react';
+import {Text, View,TouchableOpacity} from 'react-native'
+import React, {useState} from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { schemaCliente,schemaSedi } from '../schemi/schemiClienti';
-import { organizzaSchema,aggiungiPagina,eliminaPagina} from '../schemi/FunzioniSchemi';
-//import FormDinamico  from '../componenti/componentiFormDinamico/FormDinamico';
-//import { ColumnDimensionsContext } from '../context/ColumnDimensionsContext';
+
 import ColonnaSinistra from '../componenti/ColonnaSinistra';
 import ColonnaDestra from '../componenti/ColonnaDestra';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
@@ -42,7 +39,6 @@ const [showColonnaDestra, setShowColonnaDestra] = useState(false);
     <SafeAreaView style={{flex:1}}>
 
 
-   {/****************** HEADER  ---------------------------------- */}  
 
   
         <View 
@@ -80,7 +76,7 @@ const [showColonnaDestra, setShowColonnaDestra] = useState(false);
     
                
 
-      {/****************** FOOTER  ---------------------------------- */}  
+   
 
      
         <View 
@@ -101,10 +97,11 @@ const [showColonnaDestra, setShowColonnaDestra] = useState(false);
 <ColonnaSinistra  />
 
 
-{rightColumnWidth && <ColonnaDestra  />}
+<ColonnaDestra  />
  
 
-{/******************COLONNA CENTRALE ---------------------------------- */}
+
+
         
         <View style={{ position:'absolute',  
         flex:1,

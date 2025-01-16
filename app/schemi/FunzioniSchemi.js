@@ -70,13 +70,25 @@ export const raggruppaSchemaPerRiga = (schemaPerPagina) => {
     // Aggiorna gli attributi specifici della nuova pagina
     Object.keys(newPage).forEach((rowKey) => {
       newPage[rowKey].forEach((field) => {
-        field.key = `${field.key}${newPageNumber}`;
+        field.key = `${newPageNumber}.${field.key}`;
         field.layout.pagina = newPageNumber;
       });
     });
   
     return { ...pagine, [newPageNumber]: newPage };
   };
+
+  export const aggiungiPrefissoAllaKey = (data) => { 
+    const prefixedData = {}; 
+    Object.keys(data).forEach(pageNumber => { 
+      prefixedData[pageNumber] = {}; 
+      Object.keys(data[pageNumber]).forEach(rowNumber => { 
+        prefixedData[pageNumber][rowNumber] = data[pageNumber][rowNumber].map(item => ({ 
+          ...item, key: `1.${item.key}` }));
+         });
+         }); 
+         return prefixedData; 
+        };
 
 
 
@@ -97,10 +109,46 @@ export const raggruppaSchemaPerRiga = (schemaPerPagina) => {
     
   };
 
+  export const inizializzaFormDataVuoto = (schema) => { 
+    const initialData = {}; 
+    for (const pagina in schema) { 
+      if (schema.hasOwnProperty(pagina)) { 
+        for (const row in schema[pagina]) { 
+          if (schema[pagina].hasOwnProperty(row) && Array.isArray(schema[pagina][row])) { 
+            schema[pagina][row].forEach(
+              field => { initialData[field.key] = ''; 
+                // Inizializza ogni campo con una stringa vuota 
+                }); 
+              } 
+            } 
+          } 
+        } 
+        return initialData;
+      }
+      export const inizializzaFormDataVuotoConPagina = (schema, pageNumber) => { 
+        const initialData = {}; 
+        for (const pagina in schema) { 
+          if (schema.hasOwnProperty(pagina)) { 
+            for (const row in schema[pagina]) { 
+              if (schema[pagina].hasOwnProperty(row) && Array.isArray(schema[pagina][row])) { 
+                schema[pagina][row].forEach(
+                  field => { initialData[`${pageNumber}.${field.key}`] = ''; 
+                    // Inizializza ogni campo con una stringa vuota 
+                    }); 
+                  } 
+                } 
+              } 
+            } 
+        return initialData; 
+      };
+    
   export default {
     organizzaSchema,
     aggiungiPagina,
     eliminaPagina,
+    inizializzaFormDataVuoto,
+    inizializzaFormDataVuotoConPagina,
+    aggiungiPrefissoAllaKey,
   };
 
   expo

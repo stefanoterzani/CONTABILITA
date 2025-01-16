@@ -1,17 +1,24 @@
 import React , {useEffect} from 'react';
-import { View, Text, StyleSheet,TextInput, Platform,ScrollView, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard  } from 'react-native';
+import { View,Text } from 'react-native';
 import FormDinamicoInput from './FormDinamicoInput';
 
-export const FormDinamico = ({ schemaPagina, containerWidth, containerHeight,borderColor, borderWidth,formNumber,handleFocus,etichetta,numeroRighe,control, errors, prefix, index  }) => {
-// console.log('FORM DINAMICO',containerHeight, containerHeight* (15/100) )
-//console.log('FORM DINAMICO',schemaPagina)
+export const FormDinamico = ({ formNumber,
+                                schemaPagina,
+                                initialDataForm, 
+                                handleEvent,
+                                containerWidth, 
+                                containerHeight,
+                                borderColor, 
+                                borderWidth,
+                                etichetta,numeroRighe}) => {
+
+//console.log ('FORM DINAMICO SCHEMA PAGINA:',containerWidth,containerHeight)
+
   return (
    
     <View style={{ width: containerWidth, height: containerHeight,flex:1,borderColor,borderWidth }}>
           {Object.keys(schemaPagina).map((riga, rigaIndex) => (
-              <View key={rigaIndex} style={{flexDirection: 'row',height:containerHeight/numeroRighe,
-                                           // marginBottom:-15,
-                                            }}>
+              <View key={rigaIndex} style={{flexDirection: 'row',height:containerHeight/numeroRighe }}>
                   {schemaPagina[riga].map((item, itemIndex) => (
                       <View   key={itemIndex}                 
                               style={{justifyContent:'center', 
@@ -22,10 +29,12 @@ export const FormDinamico = ({ schemaPagina, containerWidth, containerHeight,bor
 
                           <FormDinamicoInput 
                               item={item} 
+                              initialDataForm={initialDataForm}
                               itemIndex={itemIndex}
                               etichetta={etichetta}
-                              onFocus={handleFocus}
+                              schemaPagina={schemaPagina}
                               formNumber={formNumber}
+                              handleEvent={handleEvent}
                               />
 
                        </View>
@@ -40,3 +49,4 @@ export const FormDinamico = ({ schemaPagina, containerWidth, containerHeight,bor
 
 
 export default FormDinamico;
+

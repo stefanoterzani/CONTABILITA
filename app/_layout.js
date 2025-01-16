@@ -19,9 +19,7 @@ const Layout = () => {
   
   return (
     <ReduxProvider>
-        <WindowResizeHandler /> {/*componente che monitora le dimensioni della finestra
-                                  è essenziale che venga chiamato dopo che il provider 
-                                  sia montato e reso disponibile*/}
+        <WindowResizeHandler />
       <Stack>
       <Stack.Screen name="index" options={{headerShown:false}}/>
       <Stack.Screen name="(HOME)" options={{headerShown:false}}/> 
