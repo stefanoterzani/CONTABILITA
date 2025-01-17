@@ -216,13 +216,10 @@ const handleEliminaPagina = (pageNumber) => {
 
 
 
-
+{/*
 <ColonnaSinistra  />
-
-
-
 <ColonnaDestra   />
-
+*/}
 {/******************COLONNA CENTRALE ---------------------------------- */}
        
         <View style={{ position:'absolute',  

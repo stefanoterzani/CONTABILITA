@@ -1,6 +1,7 @@
 import React, { useEffect,useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { updateColumnDimensions } from '../redux/slice/columnDimensionSlice';
+import { updateColumnDimensions as updateStandardColumnDimensions } from '../redux/slice/SliceColonnaStandard'
+import { updateColumnDimensions as updateOptionalColumnDimensions } from '../redux/slice/SliceColonnaOpzionale'
 import { Dimensions, Platform } from 'react-native';
 
 
@@ -15,18 +16,18 @@ const WindowResizeHandler = () => {
   useEffect(() => {
     
     const handleResize = () => {
+           let newWidth, newHeight;
         if (Platform.OS === 'web') { 
-            setDimensions({ 
-                width: window.innerWidth, 
-                height: window.innerHeight, 
-            }); 
+                newWidth= window.innerWidth;
+                newHeight= window.innerHeight;        
         } else { 
-            setDimensions({ 
-                width: Dimensions.get('window').width, 
-                height: Dimensions.get('window').height, 
-            });
-         } 
-         dispatch(updateColumnDimensions()); 
+                newWidth= Dimensions.get('window').width; 
+                newHeight= Dimensions.get('window').height; 
+        } 
+        setDimensions({ width: newWidth, height: newHeight });
+      
+        dispatch(updateStandardColumnDimensions({ width: newWidth, height: newHeight }));
+        dispatch(updateOptionalColumnDimensions({ width: newWidth, height: newHeight }));
         };  
    
     handleResize(); // Aggiorna le dimensioni inizialmente

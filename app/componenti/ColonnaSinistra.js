@@ -1,64 +1,71 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View ,Platform} from 'react-native'
 import React, { useState,useEffect} from 'react';
 import MenuComponent from './MenuComponent'
 import { useSelector} from 'react-redux';
 
-const ColonnaSinistra = () => {
+const ColonnaSinistra = ({ tipo }) => {
+  const { showColonnaSinistra, leftColumnStyles,
+    windowHeight, windowWidth, 
+    headerHeight, footerHeight,  } = useSelector((state) => state[tipo]);
+
+    const [larghezzaColonna, setLarghezzaColonna] = useState(0);
+ 
+/*
+    console.log('SINISTRA headerHeight:',headerHeight, )
+  console.log('SINISTRA width:',leftColumnStyles.width, )
+  console.log('SINISTRA styleColonnaSinistra',leftColumnStyles)
+  console.log('SINISTRA showColonnaSinistra',showColonnaSinistra)
+  console.log('SINISTRA windowHeight',windowHeight, )
+  console.log('SINISTRA windowWidth',windowWidth, )
+*/
+
+
+  if (!showColonnaSinistra) {
+    return null;
+  }
+  console.log('SINISTRA styleColonnaSinistra',leftColumnStyles,tipo)
+
+  useEffect(() => {
+   
+      Platform.OS === 'web' ? 
+      setLarghezzaColonna (leftColumnStyles.width ) :
+      setLarghezzaColonna('45%') 
+  }, [showColonnaSinistra]);
+ 
     
 
-        const { 
-          windowHeight, windowWidth,
-          headerHeight, footerHeight,
-          leftColumnWidth, centralColumnWidth, rightColumnWidth, 
-          leftColumnLeft, centralColumnLeft, rightColumnLeft ,
-          bordoSopraSotto,
-          bordoSnColonnaSn,bordoDxColonnaSn,
-          bordoSnColonnaDx,bordoDxColonnaDx,
-          bordoDxColonnaCn,bordoSnColonnaCn,
-          colonnaSnVisibile,colonnaDxVisibile,
-          showColonnaSinistra
-               }= useSelector((state) => state.columnDimensions)
-              
-
-  //   console.log("showColonnaSinistra",showColonnaSinistra)
-        
-       
-       
-    
+ 
+  
   return (
-    
-    <View style={[styles.container,{
-        left:leftColumnLeft, 
-        top:headerHeight, 
-        backgroundColor:showColonnaSinistra ? 'yellow' :'gray',
-        width:leftColumnWidth, 
-        height:windowHeight-footerHeight-headerHeight, 
-        borderTopWidth:showColonnaSinistra ?  2 :bordoSopraSotto, 
-        borderBottomWidth:showColonnaSinistra ?  2 :bordoSopraSotto, 
-        borderLeftWidth:bordoSnColonnaSn,
-        borderRightWidth:showColonnaSinistra ?  5 : bordoDxColonnaSn,
-        borderTopRightRadius: showColonnaSinistra ?  15 : 0,
-        borderBottomRightRadius: showColonnaSinistra ?  15 : 0,
-        borderRightColor: showColonnaSinistra ?  'lightgray' : 'white',
-        borderBottomColor:showColonnaSinistra ?  'lightgray' : 'white',
-        }]}>
+    <View style={{ 
+  
+        width: leftColumnStyles.width, 
+        backgroundColor: leftColumnStyles.background, 
+        borderTopColor: leftColumnStyles.borderTopColor, 
+        borderTopWidth: leftColumnStyles.borderTopWidth, 
+        borderBottomColor: leftColumnStyles.borderBottomColor, 
+        borderBottomWidth: leftColumnStyles.borderBottomWidth, 
+        borderLeftColor: leftColumnStyles.borderLeftColor, 
+        borderLeftWidth: leftColumnStyles.borderLeftWidth, 
+        borderRightColor: leftColumnStyles.borderRightColor, 
+        borderRightWidth: leftColumnStyles.borderRightWidth,
+        borderTopRightRadius: leftColumnStyles.borderTopRightRadius,
+        borderBottomRightRadius: leftColumnStyles.borderBottomRightRadius,
+        height: windowHeight-headerHeight-footerHeight-(leftColumnStyles.margineSopraSotto*2), // Altezza 100% per coprire l'intera altezza disponibile 
+        position: 'absolute', 
+        top: headerHeight+leftColumnStyles.margineSopraSotto, 
+        left: 0, 
+        zIndex:10,
+    }}>
 
-<MenuComponent/>
+          <Text>Colonna Sinistra </Text> 
 
-</View>
-  )
-}
+          
+      <MenuComponent/>
 
-export default ColonnaSinistra
+    </View>
+  );
+};
 
-const styles = StyleSheet.create({
- container:{
-position:'absolute',
+export default ColonnaSinistra;
 
-borderLeftColor:'white',
-borderRightColor:'white',
-borderTopColor:'white',
-borderBottomColor:'white',
-zIndex:10,
- }
-});
