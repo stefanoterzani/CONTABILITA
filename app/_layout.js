@@ -23,7 +23,7 @@ const Layout = () => {
       <Stack>
           <Stack.Screen name="index" options={{headerShown:false}}/>
           <Stack.Screen name="(HOME)" options={{headerShown:false}}/> 
-     
+          <Stack.Screen name="(CLIENTI)" options={{headerShown:false}}/> 
       </Stack>
       </ReduxProvider>
   );

@@ -4,7 +4,7 @@ import PaginaScroll from '../componentiPagineScroll/PaginaScroll';
 import FormDinamico  from '../componentiFormDinamico/FormDinamico';
 
 const InputPagineMultiple = ({formNumber,schema,handleEvent,initialDataForm,top,altezzaScroll,larghezzaScroll,barra,barraInserisciElimina,placeholder,etichetta}) => {
-    
+    console.log('INPUT PAGINE MULTIPLE larghezzaScroll :',larghezzaScroll)
     return (
     <View>
             <PaginaScroll 

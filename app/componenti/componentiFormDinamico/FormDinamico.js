@@ -12,11 +12,12 @@ export const FormDinamico = ({ formNumber,
                                 borderWidth,
                                 etichetta,numeroRighe}) => {
 
-//console.log ('FORM DINAMICO SCHEMA PAGINA:',containerWidth,containerHeight)
+console.log ('FORM DINAMICO ',containerWidth,containerHeight)
 
   return (
-   
+  
     <View style={{ width: containerWidth, height: containerHeight,flex:1,borderColor,borderWidth }}>
+          
           {Object.keys(schemaPagina).map((riga, rigaIndex) => (
               <View key={rigaIndex} style={{flexDirection: 'row',height:containerHeight/numeroRighe }}>
                   {schemaPagina[riga].map((item, itemIndex) => (
