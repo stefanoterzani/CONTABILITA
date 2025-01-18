@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React, { useContext, useState,useEffect} from 'react';
 import { useSelector} from 'react-redux';
-
+import { getStileContenitoreColonnaDestra } from '../../stili/stiliColonne';
 
 const ColonnaDestra = ({tipo}) => {
     
@@ -26,10 +26,28 @@ const ColonnaDestra = ({tipo}) => {
    */
      if (!showColonnaDestra) { return null; }
 
-     console.log('DESTRA  styleColonna destra',rightColumnStyles,tipo)
+    const stileContenitoreColonnaDestra = getStileContenitoreColonnaDestra(rightColumnStyles, windowHeight, windowWidth, headerHeight, footerHeight);
  return (
+  <View style={stileContenitoreColonnaDestra}>
 
-  <View style={{
+  <Text>Colonna DESTRA </Text> 
+
+
+
+</View>
+  
+
+ 
+  )
+}
+
+export default ColonnaDestra
+
+
+
+ /*
+ 
+ <View style={{
     position:'absolute',
     backgroundColor:rightColumnStyles.background,
     width: rightColumnStyles.width, 
@@ -50,49 +68,11 @@ const ColonnaDestra = ({tipo}) => {
   }}>
 
   </View>
-
- 
-  )
-}
-
-export default ColonnaDestra
-
-const styles = StyleSheet.create({
-  container:{
- position:'absolute',
- backgroundColor:'gray',
- borderLeftColor:'white',
- borderRightColor:'white',
- borderTopColor:'white',
- borderBottomColor:'white',
- zIndex:10,
-  }
- });
-
-
- /*
- 
- 
-    <View style={{ 
-        width: rightColumnStyles.width, 
-        backgroundColor: rightColumnStyles.background,
-       borderTopColor: rightColumnStyles.borderTopColor, 
-       borderTopWidth: rightColumnStyles.borderTopWidth, 
-       borderBottomColor: rightColumnStyles.borderBottomColor, 
-       borderBottomWidth: rightColumnStyles.borderBottomWidth, 
-       borderLeftColor: rightColumnStyles.borderLeftColor, 
-       borderLeftWidth: rightColumnStyles.borderLeftWidth, 
-       borderRightColor: rightColumnStyles.borderRightColor, 
-       borderRightWidth: rightColumnStyles.borderRightWidth, 
-       height: windowHeight - headerHeight - footerHeight, // Altezza calcolata 
-       top: headerHeight, // Posizione calcolata 
-       position: 'absolute', 
-       right:0,
-    }}>
+    
+  
   
      
-       <Text>COLONNA DESTRA </Text>
-            </View>
+    
  
  
  */

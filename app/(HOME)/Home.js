@@ -20,8 +20,11 @@ import { setWindowDimensions as setOptionalWindowDimensions,
           toggleWarningMessage, 
           updateColumnStyles as updateOptionalColumnStyles } from '../redux/slice/SliceColonnaOpzionale';
 
-import ColonnaSinistra from '../componenti/ColonnaSinistra';
-import ColonnaDestra from '../componenti/ColonnaDestra';
+import ColonnaSinistra from '../componenti/componentiSchermate/ColonnaSinistra';
+import ColonnaDestra from '../componenti/componentiSchermate/ColonnaDestra';
+import Footer from '../componenti/componentiSchermate/Footer';
+import Header from '../componenti/componentiSchermate/Header';
+
 import { useSelector,useDispatch} from 'react-redux';
 
 
@@ -34,9 +37,9 @@ const Home = () => {
           showColonnaSinistra, showColonnaDestra
         } = useSelector((state) => state.standardColumn);
   
-        const { showColonnaSinistra: showOptionalColonnaSinistra, 
-              showColonnaDestra: showOptionalColonnaDestra } = useSelector((state) => state.optionalColumn
-            );
+  const { showColonnaSinistra: showOptionalColonnaSinistra, 
+          showColonnaDestra: showOptionalColonnaDestra } = useSelector((state) => state.optionalColumn
+        );
  
 useEffect(() => { 
   dispatch(setStandardTipoApp('tipoApp1')); 
@@ -46,32 +49,13 @@ useEffect(() => {
 
 }, [dispatch,windowWidth,windowHeight]);
  
+
 const handleToggleLeftColumn = () => { 
   dispatch(toggleStandardLeftColumn());
  }
  
  
-    /*
-useEffect(() => {
-   dispatch(setStandardTipoApp('tipoApp1')); // Imposta il tipo di app iniziale dispatch(setOptionalTipoApp('tipoApp1'));
-   dispatch(setOptionalTipoApp('tipoApp1'));
-
-   const handleResize = () => { 
-      dispatch(setStandardWindowDimensions()); 
-      dispatch(setOptionalWindowDimensions()); 
-      dispatch(updateStandardColumnStyles()); 
-      dispatch(updateOptionalColumnStyles()); 
-  
-    };
-
-    Dimensions.addEventListener('change',handleResize);
-
-    handleResize(); // Chiamalo subito per impostare i valori iniziali
-
-  return () => Dimensions.removeEventListener('change', handleResize); 
-
-}, [dispatch]);
-*/
+ 
 
 const handleShowRightColumn = () => { 
  console.log('APRO DESTRA');
@@ -84,54 +68,11 @@ const handleShowRightColumn = () => {
 
   return (
     <SafeAreaView style={{flex:1}}>
-
- {/*********************HEADER**************************************/}
-    <View 
-        style={{position: 'absolute', 
-          backgroundColor:'blue',
-          top:0,
-          left: 0,
-          width:windowWidth,
-          height: headerHeight,                 
-          flexDirection:'row',
-          borderTopLeftRadius:20,
-          borderTopRightRadius:20
-          }}>
-
-
-             <View style={{
-                            width:'15%',
-                            height:'100%',
-                            borderColor:'red',
-                            borderWidth:0,
-                            justifyContent:'center',
-                            alignItems:'center'}}>
-                  { windowWidth < 768 && (
-                    <TouchableOpacity onPress={() => dispatch(toggleOptionalLeftColumn())}>
-                        <MaterialIcons name="menu" size={30} color="white" />
-                    </TouchableOpacity>
-                   )}
-              </View>
-             
-              <View style={{width:'70%',height:'100%',borderColor:'red',borderWidth:0,alignItems:'center',justifyContent:'center'}}>
-                  <Text style={{textAlign:'center' ,  color:'white'}}>{windowWidth.toFixed(2)} x {windowHeight.toFixed(2)}</Text>
-                  <Text style={{textAlign:'center' ,  color:'white'}}>HOME</Text>
-              </View>   
-
-              <View style={{width:'15%',height:'100%',borderColor:'red',borderWidth:0,justifyContent:'center',alignItems:'center'}}>                  
-              <TouchableOpacity onPress={handleShowRightColumn}>
-                      <Text style={{color:'white',textAlign:'center', fontSize:16}}>Apriti Sesamo</Text> 
-                  </TouchableOpacity>                
-              </View>
-    </View>
-   
-   
-  
-   {showColonnaSinistra ? <ColonnaSinistra tipo="standardColumn" /> : 
-              showOptionalColonnaSinistra && <ColonnaSinistra tipo="optionalColumn" />} 
-   
-   {showColonnaDestra ? <ColonnaDestra tipo="standardColumn" /> : 
-       showOptionalColonnaDestra && <ColonnaDestra tipo="optionalColumn" />}    
+       
+        <Header windowWidth={windowWidth} headerHeight={headerHeight} />
+    
+        {showColonnaSinistra ? <ColonnaSinistra tipo="standardColumn" /> : showOptionalColonnaSinistra && <ColonnaSinistra tipo="optionalColumn" />}  
+        {showColonnaDestra ? <ColonnaDestra tipo="standardColumn" /> :  showOptionalColonnaDestra && <ColonnaDestra tipo="optionalColumn" />}    
  
 
 
@@ -154,32 +95,11 @@ const handleShowRightColumn = () => {
               borderRightColor: centralColumnStyles.borderRightColor, 
               borderRightWidth: centralColumnStyles.borderRightWidth,
               
-              }}>
-
-     
+              }}>  
         
 
     </View>
-   {/*********************FOOTER ****************************************/}
-    <View 
-          style={{
-                position: 'absolute', 
-                borderColor: 'blue', 
-                borderWidth:0,
-                backgroundColor:'blue',
-                bottom: 0,
-                left: 0,
-                width:windowWidth,
-                height: footerHeight,
-                alignItems:'center',
-                justifyContent:'center',
-                borderBottomLeftRadius:20,
-                borderBottomRightRadius:20
-            }}>
-           
-        <Text style={{color:'white'}}>POSTO FOOTER</Text>
-              
-    </View>
+  <Footer windowWidth={windowWidth} footerHeight={footerHeight} />
   
 </SafeAreaView>
     
