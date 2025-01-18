@@ -70,7 +70,7 @@ const optionalColumnSlice = createSlice({
 });
 
 export const { 
-  updateColumnDimensions,  
+    updateColumnDimensions,  
     setTipoApp, 
     toggleLeftColumn, 
     toggleRightColumn, 

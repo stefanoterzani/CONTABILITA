@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View ,Platform} from 'react-native'
-import React, { useState,useEffect} from 'react';
+import React from 'react';
 import MenuComponent from '../MenuComponent'
 import { useSelector} from 'react-redux';
 import { getStileContenitoreColonnaSinistra } from '../../stili/stiliColonne';
