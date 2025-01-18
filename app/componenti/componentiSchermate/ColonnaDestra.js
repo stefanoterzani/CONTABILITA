@@ -3,40 +3,38 @@ import React, { useContext, useState,useEffect} from 'react';
 import { useSelector} from 'react-redux';
 import { getStileContenitoreColonnaDestra } from '../../stili/stiliColonne';
 
-const ColonnaDestra = ({tipo}) => {
+const ColonnaDestra = () => {
     
- // console.log('IN COLONNA DESTRA', 'tipo',tipo)       
-
-                 //  console.log("showColonnaDestra",showColonnaDestra)
-   const { showColonnaDestra, 
-    rightColumnStyles, 
-    windowHeight, windowWidth,
-    headerHeight, 
-    footerHeight } = useSelector((state) => state[tipo]);
-
-
+  const standardColumn = useSelector((state) => state.standardColumn);
+  const optionalColumn = useSelector((state) => state.optionalColumn);
+   
+  const isStandardColumnVisible = standardColumn.showColonnaDestra;
+  const isOptionalColumnVisible = optionalColumn.showColonnaDestra;
   
-/*
-     console.log('IN COLONNA DESTRA', 'windowHeight',windowHeight) 
-     console.log('IN COLONNA DESTRA', 'showColonnaDestra',showColonnaDestra)            
-     console.log('IN COLONNA DESTRA width:',rightColumnStyles.width, )
-     console.log('IN COLONNA DESTRA' , 'styleColonnadESTRA',rightColumnStyles)
-     console.log('IN COLONNA DESTRA headerHeight' ,headerHeight)
-     console.log('IN COLONNA DESTRA footerHeight' ,footerHeight)
-   */
-     if (!showColonnaDestra) { return null; }
+  if (!isStandardColumnVisible && !isOptionalColumnVisible) {
+    return null;
+  }
 
-    const stileContenitoreColonnaDestra = getStileContenitoreColonnaDestra(rightColumnStyles, windowHeight, windowWidth, headerHeight, footerHeight);
+
+  const stileContenitoreColonnaDestra = isStandardColumnVisible 
+        ? getStileContenitoreColonnaDestra(
+                                standardColumn.rightColumnStyles, 
+                                standardColumn.windowHeight,standardColumn.windowWidth,                                
+                                standardColumn.headerHeight,standardColumn.footerHeight )
+        : getStileContenitoreColonnaDestra(
+                                optionalColumn.rightColumnStyles, 
+                                optionalColumn.windowHeight, optionalColumn.windowWidth,
+                                optionalColumn.headerHeight, optionalColumn.footerHeight );
+  
+  
+  const colonnaTipo = isStandardColumnVisible ? 'standardColumn' : 'optionalColumn';
+      
  return (
   <View style={stileContenitoreColonnaDestra}>
 
-  <Text>Colonna DESTRA </Text> 
+      <Text>Colonna Destra ({colonnaTipo})</Text>
 
-
-
-</View>
-  
-
+  </View>
  
   )
 }
@@ -76,3 +74,12 @@ export default ColonnaDestra
  
  
  */
+  
+/*
+     console.log('IN COLONNA DESTRA', 'windowHeight',windowHeight) 
+     console.log('IN COLONNA DESTRA', 'showColonnaDestra',showColonnaDestra)            
+     console.log('IN COLONNA DESTRA width:',rightColumnStyles.width, )
+     console.log('IN COLONNA DESTRA' , 'styleColonnadESTRA',rightColumnStyles)
+     console.log('IN COLONNA DESTRA headerHeight' ,headerHeight)
+     console.log('IN COLONNA DESTRA footerHeight' ,footerHeight)
+   */

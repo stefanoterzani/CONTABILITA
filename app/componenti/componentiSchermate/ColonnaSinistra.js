@@ -4,25 +4,35 @@ import MenuComponent from '../MenuComponent'
 import { useSelector} from 'react-redux';
 import { getStileContenitoreColonnaSinistra } from '../../stili/stiliColonne';
 
-const ColonnaSinistra = ({ tipo }) => {
-  const { showColonnaSinistra, leftColumnStyles,
-    windowHeight, windowWidth, 
-    headerHeight, footerHeight,  } = useSelector((state) => state[tipo]);
+const ColonnaSinistra = () => {
 
-   
+  const standardColumn = useSelector((state) => state.standardColumn);
+  const optionalColumn = useSelector((state) => state.optionalColumn);
 
-  if (!showColonnaSinistra) {
+  const isStandardColumnVisible = standardColumn.showColonnaSinistra;
+  const isOptionalColumnVisible = optionalColumn.showColonnaSinistra;
+
+  if (!isStandardColumnVisible && !isOptionalColumnVisible) {
     return null;
   }
- 
-     
-const stileContenitoreColonnaSinistra = getStileContenitoreColonnaSinistra(leftColumnStyles, windowHeight, windowWidth, headerHeight, footerHeight);
- 
+
+  const stileContenitoreColonnaSinistra = isStandardColumnVisible 
+      ? getStileContenitoreColonnaSinistra(
+                  standardColumn.leftColumnStyles, 
+                  standardColumn.windowHeight, standardColumn.windowWidth,
+                  standardColumn.headerHeight, standardColumn.footerHeight)
+      : getStileContenitoreColonnaSinistra(
+                  optionalColumn.leftColumnStyles, 
+                  optionalColumn.windowHeight, optionalColumn.windowWidth,
+                  optionalColumn.headerHeight, optionalColumn.footerHeight, );
+
+  
+  const colonnaTipo = isStandardColumnVisible ? 'standardColumn' : 'optionalColumn';
   
   return (
     <View style={stileContenitoreColonnaSinistra}>
 
-          <Text>Colonna Sinistra </Text> 
+        <Text>Colonna Sinistra ({colonnaTipo})</Text>
 
           
       <MenuComponent/>

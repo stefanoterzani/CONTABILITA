@@ -62,9 +62,13 @@ useEffect(() => {
     <SafeAreaView style={{flex:1}}>
        
         <Header windowWidth={windowWidth} headerHeight={headerHeight} />
-    
+    {/* 
         {showColonnaSinistra ? <ColonnaSinistra tipo="standardColumn" /> : showOptionalColonnaSinistra && <ColonnaSinistra tipo="optionalColumn" />}  
-        {showColonnaDestra ? <ColonnaDestra tipo="standardColumn" /> :  showOptionalColonnaDestra && <ColonnaDestra tipo="optionalColumn" />}    
+     */} 
+
+
+     <ColonnaSinistra />
+     <ColonnaDestra  />    
  
         <View style={stileContenitoreColonnaCentrale}>
 
