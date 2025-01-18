@@ -48,3 +48,46 @@ export const getStileContenitoreColonnaDestra = (rightColumnStyles, windowHeight
      zIndex: 9
     }
    };
+
+   export const getStileContenitoreColonnaCentrale = (leftColumnStyles, centralColumnStyles,windowHeight,headerHeight, footerHeight) => {
+   return {
+    position:'absolute',  
+              //flex:1,
+              top: headerHeight, 
+              left: leftColumnStyles.width, 
+              width:centralColumnStyles.width, 
+              height: windowHeight-footerHeight-headerHeight, 
+              backgroundColor: centralColumnStyles.background, 
+              borderTopColor: centralColumnStyles.borderTopColor, 
+              borderTopWidth: centralColumnStyles.borderTopWidth, 
+              borderBottomColor: centralColumnStyles.borderBottomColor, 
+              borderBottomWidth: centralColumnStyles.borderBottomWidth, 
+              borderLeftColor: centralColumnStyles.borderLeftColor, 
+              borderLeftWidth: centralColumnStyles.borderLeftWidth, 
+              borderRightColor: centralColumnStyles.borderRightColor, 
+              borderRightWidth: centralColumnStyles.borderRightWidth,
+
+   }
+}
+
+
+export default { getStileContenitoreColonnaSinistra, getStileContenitoreColonnaDestra, getStileContenitoreColonnaCentrale }
+/*
+ position:'absolute',  
+              //flex:1,
+              top: headerHeight, 
+              left: leftColumnStyles.width, 
+              width:centralColumnStyles.width, 
+              height: windowHeight-footerHeight-headerHeight, 
+              backgroundColor: centralColumnStyles.background, 
+              borderTopColor: centralColumnStyles.borderTopColor, 
+              borderTopWidth: centralColumnStyles.borderTopWidth, 
+              borderBottomColor: centralColumnStyles.borderBottomColor, 
+              borderBottomWidth: centralColumnStyles.borderBottomWidth, 
+              borderLeftColor: centralColumnStyles.borderLeftColor, 
+              borderLeftWidth: centralColumnStyles.borderLeftWidth, 
+              borderRightColor: centralColumnStyles.borderRightColor, 
+              borderRightWidth: centralColumnStyles.borderRightWidth,
+
+
+*/

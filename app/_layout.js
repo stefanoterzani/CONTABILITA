@@ -21,9 +21,9 @@ const Layout = () => {
     <ReduxProvider>
         <WindowResizeHandler />
       <Stack>
-      <Stack.Screen name="index" options={{headerShown:false}}/>
-      <Stack.Screen name="(HOME)" options={{headerShown:false}}/> 
-      <Stack.Screen name="(CLIENTI)" options={{headerShown:false}}/> 
+          <Stack.Screen name="index" options={{headerShown:false}}/>
+          <Stack.Screen name="(HOME)" options={{headerShown:false}}/> 
+     
       </Stack>
       </ReduxProvider>
   );
@@ -31,4 +31,7 @@ const Layout = () => {
 
 export default Layout;
 
-/* <ReduxProvider>  </ReduxProvider>*/
+/* <ReduxProvider>  </ReduxProvider>
+ <Stack.Screen name="(CLIENTI)" options={{headerShown:false}}/> 
+
+*/
