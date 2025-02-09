@@ -47,6 +47,9 @@ const optionalColumnSlice = createSlice({
     hideRightColumn: (state) => {
       state.showColonnaDestra = false;
     },
+    hideLeftColumn: (state) => {
+      state.showColonnaSinistra = false;
+    },
     toggleWarningMessage: (state) => {
       state.showWarningMessage = !state.showWarningMessage;
     },

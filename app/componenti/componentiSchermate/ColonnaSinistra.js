@@ -27,13 +27,14 @@ const ColonnaSinistra = () => {
                   optionalColumn.headerHeight, optionalColumn.footerHeight, );
 
   
-  const colonnaTipo = isStandardColumnVisible ? 'standardColumn' : 'optionalColumn';
-  
+ 
+  const colonnaStile= isStandardColumnVisible ? `standard ${standardColumn.leftColumnStyles.tipo}` : `optional ${optionalColumn.leftColumnStyles.tipo}`;
+ 
   return (
-    <View style={stileContenitoreColonnaSinistra}>
+    <View style={[stileContenitoreColonnaSinistra,{alignItems:'center'}]}>
 
-        <Text>Colonna Sinistra ({colonnaTipo})</Text>
-
+        <Text style={{color:'blue',fontSize:16,fontFamily:'Roboto-Medium'}} > Colonna Sinistra </Text>
+        <Text style={{color:'blue',fontSize:14,fontFamily:'Roboto-Medium'}} >({colonnaStile})</Text>
           
       <MenuComponent/>
 

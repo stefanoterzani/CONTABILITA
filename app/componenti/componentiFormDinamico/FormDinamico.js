@@ -2,21 +2,22 @@ import React , {useEffect} from 'react';
 import { View,Text } from 'react-native';
 import FormDinamicoInput from './FormDinamicoInput';
 
-export const FormDinamico = ({ formNumber,
+export const FormDinamico = ({ formId,
                                 schemaPagina,
-                                initialDataForm, 
                                 handleEvent,
                                 containerWidth, 
                                 containerHeight,
-                                borderColor, 
-                                borderWidth,
-                                etichetta,numeroRighe}) => {
-
-console.log ('FORM DINAMICO ',containerWidth,containerHeight)
+                                etichetta,
+                                numeroRighe,
+                                paginaCorrente,
+                                tipoInputPagina,
+                               }) => {
+                                  
+//console.log('FORM DINAMICO')
 
   return (
   
-    <View style={{ width: containerWidth, height: containerHeight,flex:1,borderColor,borderWidth }}>
+    <View style={{ width: containerWidth, height: containerHeight,flex:1}}>
           
           {Object.keys(schemaPagina).map((riga, rigaIndex) => (
               <View key={rigaIndex} style={{flexDirection: 'row',height:containerHeight/numeroRighe }}>
@@ -29,13 +30,15 @@ console.log ('FORM DINAMICO ',containerWidth,containerHeight)
                                       marginTop:0, }}>
 
                           <FormDinamicoInput 
+                              formId={formId} // Passiamo il formId
+                              field={item.key} // Passiamo la chiave del campo
                               item={item} 
-                              initialDataForm={initialDataForm}
-                              itemIndex={itemIndex}
                               etichetta={etichetta}
-                              schemaPagina={schemaPagina}
-                              formNumber={formNumber}
+                              schemaPagina={schemaPagina}                         
                               handleEvent={handleEvent}
+                              paginaCorrente={paginaCorrente}
+                              tipoInputPagina={tipoInputPagina}
+                             width={containerWidth*item.layout.width/100}
                               />
 
                        </View>

@@ -1,5 +1,11 @@
 export const schemaCliente = {
-   codice: { label: 'Codice ', type: 'text', obbligatorio:true,visibile:true ,
+   codice: { 
+    label: 'Codice', 
+    type: 'text' , 
+    obbligatorio:false, 
+    visibile:true ,
+    campoElenco:'',
+    campoNome:'',
     layout: { 
       web: { 
         visibile:true,
@@ -36,7 +42,13 @@ export const schemaCliente = {
       } 
     }
     },
-    dataCreazione: { label: 'Creato', type: 'data', obbligatorio:true,visibile:true ,
+    dataCreazione: { 
+      label: 'Creato', 
+      type: 'data', 
+      obbligatorio:false,
+      visibile:true ,
+      campoElenco:'',
+      campoNome:'',
       layout: { 
         web: { 
           visibile:true,
@@ -74,7 +86,13 @@ export const schemaCliente = {
       }
       },
   
-      dataAggiornamento: { label: 'Aggiornato', type: 'data', obbligatorio:true,visibile:true ,
+      dataAggiornamento: { 
+        label: 'Aggiornato', 
+        type: 'data', 
+        obbligatorio:false,
+        visibile:true ,
+        campoElenco:'',
+        campoNome:'',
         layout: { 
           web: { 
             visibile:true,
@@ -110,14 +128,20 @@ export const schemaCliente = {
           } 
         }
         },
-    nome: { label: 'Nome Cliente lg=100 dx=0 sn=0 ', type: 'text', obbligatorio:true,visibile:true ,
+    nome: { 
+      label: 'Nome Cliente lg=100 dx=0 sn=0 ', 
+      ype: 'text', 
+      obbligatorio:false,
+      visibile:true ,
+      campoElenco:'',
+      campoNome:'',
       layout: { 
        web: { 
         visibile:true,
-        margineSn: 0 ,
+        margineSn: 1 ,
         margineDx: 0 ,
         height:30, 
-        width:100,
+        width:98,
         bordoColor:'grey', 
         bordoWidth:1,
         labelColor:'',
@@ -149,7 +173,13 @@ export const schemaCliente = {
   
 
 
-    partitaIva: { label: 'Partita IVA', type: 'text', obbligatorio:true, visibile:true ,
+    partitaIva: {
+      label: 'Partita IVA', 
+      type: 'text', 
+      obbligatorio:false, 
+      visibile:true ,
+      campoElenco:'',
+      campoNome:'',
       layout: { 
         web: { 
           visibile:true,
@@ -188,7 +218,11 @@ export const schemaCliente = {
       } 
       },
 
-      codicefiscale: { label: 'Codice Fiscale', type: 'text', obbligatorio:true, visibile:true ,
+      codicefiscale: { 
+        label: 'Codice Fiscale', 
+        type: 'text', 
+        obbligatorio:false, 
+        visibile:true ,
         layout: { 
           web: { 
             visibile:true,
@@ -231,6 +265,8 @@ export const schemaCliente = {
           type: 'text' , 
           obbligatorio:false, 
           visibile:true ,
+          campoElenco:'',
+          campoNome:'',
           layout: { 
             web: { 
               visibile:true,
@@ -238,8 +274,8 @@ export const schemaCliente = {
               margineDx: 2 ,
               height:30, 
               width:48,
-              bordoColor:'grey', 
-              bordoWidth:1,
+              bordoColor:'white', 
+              bordoWidth:0,
               labelColor:'',
               inputColor:'',     
               row: 3, 
@@ -267,7 +303,13 @@ export const schemaCliente = {
            } 
         },
   
-      pec: { label: 'Pec', type: 'text', obbligatorio:false, visibile:true ,
+      pec: { 
+        label: 'Pec', 
+        type: 'text', 
+        obbligatorio:false, 
+        visibile:true ,
+        campoElenco:'',
+        campoNome:'',
         layout: { 
           web: { 
             visibile:true,
@@ -313,6 +355,8 @@ export const schemaCliente = {
         visibile:true ,
         campoElenco:'comuni',
         campoNome:'nome',
+        campoElenco:'',
+        campoNome:'',
           layout: { 
             web: { 
               visibile:true,
@@ -348,7 +392,13 @@ export const schemaCliente = {
             } 
           } 
         },
-        indirizzo: { label: 'Indirizzo', type: 'text' , obbligatorio:false, 
+        indirizzo: { 
+          label: 'Indirizzo', 
+          type: 'text' , 
+          obbligatorio:false, 
+          visibile:true ,
+          campoElenco:'',
+          campoNome:'',
           layout: { 
             web: { 
               visibile:true,
@@ -384,7 +434,13 @@ export const schemaCliente = {
             } 
            } },
    
-           civico: { label: 'Civico', type: 'text' , obbligatorio:false, 
+           civico: { 
+            label: 'Civico', 
+            type: 'text' , 
+            obbligatorio:false,
+            visibile:true ,
+            campoElenco:'',
+            campoNome:'', 
             layout: { 
               web: { 
                 visibile:true,
@@ -419,11 +475,16 @@ export const schemaCliente = {
                 tipoInput:''
               } 
              } },
-             provincia: { label: 'Provincia', type: 'text'  , obbligatorio:false, 
+             provincia: { 
+              label: 'Provincia', 
+              type: 'text'  , 
+              obbligatorio:false,
+              visibile:true ,
+              campoElenco:'',
+              campoNome:'', 
               layout: { 
                 web: { 
                   visibile:true,
-                  
                   margineDx: 1 ,
                   height:30, 
                   width:30,
@@ -455,7 +516,13 @@ export const schemaCliente = {
                 } 
               } },  
     
-            cap: { label: 'CAP', type: 'text' , obbligatorio:false , 
+            cap: { 
+              label: 'CAP', 
+              type: 'text' , 
+              obbligatorio:false , 
+              visibile:true ,
+              campoElenco:'',
+              campoNome:'',
               layout: { 
                 web: { 
                   visibile:true,
@@ -491,11 +558,17 @@ export const schemaCliente = {
                 } 
               } },
     
-            nazione: { label: 'Nazione', type: 'text' , obbligatorio:false, 
+            nazione: { 
+              label: 'Nazione', 
+              type: 'text' , 
+              obbligatorio:false, 
+              visibile:true ,
+              campoElenco:'',
+              campoNome:'',
              layout: { 
               web: { 
                 visibile:true,
-                margineSn: 0 ,
+                margineSn: 0,
                 margineDx: '2%' ,
                 height:30,
                 bordoColor:'grey', 
@@ -526,7 +599,13 @@ export const schemaCliente = {
               } 
             } }, 
 
-     riferimento: { label: 'Persona riferimento', type: 'text' , obbligatorio:false, visibile:true ,
+     riferimento: { 
+      label: 'Persona riferimento', 
+      type: 'text' , 
+      obbligatorio:false, 
+      visibile:true ,
+      campoElenco:'',
+      campoNome:'',
       layout: { 
         web: { 
           visibile:true,
@@ -563,7 +642,13 @@ export const schemaCliente = {
        } 
         },
             
-     telefono_1: { label: 'Telefono', type: 'text' , obbligatorio:false, visibile:true ,
+     telefono_1: { 
+      label: 'Telefono', 
+      type: 'text' , 
+      obbligatorio:false, 
+      visibile:true ,
+      campoElenco:'',
+      campoNome:'',
         layout: { 
           web: { 
             visibile:true,
@@ -599,7 +684,13 @@ export const schemaCliente = {
           } 
          } 
       },
-     telefono_2: { label: 'Telefono', type: 'text' , obbligatorio:false, visibile:true ,
+     telefono_2: { 
+      label: 'Telefono', 
+      type: 'text' , 
+      obbligatorio:false, 
+      visibile:true ,
+      campoElenco:'',
+      campoNome:'',
         layout: { 
           web: { 
             visibile:true,
@@ -636,7 +727,12 @@ export const schemaCliente = {
         
         } 
         },
-      fax: { label: 'Fax', type: 'text' , obbligatorio:false, visibile:true ,
+      fax: { label: 'Fax', 
+        type: 'text' , 
+        obbligatorio:false, 
+        visibile:true ,
+        campoElenco:'',
+        campoNome:'',
         layout: { 
           web: { 
             visibile:true,
@@ -672,7 +768,13 @@ export const schemaCliente = {
           } 
         } 
         },
-        codiceAteco: { label: 'ATECO', type: 'text' , obbligatorio:false, visibile:true ,
+        codiceAteco: { 
+          label: 'ATECO', 
+          type: 'text' , 
+          obbligatorio:false, 
+          visibile:true ,
+          campoElenco:'',
+          campoNome:'',
           layout: { 
             web: { 
               visibile:false,
@@ -752,7 +854,13 @@ export const schemaCliente = {
 
 
   export const schemaSedi={
-  tipoSede: { label: 'Tipo Sede', type: 'text'  , obbligatorio:false, 
+  tipoSede: { 
+    label: 'Tipo Sede', 
+    type: 'text'  , 
+    obbligatorio:false, 
+    visibile:true ,
+    campoElenco:'',
+    campoNome:'',
     layout: { 
       web: { 
         visibile:true,
@@ -788,7 +896,13 @@ export const schemaCliente = {
       } 
     } 
      },
-     presso: { label: 'Presso', type: 'text'  , obbligatorio:false, 
+     presso: { 
+      label: 'Presso', 
+      type: 'text'  , 
+      obbligatorio:false, 
+      visibile:true ,
+      campoElenco:'',
+      campoNome:'',
       layout: { 
         web: { 
           visibile:true,
@@ -824,7 +938,13 @@ export const schemaCliente = {
         } 
       } 
        },
-    comune: { label: 'Comune', type: 'text'  , obbligatorio:false, 
+    comune: { 
+      label: 'Comune', 
+      type: 'text'  , 
+      obbligatorio:false,
+      visibile:true ,
+      campoElenco:'',
+      campoNome:'',
       layout: { 
         web: { 
           visibile:true,
@@ -860,7 +980,13 @@ export const schemaCliente = {
         } 
       } 
      },
-     provincia: { label: 'Provincia', type: 'text'  , obbligatorio:false, 
+     provincia: { 
+      label: 'Provincia', 
+      type: 'text'  , 
+      obbligatorio:false, 
+      visibile:true ,
+      campoElenco:'',
+      campoNome:'',
       layout: { 
         web: { 
           visibile:true,
@@ -896,7 +1022,13 @@ export const schemaCliente = {
         } 
       } 
     },  
-      indirizzo: { label: 'Indirizzo', type: 'text' , obbligatorio:false, 
+      indirizzo: { 
+        label: 'Indirizzo', 
+        type: 'text' , 
+        obbligatorio:false,
+        visibile:true ,
+        campoElenco:'',
+        campoNome:'', 
          layout: { 
           web: { 
             visibile:true,
@@ -933,7 +1065,13 @@ export const schemaCliente = {
         } 
        },
 
-       civico: { label: 'Civico', type: 'text' , obbligatorio:false, 
+       civico: { 
+        label: 'Civico', 
+        type: 'text' , 
+        obbligatorio:false,
+        visibile:true ,
+        campoElenco:'',
+        campoNome:'',
         layout: { 
           web: { 
             visibile:true,
@@ -972,7 +1110,13 @@ export const schemaCliente = {
 
      
 
-      cap: { label: 'CAP', type: 'text' , obbligatorio:false , 
+      cap: { 
+        label: 'CAP', 
+        type: 'text' , 
+        obbligatorio:false ,
+        visibile:true ,
+        campoElenco:'',
+        campoNome:'', 
         layout: { 
           web: { 
             visibile:true,
@@ -1009,14 +1153,20 @@ export const schemaCliente = {
         } 
       },
 
-      nazione: { label: 'Nazione lg=100 dx=0 sn=0', type: 'text' , obbligatorio:false, 
+      nazione: { 
+        label: 'Nazione lg=100 dx=0 sn=0', 
+        type: 'text' , 
+        obbligatorio:false, 
+        visibile:true ,
+        campoElenco:'',
+        campoNome:'',
         layout: { 
           web: { 
             visibile:true,
-            margineSn:0 ,
+            margineSn:1 ,
             margineDx:0 ,
             height:25, 
-            width:100,
+            width:98,
             bordoColor:'gray', 
             bordoWidth:1,
             labelColor:'',

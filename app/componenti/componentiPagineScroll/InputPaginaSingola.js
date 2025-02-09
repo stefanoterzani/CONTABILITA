@@ -1,11 +1,13 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React, {useState,useEffect} from 'react'
+import React from 'react'
 import PaginaScroll from '../componentiPagineScroll/PaginaScroll';
 import FormDinamico  from '../componentiFormDinamico/FormDinamico';
+import { useForm, FormProvider } from "react-hook-form";
+import { useSelector } from 'react-redux';
 
-const InputPaginaSingola = ({formNumber,
+const InputPaginaSingola = ({
+                formId,
                 schema,
-                initialDataForm,
                 top,
                 altezzaScroll,
                 larghezzaScroll,
@@ -16,24 +18,26 @@ const InputPaginaSingola = ({formNumber,
                 handleAggiungiPagina,
                 handleEliminaPagina,
                 handleEvent,
+                altezzaColonna,
               }) => {
+ 
+                const variabileFittizia = useSelector((state) => state.variabiliCondivise.variabileFittizia)
+      //          console.log("INPUT PAGINA SINGOLA",altezzaColonna);
 
-// console.log('pagina singola SCHEMA ORGANIZZATO 2',JSON.stringify(schema, null, 2))
-// console.log('pagina singola ALTEZZA:',altezzaScroll,'LARGHEZZA:', larghezzaScroll, 'TOP',top,)
+  
     return (
-    <View>
-      <PaginaScroll 
-                   top={top}
+      
+            <View>
+                <PaginaScroll 
+                    top={top}
                     scrollWidth={larghezzaScroll}  
                     scrollHeight={altezzaScroll} 
                     barra={barra}
                     barraInserisciElimina={barraInserisciElimina}
                     placeholder={placeholder} 
                     onNuovo={handleAggiungiPagina}
-                    onElimina={handleEliminaPagina}   
-                   
-                    >
-             
+                    onElimina={handleEliminaPagina}  >  
+
                     {Object.keys(schema).map((pagina, index) => {
                       const numeroRighe = Object.keys(schema[pagina]).length;
                       {/* console.log('pagina SCHEMA 2',JSON.stringify(schema[pagina], null, 2))*/}
@@ -42,19 +46,22 @@ const InputPaginaSingola = ({formNumber,
                         <View key={index} >
                               <FormDinamico 
                                   schemaPagina={schema[pagina]}
-                                  initialDataForm={initialDataForm}
                                   containerWidth={larghezzaScroll} 
                                   containerHeight={altezzaScroll}  
                                   etichetta={etichetta}
-                                  formNumber={formNumber} 
+                                  formId={formId} 
                                   handleEvent={handleEvent}
                                   numeroRighe={numeroRighe} // Passa il numero di righe 
+                                  paginaCorrente={pagina} // Passa il numero di pagina
+                                  tipoInputPagina={'singola'}
+                                 
                                   />
                         </View>
                     )
                     })}
                 </PaginaScroll>  
     </View>
+  
   )
 }
 

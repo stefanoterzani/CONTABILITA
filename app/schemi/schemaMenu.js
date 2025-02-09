@@ -1,13 +1,13 @@
 export const schemaMenu = {
           anagrafiche: { label:'ANAGRAFICHE',
                 azienda:{ label: 'Azienda', 
-                        inserimento:{label:'Nuova Azienda',route:'',icona:'building',permesso:true}, 
+                        inserimento:{label:'Nuova Azienda',route:'(AZIENDA)/InserimentoAzienda',icona:'building',permesso:true}, 
                         modifica:{ label: 'Modifica Azienda',route:'',icona:'',permesso:true},
                 },
 
                 clienti:{ label: 'Clienti', 
-                        inserimento:{label:'Nuova Cliente',route:'(CLIENTI)/InserimentoClienti',icona:'user-plus',permesso:true}, 
-                        modifica:{ label: 'Modifica Cliente',route:'',icona:'user-edit',permesso:true},
+                        inserimento:{label:'LavorazioneCliente',route:'(CLIENTI)/InserimentoClienti',icona:'user-plus',permesso:true,modalita:''}, 
+                       
                 },
                 fornitori:{ label: 'Fornitori', 
                         inserimento:{label:'Nuova Fornitore',route:'',icona:'user-plus',permesso:true}, 
@@ -16,7 +16,7 @@ export const schemaMenu = {
 
           vendite: { label:'VENDITE',
                 ordini:{ label: 'Ordini Clienti', 
-                        inserimento:{label: 'Registra Nuovo Ordine',route:'',icona:'building',permesso:true}, 
+                        inserimento:{label: 'Registra Nuovo Ordine',route:'(ORDINI)/InserimentoOrdineCliente',icona:'building',permesso:true}, 
                         modifica:{ label: 'Modifica Ordine',route:'',icona:'',permesso:true},
                 },
 

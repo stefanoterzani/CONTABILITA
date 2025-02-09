@@ -21,7 +21,7 @@ const optionalLayoutConfig = {
       rightColumnStyles:  { 
         tipo:'small',
        width: '30%',
-       background: 'red', 
+       background: 'yellow', 
        borderTopColor: 'black', borderTopWidth: 0, 
        borderBottomColor: 'black', borderBottomWidth: 2, 
        borderLeftColor: 'gray', borderLeftWidth: 4, 

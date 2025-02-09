@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native
 import { FontAwesome5 } from '@expo/vector-icons';
 import { schemaMenu } from '../schemi/schemaMenu';
 import { useRouter } from 'expo-router';
+import { useSelector, useDispatch } from 'react-redux';
 
 const MenuComponent = () => {
   const [expandedSection, setExpandedSection] = useState(null);
@@ -19,7 +20,14 @@ const MenuComponent = () => {
     setExpandedSubSection((prev) => (prev === subSection ? null : subSection));
   };
 
-  
+  const handlePress = (menuItem) => {
+    if (menuItem.permesso) {
+     // console.log('Navigazione verso:', menuItem.route);
+     // console.log('Parametri prima di passare:', { modalita: menuItem.modalita });
+
+      router.push(`/${menuItem.route}?modalita=${menuItem.modalita}`);
+    }
+  };
 
   const renderSubMenuItem = (subItem) => (
     <View key={subItem.label} style={styles.subMenuSection}>
@@ -28,7 +36,7 @@ const MenuComponent = () => {
         <FontAwesome5
           name="chevron-down"
           size={12}
-          color="black"
+          color="blue"
           style={{
             marginLeft: 5,
             transform: expandedSubSection === subItem.label ? [{ rotate: '180deg' }] : [{ rotate: '0deg' }],
@@ -41,9 +49,7 @@ const MenuComponent = () => {
             const menuItem = subItem[key];
             return (
               <TouchableOpacity key={key} style={styles.menuItem}
-              onPress={() =>{ 
-               
-                router.push(menuItem.route)} }
+                 onPress={() => handlePress(menuItem)}
               >
               {/*
                 <FontAwesome5 name={menuItem.icona} size={16} color="black" />
@@ -62,8 +68,9 @@ const MenuComponent = () => {
         <Text style={styles.sectionLabel}>{item.label}</Text>
         <FontAwesome5
           name="chevron-down"
+          
           size={12}
-          color="black"
+          color="blue"
           style={{
             marginLeft: 5,
             transform: expandedSection === item.label ? [{ rotate: '180deg' }] : [{ rotate: '0deg' }],
@@ -102,9 +109,10 @@ const styles = StyleSheet.create({
   },
   sectionLabel: {
     fontSize: 16,
-    fontWeight: 'bold',
+    //fontWeight: '700',
+    fontFamily:'Roboto-Medium',
     marginBottom: 0,
-    color: 'black',
+    color: 'blue',
   },
   subMenuSection: {
     marginLeft: 20,
@@ -116,9 +124,10 @@ const styles = StyleSheet.create({
   },
   subSectionLabel: {
     fontSize: 14,
-    fontWeight: 'bold',
+    fontFamily:'Roboto-Medium',
+  //  fontWeight: '700',
     marginBottom: 5,
-    color: 'black',
+    color: 'blue',
   },
   menuItem: {
     flexDirection: 'row',
@@ -128,8 +137,9 @@ const styles = StyleSheet.create({
   },
   menuItemLabel: {
     marginLeft: 5,
-    fontSize: 12, // Font più piccolo per le voci dei sottomenu
-    color: 'black',
-    fontWeight: '700',
+    fontSize: 14, // Font più piccolo per le voci dei sottomenu
+    color: 'blue',
+    fontFamily:'Roboto-Regular',
+   // fontWeight: '700',
   },
 });

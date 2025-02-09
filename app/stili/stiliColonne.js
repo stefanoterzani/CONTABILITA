@@ -1,8 +1,13 @@
+import { Platform } from "react-native";
 
 
 export const getStileContenitoreColonnaSinistra = (leftColumnStyles, windowHeight, windowWidth,headerHeight, footerHeight) => {
     const isSmallWindow = windowWidth < 600;
     const additionalWidth = isSmallWindow ? 15 : 0;
+
+
+
+    //STILE s', leftColumnStyles, windowHeight,windowHeight - headerHeight - footerHeight - (leftColumnStyles.margineSopraSotto * 2))
     return {
      width: `${parseInt(leftColumnStyles.width) + additionalWidth}%`,
      backgroundColor: leftColumnStyles.background, 
@@ -69,25 +74,48 @@ export const getStileContenitoreColonnaDestra = (rightColumnStyles, windowHeight
 
    }
 }
+export const getStileContenitoreBottoniSubmit = (centralColumnWidth,leftColumnWidth,footerHeight) => {
+    return {
+        position:'absolute',  
+        alignItems:'center',
+        justifyContent:'center',
+        height:footerHeight*0.7,
+        left:leftColumnWidth ,
+        width:centralColumnWidth,
+        bottom:footerHeight+5,
+        borderColor:'red',borderWidth:0,
+        flexDirection:'row',
+        gap:'10%',
+    }
+
+}
+export const getStileBottoniSubmit = (tipo) => {
+    return {
+        borderRadius:10,
+        backgroundColor:'blue',
+        width:Platform.OS === 'web' ? '15%': '22%',
+        height:'100%', alignItems:'center',
+        justifyContent:'center',
+        borderBottomColor:'orange',borderBottomWidth:2,
+        borderRightColor:'orange',borderRightWidth:4,
+    }
+
+}
+
+export const getStileTestoBottoniSubmit = (tipo) => {
+  
+    return {
+        color: tipo === 1 ? 'lightgreen' : 'red',
+        fontFamily:'Roboto-Medium',
+        fontSize:16,
+    }
+}
 
 
-export default { getStileContenitoreColonnaSinistra, getStileContenitoreColonnaDestra, getStileContenitoreColonnaCentrale }
-/*
- position:'absolute',  
-              //flex:1,
-              top: headerHeight, 
-              left: leftColumnStyles.width, 
-              width:centralColumnStyles.width, 
-              height: windowHeight-footerHeight-headerHeight, 
-              backgroundColor: centralColumnStyles.background, 
-              borderTopColor: centralColumnStyles.borderTopColor, 
-              borderTopWidth: centralColumnStyles.borderTopWidth, 
-              borderBottomColor: centralColumnStyles.borderBottomColor, 
-              borderBottomWidth: centralColumnStyles.borderBottomWidth, 
-              borderLeftColor: centralColumnStyles.borderLeftColor, 
-              borderLeftWidth: centralColumnStyles.borderLeftWidth, 
-              borderRightColor: centralColumnStyles.borderRightColor, 
-              borderRightWidth: centralColumnStyles.borderRightWidth,
-
-
-*/
+export default { 
+    getStileContenitoreColonnaSinistra, 
+    getStileContenitoreColonnaDestra, 
+    getStileContenitoreColonnaCentrale,
+    getStileContenitoreBottoniSubmit,
+    getStileBottoniSubmit,
+    getStileTestoBottoniSubmit}

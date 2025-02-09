@@ -6,6 +6,7 @@ const standardLayoutConfig = {
     small: {
         
         leftColumnStyles: { 
+          tipo:'small',
           width:'0%',
           background: '#f2f2f2', 
           borderTopColor: '#ddd', borderTopWidth: 1, 
@@ -13,9 +14,10 @@ const standardLayoutConfig = {
           borderLeftColor: '#ddd', borderLeftWidth: 1, 
           borderRightColor: '#ddd', borderRightWidth: 1,
         },
-      centralColumnStyles: {  
+      centralColumnStyles: {
+        tipo:'small',  
             width:'100%', 
-            background: 'black', 
+            background: 'rgba(173, 216, 230, 0.4)', 
             borderTopColor: '#ccc', borderTopWidth: 1, 
             borderBottomColor: '#ccc', borderBottomWidth: 1, 
             borderLeftColor: '#ccc', borderLeftWidth: 1, 
@@ -23,6 +25,7 @@ const standardLayoutConfig = {
       },
 
       rightColumnStyles:  { 
+        tipo:'small',
             width:'0%',
             background: '#f2f2f2', 
             borderTopColor: '#ddd', borderTopWidth: 1, 
@@ -34,8 +37,9 @@ const standardLayoutConfig = {
     medium: {
       
       leftColumnStyles: { 
+        tipo:'medium',
             width:'20%',   
-            background: 'orange', 
+            background: 'rgba(0, 102, 197, 1)', 
             borderTopColor: '#ccc', borderTopWidth: 1, 
             borderBottomColor: '#ccc', borderBottomWidth: 1, 
             borderLeftColor: '#ccc', borderLeftWidth: 1, 
@@ -45,14 +49,16 @@ const standardLayoutConfig = {
             margineSopraSotto:0,
         }, 
        centralColumnStyles: { 
+        tipo:'medium',
             width:'80%',
-            background: 'white', 
+            background: 'rgba(173, 216, 230, 0.4)', 
             borderTopColor: '#ddd', borderTopWidth: 0,
             borderBottomColor: '#ddd', borderBottomWidth: 0,
             borderLeftColor: 'blue', borderLeftWidth: 5, 
             borderRightColor: 'blue', borderRightWidth: 5, 
         }, 
         rightColumnStyles:  { 
+          tipo:'medium',
             width:'0%',
             background: 'grey', // Imposta un background grigio per la colonna destra 
             borderTopColor: '#ddd', borderTopWidth: 1, 
@@ -69,6 +75,7 @@ const standardLayoutConfig = {
     large: { 
         
         leftColumnStyles: { 
+          tipo:'large',
             width:'15%',
             background: 'orange', 
             borderTopColor: '#bbb', borderTopWidth: 1, 
@@ -80,14 +87,16 @@ const standardLayoutConfig = {
             margineSopraSotto:0,
         }, 
         centralColumnStyles: { 
+          tipo:'large',
             width:'65%',
-            background: 'white', 
+            background: 'rgba(173, 216, 230, 0.4)', 
             borderTopColor: '#aaa', borderTopWidth: 2, 
             borderBottomColor: '#aaa', borderBottomWidth: 1, 
-            borderLeftColor: 'blue', borderLeftWidth: 5, 
-            borderRightColor: 'blue', borderRightWidth: 5, 
+            borderLeftColor: 'white', borderLeftWidth:10, 
+            borderRightColor: 'white', borderRightWidth: 10, 
         }, 
         rightColumnStyles: { 
+          tipo:'large',
             width:'20%',
             background: 'yellow', 
             borderTopColor: 'red', borderTopWidth: 0, 

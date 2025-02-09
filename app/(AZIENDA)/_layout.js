@@ -1,9 +1,9 @@
 import { Stack } from "expo-router";
 
-export default function RootClienti() {
+export default function RootAzienda() {
   return (
     <Stack>
-     <Stack.Screen name="InserimentoClienti" options={{headerShown:false}}/>
+     <Stack.Screen name="InserimentoAzienda" options={{headerShown:false}}/>
       
     </Stack>
   );

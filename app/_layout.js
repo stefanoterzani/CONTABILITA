@@ -13,7 +13,7 @@ const Layout = () => {
     "Roboto-Medium" :require('../assets/fonts/Roboto-Medium.ttf'),
     "Roboto-Regular" :require('../assets/fonts/Roboto-Regular.ttf'),
     "Roboto-Black" :require('../assets/fonts/Roboto-Black.ttf'),
-   
+    "Roboto-MediumItalic" :require('../assets/fonts/Roboto-MediumItalic.ttf'),
    
   });
   
@@ -23,7 +23,9 @@ const Layout = () => {
       <Stack>
           <Stack.Screen name="index" options={{headerShown:false}}/>
           <Stack.Screen name="(HOME)" options={{headerShown:false}}/> 
-          <Stack.Screen name="(CLIENTI)" options={{headerShown:false}}/> 
+          <Stack.Screen name="(CLIENTI)" options={{headerShown:false}}/>        
+          <Stack.Screen name="(AZIENDA)" options={{headerShown:false}}/>   
+          <Stack.Screen name="(ORDINI)" options={{headerShown:false}}/> 
       </Stack>
       </ReduxProvider>
   );

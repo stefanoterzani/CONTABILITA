@@ -3,15 +3,42 @@ import React ,{useRef,useEffect, useState} from 'react'
 import AntDesign from '@expo/vector-icons/AntDesign';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { useSelector, useDispatch } from 'react-redux';
+import BarraScroll from '../componentiPagineScroll/BarraScroll';
 
-
-const PaginaScroll = ({scrollWidth,scrollHeight,children,barra,barraInserisciElimina,onNuovo, onElimina,}) => {
+const PaginaScroll =  ({scrollWidth,scrollHeight,children,barra,barraInserisciElimina,onNuovo, onElimina}) => {
     const scrollViewRef = useRef(null);
+    const dispatch = useDispatch();
     const [scrollPosition, setScrollPosition] = useState(0);
     const [isMobile,setIsMobile] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     const [barraVisibile,setBarraVisibile]=useState(false)
     const [inserisciEliminaVisibile,setInserisciEliminaVisibile]=useState(false)
+    const pagine = useSelector((state) => state.pagine);
+    const [maxPage, setMaxPage] = useState(0); // Utilizza useState per gestire maxPage
+    const [barraOpacity, setBarraOpacity] = useState(0.2); 
+
+// console.log('BARRA',barra,barraInserisciElimina)
+
+ const handleMouseEnter = () => {
+//  console.log('MOUSE ENTER')
+  setBarraOpacity(1); // Imposta l'opacità a 1 quando il mouse entra
+};
+
+const handleMouseLeave = () => {
+//  console.log('MOUSE leave')
+  setBarraOpacity(0.5); // Imposta l'opacità a 0.5 quando il mouse esce
+};
+
+const handleTouchStart = () => {
+//  console.log('MOUSE touch')
+  setBarraOpacity(1); // Imposta l'opacità a 1 quando il touch inizia
+};
+
+const handleTouchEnd = () => {
+//  console.log('MOUSE touchend')
+  setBarraOpacity(0.5); // Imposta l'opacità a 0.5 quando il touch finisce
+};
 
 useEffect(() => {
  
@@ -20,7 +47,7 @@ useEffect(() => {
  } else {
     setIsMobile(false);
  }
-console.log("barra",barra)
+//console.log("barra",barra)
  if(barra=== true){
   setBarraVisibile(true)
   if (barraInserisciElimina===true) {
@@ -33,13 +60,25 @@ console.log("barra",barra)
   setBarraVisibile(false)
   }
  
+
 },[barra])
 
+useEffect(() => {
+  const max=React.Children.count(children) - 1
+ // console.log('MAX',max)
+  setMaxPage(React.Children.count(children) - 1); // Aggiorna maxPage quando children cambia
+}, [children]);
+
+useEffect(() => {
+  if (pagine.length > 0) {
+    scrollViewRef.current?.scrollToEnd({ animated: true });
+  }
+}, [pagine]);
 
 const handleScroll = (event) => {
   const contentOffsetX = event.nativeEvent.contentOffset.x;
   setScrollPosition(contentOffsetX);
-  const pageWidth = scrollWidth;
+   const pageWidth = scrollWidth;
   const newCurrentPage = Math.round(contentOffsetX / pageWidth) + 1;
   setCurrentPage(newCurrentPage);
 };;
@@ -111,12 +150,13 @@ const handlePrevPage = () => {
       };
 
 
-      const maxPage = React.Children.count(children);
+   
 
     return (
+      
+      <View >
           <View>
-          
-               <ScrollView
+             <ScrollView
                     ref={scrollViewRef}
                     horizontal
                     pagingEnabled={!isMobile}
@@ -134,9 +174,15 @@ const handlePrevPage = () => {
                     </View> 
                 ))}
              </ScrollView>
-
-             {barraVisibile && 
-             <View style={[styles.barraContainer,{width:scrollWidth}]}>
+           
+           </View>
+           {barraVisibile && (
+           <View style={[styles.barraContainer,{width:scrollWidth, opacity: barraOpacity }]}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+           >
                 <View style={[styles.barra]}>
                 {inserisciEliminaVisibile && 
                   <TouchableOpacity onPress={handleElimina} style={[styles.arrowButton,{paddingRight:Platform.OS ==='web' ? '4%' : '2%' }]}>
@@ -173,9 +219,15 @@ const handlePrevPage = () => {
                
                 </View>
             </View>
-             }
-          </View>
+           )}
+
+
+       </View>   
+          
       
+   
+          
+        
        
   )
 }
@@ -183,7 +235,7 @@ const styles = StyleSheet.create({
   barraContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor:'lightgray',
+    backgroundColor:'rgba(173, 216, 230, 0.18)',
   //  height:30
   
   },
