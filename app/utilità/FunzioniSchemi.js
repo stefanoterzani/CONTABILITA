@@ -1,5 +1,8 @@
 
 import { Platform } from 'react-native';
+//import { useSelector, useDispatch } from 'react-redux';
+//import {  aggiungiPagina as aggiungiPaginaRedux } from '../redux/slice/pagineSlice';
+
 
 
 export const filtraSchemaPerApplicazione = (schema, applicazione) => {
@@ -172,75 +175,51 @@ export const organizzaSchemaFormPaginaMultipla = (organizzato, schemaNumber, for
     return nuovoOrganizzato;
   };
 
-  export const aggiornaFormState = (formMethods, pageNumber, indice) => {
-//console.log('--------------------------Aggiorna lo stato del form dopo eliminazione di una pagina---------------------')
-//console.log('Form State from formMethods prima eliminazione:', formMethods.getValues());
-
-const formState = formMethods.getValues(); // Ottieni lo stato del form
-const newFormState = { ...formState }; // Copia del formState
-//const indice=1;  // dovrebbe essere il formId
-const campiEliminati = {};
-// Controlla se l'indice esiste e contiene la pagina specificata
-if (newFormState[indice]) {
-    // Elimina tutti i campi della pagina specificata
-    //Itera attraverso le chiavi dell'oggetto newFormState[indice] 
-    // e elimina tutte le chiavi che iniziano con il prefisso della pagina specificata (pageNumber_).
-   // Elimina tutti i campi della pagina specificata e salva i campi eliminati
-   Object.keys(newFormState[indice]).forEach(key => {
-    if (key.startsWith(`${pageNumber}_`)) {
-      campiEliminati[key] = newFormState[indice][key];
-      delete newFormState[indice][key];
-    }
-  });
-
-    // Per ciascuna chiave rimanente, controlla se il prefisso numerico è maggiore del pageNumber eliminato 
-    // e decrementa tale prefisso di 1.
-    Object.keys(newFormState[indice]).forEach(key => {
-      const match = key.match(/^(\d+)_/);
-      if (match && parseInt(match[1], 10) > pageNumber) {
-        const newKey = `${parseInt(match[1], 10) - 1}_${key.split('_')[1]}`;
-        newFormState[indice][newKey] = newFormState[indice][key];
-        delete newFormState[indice][key];
-      }
-    });
-    //Se non ci sono più pagine nel newFormState[indice], 
-    // Aggiunta di una Pagina Vuota con gli Stessi Campi della Pagina Eliminata
-    if (Object.keys(newFormState[indice]).length === 0) {
-      const paginaVuota = {};
-      Object.keys(campiEliminati).forEach(key => {
-        const newKey = `1_${key.split('_')[1]}`; // Ricrea i campi con il prefisso della pagina 1
-        paginaVuota[newKey] = "";
-      });
-      newFormState[indice] = paginaVuota;
-    }
-  
-   // Ripristina il formState aggiornato rimuovendo completamente il vecchio formState
-  // console.log('Updated Form State:', newFormState);
-   formMethods.reset(newFormState);
-
-  //  console.log('Updated Form State:', newFormState);
-    console.log('Form State from formMethods dopo eliminazione:', formMethods.getValues());
-
-}
-
-return newFormState;
-
-
-  }
-
  export const valoreAssoluto= (valore,percentuale) => {
         const percentValue = parseFloat(percentuale) / 100
         return (parseFloat(valore) * percentValue)
         
   }
 
+export const determinaNumeroPagine = (oggetto) => {
+ // Determina il numero di pagine necessarie
+ let numeroPagine = 1;
+ Object.entries(oggetto).forEach(([key, value]) => {
+   if (typeof value === 'object' && value !== null) {
+     Object.keys(value).forEach((subKey) => {
+       const keyParts = subKey.split('_');
+       if (keyParts.length > 1) {
+         const pageIndex = parseInt(keyParts[0], 10);
+         if (!isNaN(pageIndex) && pageIndex > numeroPagine) {
+           numeroPagine = pageIndex;
+         }
+       }
+     });
+   }
+ });
+return numeroPagine;
+}
+
+export const aggiungiPagineNecessarie = (numeroPagine,setSchema,schemaVuoto,setKey) => {
+ 
+  for (let i = 2; i <= numeroPagine; i++) {
+  setSchema((prevPagine) => {
+    const newPagine = aggiungiPagina(prevPagine, schemaVuoto);
+    setKey((prevKey) => prevKey + 1);
+    
+   return newPagine;
+  });
+}
+
+}
 
   export default {
     organizzaSchema,
     aggiungiPagina,
     eliminaPagina,
     valoreAssoluto,
-   // createInitialData
-  };
+    determinaNumeroPagine,
+    aggiungiPagineNecessarie
+     };
 
   expo

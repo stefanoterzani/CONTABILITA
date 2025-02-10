@@ -1,4 +1,5 @@
 import DataManager from '../utilità/DataManager/DataManager';
+import uuid from 'react-native-uuid'; // Importa uuid per generare ID unici
 
 export const leggeDatiCache = async (tipoDati) => {
   try {
@@ -22,8 +23,8 @@ export const salvaDatiCache = async (tipoDati, data) => {
       console.error('Errore durante il salvataggio dei dati nella cache:', error);
     }
   };
-  
-  export const aggiornaDatiCache = async (tipoDati, nuovoDato) => {
+ 
+  const aggiornaDatiCache = async (tipoDati, nuovoDato) => {
     try {
       let existingData = await leggeDatiCache(tipoDati);
       // Assicurarsi che existingData sia un array
@@ -39,3 +40,32 @@ export const salvaDatiCache = async (tipoDati, data) => {
       return [];
     }
   };
+
+  export const aggiungeRecordCache =  async (formMethods,campoId,archivio) => {
+    const newId = uuid.v4();
+    const formValues = formMethods.getValues();
+    formValues[0].id = newId; 
+    formMethods.setValue(campoId, newId); // Riempie il campo id esistente
+    await aggiornaDatiCache(archivio, formValues);
+
+  }
+
+  export const aggiornaRecordCache = async (formMethods, idSelezione, nomeArchivio, indice,campoId) => {
+      let existingData = DataManager.loadData(nomeArchivio) || [];
+      if (!Array.isArray(existingData)) {
+        existingData = [];
+      }
+    
+      // Trova l'indice del cliente da modificare
+      const clienteIndex = existingData.findIndex((archivio) => archivio[indice][campoId] === idSelezione);
+      if (clienteIndex !== -1) {
+        const formValues = formMethods.getValues();
+        existingData[clienteIndex] = formValues;
+        DataManager.saveData(nomeArchivio, existingData);
+        return true; // Aggiornamento effettuato con successo
+      }
+      return false; // Aggiornamento non effettuato
+  
+      // const clienteIndex = existingData.findIndex((cliente) => cliente[0].id === id);  
+    };
+

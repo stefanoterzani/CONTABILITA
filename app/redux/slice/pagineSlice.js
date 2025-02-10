@@ -7,7 +7,9 @@ const pagineSlice = createSlice({
   initialState,
   reducers: {
     aggiungiPagina: (state, action) => {
-      state.push(`Pagina ${state.length + 1}`);
+      const { schemaName, pageNumber } = action.payload;
+      state.push({ schemaName, pageNumber: `Pagina ${pageNumber}` });
+    //  state.push(`Pagina ${state.length + 1}`);
     },
     eliminaPagina: (state, action) => {
       return state.filter((_, index) => index !== action.payload - 1);

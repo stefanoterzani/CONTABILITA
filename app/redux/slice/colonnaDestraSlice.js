@@ -21,14 +21,14 @@ const colonnaDestraSlice = createSlice({
     resetRisposta: (state) => {
       state.risposta = null;
     },
-    setClientiData: (state, action) => {
-        state.clientiData = action.payload;
-    }, 
+ //   setClientiData: (state, action) => {
+ //       state.clientiData = action.payload;
+//    }, 
     aggiornaCache: (state) => {
       state.aggiornaCache = !state.aggiornaCache; // Toggle dello stato aggiornaCache
     },
   },
 });
 
-export const { setTipoContenuto, resetTipoContenuto, setRisposta, resetRisposta ,setClientiData,aggiornaCache} = colonnaDestraSlice.actions;
+export const { setTipoContenuto, resetTipoContenuto, setRisposta, resetRisposta ,aggiornaCache} = colonnaDestraSlice.actions;
 export default colonnaDestraSlice.reducer;

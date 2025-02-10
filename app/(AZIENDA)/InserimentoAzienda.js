@@ -28,7 +28,7 @@ import { inizializzaScroll, aggiornaTutteLeProprietaScroll,aggiornaScroll } from
 
 
 
-const InserimentoClienti = () => {
+const InserimentoAzienda = () => {
 
  
   const [modalità, setModalità] = useState('NUOVO');
@@ -264,7 +264,7 @@ const resetCache = async () => {
   console.log('sto per resettare Cache');
   await DataManager.resetCache();
   console.log('Cache resettata');
-  setClientiData([]); // Resetta lo stato dei dati dei clienti
+ // setClientiData([]); // Resetta lo stato dei dati dei clienti
 };
 
   return (
@@ -342,4 +342,4 @@ const resetCache = async () => {
 }
 
 
-export default InserimentoClienti
+export default InserimentoAzienda

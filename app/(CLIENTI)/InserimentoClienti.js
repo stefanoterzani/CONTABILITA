@@ -1,25 +1,28 @@
 import { StyleSheet,ScrollView, Text, View,Platform,Keyboard,TouchableOpacity,Button,FlatList} from 'react-native'
-import React, {useState,useEffect} from 'react';
+import React, {useState,useEffect, startTransition} from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useForm, FormProvider,} from "react-hook-form";
 import DataManager from '../utilità/DataManager/DataManager';
-import uuid from 'react-native-uuid'; // Importa uuid per generare ID unici
-//import { useLocalSearchParams } from 'expo-router'
 import { schemaCliente,schemaSedi } from '../schemi/schemiClienti';
 import { useSelector, useDispatch } from 'react-redux';
 
 import {  aggiungiPagina as aggiungiPaginaRedux } from '../redux/slice/pagineSlice';
 
 //-----------------IMPORT COMPONENTI FORM DINAMICO------------
-import { showRightColumn, hideRightColumn } from '../redux/slice/SliceColonnaOpzionale'; 
 
 
 import InputPagineMultiple from '../componenti/componentiPagineScroll/InputPagineMultiple';
 import InputPaginaSingola from '../componenti/componentiPagineScroll/InputPaginaSingola';
-import {aggiungiPagina as aggiungiPaginaSchema,eliminaPagina,  valoreAssoluto,inizializzaSchemaFormPaginaMultipla,
-        inizializzaSchemaFormPagineSingole,aggiornaFormState} from '../utilità/FunzioniSchemi';
+import {aggiungiPagina as aggiungiPaginaSchema,
+        eliminaPagina,  
+        valoreAssoluto,
+        inizializzaSchemaFormPaginaMultipla,
+        inizializzaSchemaFormPagineSingole,
+        determinaNumeroPagine,
+        aggiungiPagineNecessarie,
+      } from '../utilità/FunzioniSchemi';
 
-import {setTipoContenuto, resetRisposta, setClientiData,aggiornaCache } from '../redux/slice/colonnaDestraSlice'
+import {setTipoContenuto,aggiornaCache } from '../redux/slice/colonnaDestraSlice'
 
 //----------------   IMPORT HOOKS  e moduli gestione colonne   ---------------------
 import useColonneStandard from '../hooks/useColonneStandard ';
@@ -30,7 +33,7 @@ import {  getStileContenitoreColonnaCentrale, getStileContenitoreBottoniSubmit, 
 import Footer from '../componenti/componentiSchermate/Footer';
 import Header from '../componenti/componentiSchermate/Header';
 import { inizializzaScroll, aggiornaTutteLeProprietaScroll,aggiornaScroll } from '../utilità/FunzioniScroll';
-import {leggeDatiCache,salvaDatiCache,aggiornaDatiCache} from '../utilità/FunzioniCache'; 
+import {aggiungeRecordCache,aggiornaRecordCache} from '../utilità/FunzioniCache'; 
 
 
 
@@ -40,7 +43,6 @@ const InserimentoClienti = () => {
   const [tipo, setTipo] = useState('tipoApp1');
   const formMethods = useForm(); // Inizializziamo useForm nel componente principale
   const dispatch = useDispatch();
- // const [clientiData, setClientiDataState] = useState([]); 
   const [clienteSelezionato,setClienteSelezionato]=useState([]);
   const [titolo, setTitolo] = useState('Lavorazione Clienti'); // Stato per il titolo
   const risposta = useSelector((state) => state.colonnaDestra.risposta);
@@ -153,40 +155,25 @@ const inizializzaFormNuovo = () => {
   setTitolo('Inserimento Clienti');
 }
 
+
+
+
+
 const inizializzaFormModifica = (cliente) => {
   setTitolo('Modfifica Cliente');
   setSchema_2({}); // Elimina le pagine successive dello schema
   const nuovoOrganizzato1 = inizializzaSchemaFormPaginaMultipla(0, schemaCliente, setSchema_1, formMethods);
-    const nuovoOrganizzato2 = inizializzaSchemaFormPagineSingole(schemaSedi, 1, 1, setInizialeSchema_2, setSchema_2, formMethods);
+  const nuovoOrganizzato2 = inizializzaSchemaFormPagineSingole(schemaSedi, 1, 1, setInizialeSchema_2, setSchema_2, formMethods);
   Object.keys(cliente).forEach((key) => {
     formMethods.setValue(key, cliente[key]);
   });  
-    // Determina il numero di pagine necessarie
-     let numeroPagine = 1;
-     Object.entries(cliente).forEach(([key, value]) => {
-       if (typeof value === 'object' && value !== null) {
-         Object.keys(value).forEach((subKey) => {
-           const keyParts = subKey.split('_');
-           if (keyParts.length > 1) {
-             const pageIndex = parseInt(keyParts[0], 10);
-             if (!isNaN(pageIndex) && pageIndex > numeroPagine) {
-               numeroPagine = pageIndex;
-             }
-           }
-         });
-       }
-     });
-
- // Aggiungi le pagine necessarie
- for (let i = 2; i <= numeroPagine; i++) {
-  setSchema_2((prevPagine) => {
-    const newPagine = aggiungiPaginaSchema(prevPagine, inizialeSchema_2);
-    setKey((prevKey) => prevKey + 1);
-    dispatch(aggiungiPaginaRedux()); // Dispatch dell'azione Redux per aggiungere una nuova pagina
-    return newPagine;
-  });
-}
-
+   
+  const numeroPagine=determinaNumeroPagine(cliente)
+  aggiungiPagineNecessarie(numeroPagine,setSchema_2,inizialeSchema_2,setKey)
+  for (let i = 2; i <= numeroPagine; i++) {
+    dispatch(aggiungiPaginaRedux({ schemaName: 'schema_2', pageNumber: 1 })); // Dispatch dell'azione Redux per aggiungere una nuova pagina
+    // dispatch(aggiungiPaginaRedux()); 
+  }
 
 }
 
@@ -230,52 +217,26 @@ useEffect(() => {
    const resetCache = () => {
     DataManager.resetCache();
     console.log('Cache resettata');
-  //  setClientiData([]); // Resetta lo stato dei dati dei clienti
+  
   };
   
   
+
+
   const onSubmit = async (data) => {
- console.log('il data nel submit ',data);
- console.log('il Cliente selezionato nel submit ',clienteSelezionato);
-  //  console.log('Form submitted successfully in modalita:',MODALITA, data);
-  
-  if (MODALITA === 'MODIFICA') {
-      const newId = uuid.v4();
-      const formValues = formMethods.getValues();
-      formValues[0].id = newId; 
-      formMethods.setValue('id', newId); // Riempie il campo id esistente
-      await aggiornaDatiCache('clientiData', formValues);
-      dispatch(aggiornaCache()); // Dispatch per aggiornare la cache
-      //--------------solo per debug----------------------------------
-      const datiCache = await DataManager.loadData('clientiData');
-      console.log('in submit NUOVO Dati della cache:', datiCache);
-      //--------------------------------------------------------------- 
-      inizializzaFormNuovo(); // Reinizializza il form per un nuovo inserimento
-  } else  {     
-      let existingData = DataManager.loadData('clientiData') || [];
-      if (!Array.isArray(existingData)) {
-        existingData = [];
-      }
-      const id=clienteSelezionato[0].id
-      // Trova l'indice del cliente da modificare
-      const clienteIndex = existingData.findIndex((cliente) => cliente[0].id === id);  
-      console.log('CLIENTE INDEX',clienteIndex)
-      console.log('EXISTING DATA', existingData);
-    console.log('CLIENTE SELEZIONATO', clienteSelezionato);
-      if (clienteIndex !== -1) {
-          const formValues = formMethods.getValues();
-          existingData[clienteIndex] = formValues;
-          DataManager.saveData('clientiData', existingData);
-          //--------------solo per debug----------------------------------
-          const datiCache = await DataManager.loadData('clientiData');
-          console.log('in submit MODIFICA Dati della cache:', datiCache);
-          //---------------------------------------------------------------
+   
+    if (MODALITA === 'NUOVO') {
+        await aggiungeRecordCache(formMethods,'id','clientiData')
         dispatch(aggiornaCache()); // Dispatch per aggiornare la cache
-      }
-        
-      setClienteSelezionato(null)
-      inizializzaFormNuovo(); // Reinizializza il form per un nuovo inserimento
-}
+        setClienteSelezionato(null)
+        inizializzaFormNuovo(); // Reinizializza il form per un nuovo inserimento
+    } else  {    
+        if (await aggiornaRecordCache(formMethods,clienteSelezionato[0].id , 'clientiData',0, 'id')) {
+          dispatch(aggiornaCache()); // Dispatch per aggiornare la cache solo se l'aggiornamento è stato effettuato
+        } 
+        setClienteSelezionato(null)
+        inizializzaFormNuovo(); // Reinizializza il form per un nuovo inserimento
+  }
     
     //  puoi gestire l'invio dei dati a un server o altre operazioni
   };
@@ -318,11 +279,10 @@ const handleEliminaPagina = (pageNumber) => {
     setSchema_2((prevPagine) => {
     const newPageId = Object.keys(prevPagine).length + 1;
     const newPagine=  aggiungiPaginaSchema(prevPagine, inizialeSchema_2)
-    setKey((prevKey) => prevKey + 1); 
-
-    console.log('Aggiunta schema_2',newPagine)
-    dispatch(aggiungiPaginaRedux()); // Dispatch dell'azione Redux per aggiungere una nuova pagina
-   // INUTILE REGISTRARE I NUOVI CAMPI NEL FORM (LI PRENDE DA SOLO) 
+    setKey((prevKey) => prevKey + 1);   
+    dispatch(aggiungiPaginaRedux({ schemaName: 'schema_2', pageNumber: 1})); 
+    // dispatch(aggiungiPaginaRedux()); // Dispatch dell'azione Redux per aggiungere una nuova pagina 
+     
      return newPagine;
   });
   
@@ -344,13 +304,6 @@ const annulla=()=>{
 const handleAnnulla = () => {
   annulla();
 };
-/*
-const handleApriListaClienti = () => {
-  console.log('APRI LISTA')
-  dispatch(setTipoContenuto('ListaClienti'));
-  dispatch(showRightColumn());
-};
-*/
   return (
     <SafeAreaView style={{flex:1}}>
 
@@ -360,14 +313,7 @@ const handleApriListaClienti = () => {
            />
         <FormProvider {...formMethods}>
         <View style={stileContenitoreColonnaCentrale}>
-      {/*
-        <SelezioneModal
-        modalVisible={modalVisible}
-        setModalVisible={setModalVisible}
-        handleNuovoCliente={handleNuovoCliente}
-        handleModificaCliente={handleModificaCliente}
-      /> 
-      */}
+   
                     <View style={{flex:1, position:'absolute',top:scroll[1].top,
                                   borderColor:'green',borderWidth:0,
                                   backgroundColor:'rgba(173, 216, 230, 0.7)'}}>            
@@ -417,12 +363,7 @@ const handleApriListaClienti = () => {
       
        
         <View style={stileContenitoreBottoniSubmit}>
-        {/*
-        <TouchableOpacity style={getStileBottoniSubmit(1)}
-               onPress={handleApriListaClienti}>
-              <Text style={getStileTestoBottoniSubmit(1)}> LISTA CLIENTI</Text>     
-          </TouchableOpacity>  
- */}
+     
           <TouchableOpacity style={getStileBottoniSubmit(1)}
                onPress={formMethods.handleSubmit(onSubmit)}>
               <Text style={getStileTestoBottoniSubmit(1)}> SUBMIT</Text>     
@@ -450,9 +391,18 @@ const handleApriListaClienti = () => {
 
 export default InserimentoClienti
 
-/*
-    Object.keys(clienteSelezionato).forEach((key) => {
-      formMethods.setValue(key, clienteSelezionato[key]);
-    });  
-    */
-   
+ /*  
+      let existingData = DataManager.loadData('clientiData') || [];
+      if (!Array.isArray(existingData)) {
+        existingData = [];
+      }
+    
+      // Trova l'indice del cliente da modificare
+      const clienteIndex = existingData.findIndex((cliente) => cliente[0].id === id);  
+       if (clienteIndex !== -1) {
+          const formValues = formMethods.getValues();
+          existingData[clienteIndex] = formValues;
+          DataManager.saveData('clientiData', existingData);
+          dispatch(aggiornaCache()); // Dispatch per aggiornare la cache
+      }
+       */
