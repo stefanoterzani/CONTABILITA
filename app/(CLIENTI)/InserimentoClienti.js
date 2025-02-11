@@ -6,15 +6,15 @@ import DataManager from '../utilità/DataManager/DataManager';
 import { schemaCliente,schemaSedi } from '../schemi/schemiClienti';
 import { useSelector, useDispatch } from 'react-redux';
 
-import {  aggiungiPagina as aggiungiPaginaRedux } from '../redux/slice/pagineSlice';
+import { aggiungiPaginaRedux } from '../redux/slice/pagineSlice';
 
 //-----------------IMPORT COMPONENTI FORM DINAMICO------------
 
 
 import InputPagineMultiple from '../componenti/componentiPagineScroll/InputPagineMultiple';
 import InputPaginaSingola from '../componenti/componentiPagineScroll/InputPaginaSingola';
-import {aggiungiPagina as aggiungiPaginaSchema,
-        eliminaPagina,  
+import {aggiungiPaginaSchema,
+        eliminaPaginaSchema,  
         valoreAssoluto,
         inizializzaSchemaFormPaginaMultipla,
         inizializzaSchemaFormPagineSingole,
@@ -172,7 +172,7 @@ const inizializzaFormModifica = (cliente) => {
   aggiungiPagineNecessarie(numeroPagine,setSchema_2,inizialeSchema_2,setKey)
   for (let i = 2; i <= numeroPagine; i++) {
     dispatch(aggiungiPaginaRedux({ schemaName: 'schema_2', pageNumber: 1 })); // Dispatch dell'azione Redux per aggiungere una nuova pagina
-    // dispatch(aggiungiPaginaRedux()); 
+    
   }
 
 }
@@ -281,8 +281,7 @@ const handleEliminaPagina = (pageNumber) => {
     const newPagine=  aggiungiPaginaSchema(prevPagine, inizialeSchema_2)
     setKey((prevKey) => prevKey + 1);   
     dispatch(aggiungiPaginaRedux({ schemaName: 'schema_2', pageNumber: 1})); 
-    // dispatch(aggiungiPaginaRedux()); // Dispatch dell'azione Redux per aggiungere una nuova pagina 
-     
+        
      return newPagine;
   });
   

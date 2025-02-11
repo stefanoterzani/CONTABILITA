@@ -1,7 +1,7 @@
 
+
+
 import { Platform } from 'react-native';
-//import { useSelector, useDispatch } from 'react-redux';
-//import {  aggiungiPagina as aggiungiPaginaRedux } from '../redux/slice/pagineSlice';
 
 
 
@@ -66,7 +66,7 @@ export const raggruppaSchemaPerRiga = (schemaPerPagina) => {
   };
 
 
-  export const aggiungiPagina = (pagine, schemaOrganizzato) => {
+  export const aggiungiPaginaSchema = (pagine, schemaOrganizzato) => {
     const newPageNumber = Object.keys(pagine).length + 1;
     const newPage = JSON.parse(JSON.stringify(schemaOrganizzato[1])); // Copia della struttura della prima pagina
   
@@ -85,7 +85,7 @@ export const raggruppaSchemaPerRiga = (schemaPerPagina) => {
 
 
 
-  export const eliminaPagina = (pagine, pageNumber, schemaIniziale,setSchema) => {
+  export const eliminaPaginaSchema = (pagine, pageNumber, schemaIniziale,setSchema) => {
    // console.log('schemaIniziale', schemaIniziale);
     const updatedPages = { ...pagine };
     delete updatedPages[pageNumber];
@@ -204,7 +204,7 @@ export const aggiungiPagineNecessarie = (numeroPagine,setSchema,schemaVuoto,setK
  
   for (let i = 2; i <= numeroPagine; i++) {
   setSchema((prevPagine) => {
-    const newPagine = aggiungiPagina(prevPagine, schemaVuoto);
+    const newPagine = aggiungiPaginaSchema(prevPagine, schemaVuoto);
     setKey((prevKey) => prevKey + 1);
     
    return newPagine;
@@ -215,11 +215,11 @@ export const aggiungiPagineNecessarie = (numeroPagine,setSchema,schemaVuoto,setK
 
   export default {
     organizzaSchema,
-    aggiungiPagina,
-    eliminaPagina,
+    aggiungiPaginaSchema,
+    eliminaPaginaSchema,
     valoreAssoluto,
     determinaNumeroPagine,
     aggiungiPagineNecessarie
      };
 
-  expo
+  

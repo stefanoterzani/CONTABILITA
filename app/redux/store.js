@@ -1,5 +1,7 @@
 
 
+
+
 import { configureStore } from '@reduxjs/toolkit';
 
 import standardColumnReducer from './slice/SliceColonnaStandard';
@@ -21,4 +23,3 @@ const store = configureStore({
 });
 
 export default store;
-

@@ -6,17 +6,17 @@ const pagineSlice = createSlice({
   name: 'pagine',
   initialState,
   reducers: {
-    aggiungiPagina: (state, action) => {
+    aggiungiPaginaRedux: (state, action) => {
       const { schemaName, pageNumber } = action.payload;
       state.push({ schemaName, pageNumber: `Pagina ${pageNumber}` });
     //  state.push(`Pagina ${state.length + 1}`);
     },
-    eliminaPagina: (state, action) => {
+    eliminaPaginaRedux: (state, action) => {
       return state.filter((_, index) => index !== action.payload - 1);
     },
   },
 });
 
-export const { aggiungiPagina, eliminaPagina } = pagineSlice.actions;
+export const { aggiungiPaginaRedux, eliminaPaginaRedux } = pagineSlice.actions;
 
 export default pagineSlice.reducer;
